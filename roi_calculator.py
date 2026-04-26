@@ -17,68 +17,68 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',sans-serif}
 
 /* Hero - Alexa deck gradient with blue glow */
 .hero{background:linear-gradient(135deg,#080c18 0%,#0a1128 40%,#0d2847 80%,#1a5276 100%);border-radius:16px;padding:40px 48px;margin-bottom:32px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;bottom:-40%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,191,255,.12) 0%,transparent 70%);border-radius:50%}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00BFFF,#00E5FF,#00BFFF)}
+.hero::before{content:'';position:absolute;bottom:-40%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(126,184,218,.12) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF9900,#FFB84D,#FF9900)}
 .hero h1{color:#FFF;font-size:30px;margin:0 0 6px;font-weight:800;letter-spacing:-.5px;position:relative}
-.hero .sub{color:#00BFFF;font-size:16px;margin:0;font-weight:600;position:relative}
+.hero .sub{color:#FF9900;font-size:16px;margin:0;font-weight:600;position:relative}
 .hero .meta{color:rgba(255,255,255,.35);font-size:10px;margin-top:12px;position:relative;letter-spacing:1.5px;text-transform:uppercase}
 
 /* KPI Cards - elevated dark cards with glow borders */
 .kpi-big{background:linear-gradient(145deg,#111d33,#162544);border-radius:14px;padding:26px 20px;text-align:center;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 24px rgba(0,0,0,.3);transition:all .3s cubic-bezier(.4,0,.2,1)}
-.kpi-big:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,191,255,.12);border-color:rgba(0,191,255,.25)}
+.kpi-big:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,153,0,.1);border-color:rgba(255,153,0,.2)}
 .kpi-big .value{font-size:36px;font-weight:800;margin:0;line-height:1.1;letter-spacing:-.5px;color:#fff}
-.kpi-big .label{color:rgba(255,255,255,.5);font-size:11px;margin:8px 0 0;text-transform:uppercase;letter-spacing:.8px;font-weight:600;white-space:nowrap}
+.kpi-big .label{color:#8a9bb0;font-size:11px;margin:8px 0 0;text-transform:uppercase;letter-spacing:.8px;font-weight:600;white-space:nowrap}
 .kpi-big .delta{font-size:13px;margin-top:6px;font-weight:600}
-.kpi-big.green .value{color:#00E676}.kpi-big.green{border-bottom:3px solid #00E676}
-.kpi-big.blue .value{color:#00BFFF}.kpi-big.blue{border-bottom:3px solid #00BFFF}
+.kpi-big.green .value{color:#4ECDC4}.kpi-big.green{border-bottom:3px solid #4ECDC4}
+.kpi-big.blue .value{color:#FF9900}.kpi-big.blue{border-bottom:3px solid #FF9900}
 .kpi-big.orange .value{color:#FFB84D}.kpi-big.orange{border-bottom:3px solid #FF9900}
-.kpi-big.hero-card{background:linear-gradient(135deg,#00BFFF,#0088cc);border:none;box-shadow:0 8px 32px rgba(0,191,255,.25)}
+.kpi-big.hero-card{background:linear-gradient(135deg,#FF9900,#e68a00);border:none;box-shadow:0 8px 32px rgba(255,153,0,.25)}
 .kpi-big.hero-card .value{color:#fff;font-size:42px;text-shadow:0 2px 12px rgba(0,0,0,.3)}.kpi-big.hero-card .label{color:rgba(255,255,255,.85)}
 
 /* Scenario Cards */
 .scenario-card{background:rgba(17,29,51,.6);border-radius:14px;padding:20px 24px;border:1px solid rgba(255,255,255,.06)}
 .scenario-card .tag{display:inline-block;padding:5px 16px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
-.tag-s1{background:rgba(0,191,255,.12);color:#00BFFF;border:1px solid rgba(0,191,255,.25)}
-.tag-s2{background:rgba(0,230,118,.12);color:#00E676;border:1px solid rgba(0,230,118,.25)}
-.tag-s3{background:rgba(255,153,0,.12);color:#FFB84D;border:1px solid rgba(255,153,0,.25)}
+.tag-s1{background:rgba(126,184,218,.12);color:#FF9900;border:1px solid rgba(126,184,218,.25)}
+.tag-s2{background:rgba(0,230,118,.12);color:#4ECDC4;border:1px solid rgba(0,230,118,.25)}
+.tag-s3{background:rgba(255,153,0,.12);color:#FF9900;border:1px solid rgba(255,153,0,.25)}
 
 /* Section Headers - cyan accent */
-.stitle{font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#00BFFF;border-left:4px solid #00BFFF;padding-left:14px;margin:36px 0 10px}
-.stitle-sub{font-size:14px;color:rgba(255,255,255,.45);margin:0 0 20px 18px;font-weight:400}
+.stitle{font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#FF9900;border-left:4px solid #FF9900;padding-left:14px;margin:36px 0 10px}
+.stitle-sub{font-size:14px;color:#8a9bb0;margin:0 0 20px 18px;font-weight:400}
 
 /* Insight Box - slightly elevated dark */
-.insight{background:linear-gradient(135deg,#111d33,#162544);border-radius:14px;padding:28px 32px;margin:24px 0;position:relative;border:1px solid rgba(0,191,255,.12);box-shadow:0 4px 20px rgba(0,0,0,.2)}
-.insight::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#00BFFF,#00E5FF);border-radius:4px 0 0 4px}
+.insight{background:linear-gradient(135deg,#111d33,#162544);border-radius:14px;padding:28px 32px;margin:24px 0;position:relative;border:1px solid rgba(126,184,218,.12);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.insight::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#FF9900,#FFB84D);border-radius:4px 0 0 4px}
 .insight .headline{font-size:18px;font-weight:700;color:#fff;margin:0 0 6px;line-height:1.4}
-.insight .body{font-size:13px;color:rgba(255,255,255,.4);margin:0}
+.insight .body{font-size:13px;color:#8a9bb0;margin:0}
 
 /* Sidebar */
 [data-testid="stSidebar"]{background:linear-gradient(180deg,#060a14,#0a1128)}
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span{color:#a0b4c8!important}
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3{color:#00BFFF!important}
-[data-testid="stSidebar"] label{color:#a0b4c8!important}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span{color:#8a9bb0!important}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3{color:#FF9900!important}
+[data-testid="stSidebar"] label{color:#8a9bb0!important}
 
 /* Tabs - dark with cyan active */
 .stTabs [data-baseweb="tab-list"]{gap:0;border-bottom:2px solid rgba(255,255,255,.08);background:transparent}
-.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:14px 28px;color:rgba(255,255,255,.4);border-bottom:3px solid transparent;margin-bottom:-2px;background:transparent}
-.stTabs [aria-selected="true"]{color:#00BFFF!important;border-bottom:3px solid #00BFFF!important;background:transparent!important}
+.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:14px 28px;color:#8a9bb0;border-bottom:3px solid transparent;margin-bottom:-2px;background:transparent}
+.stTabs [aria-selected="true"]{color:#FF9900!important;border-bottom:3px solid #FF9900!important;background:transparent!important}
 
 /* Tables */
 [data-testid="stDataFrame"]{border-radius:10px;overflow:hidden}
 
 /* Sliders */
-.stSlider>div>div>div>div{background:#00BFFF!important}
+.stSlider>div>div>div>div{background:#FF9900!important}
 
 /* Text colors for dark bg */
 [data-testid="stMetricValue"]{color:#fff!important}
-[data-testid="stMetricLabel"]{color:rgba(255,255,255,.5)!important}
-.stMarkdown p,.stMarkdown li{color:rgba(255,255,255,.8)}
+[data-testid="stMetricLabel"]{color:#8a9bb0!important}
+.stMarkdown p,.stMarkdown li{color:#c8d6e0}
 .stMarkdown strong{color:#fff}
 .stMarkdown h1,.stMarkdown h2,.stMarkdown h3,.stMarkdown h4{color:#fff}
 
 /* Footer */
-.app-footer{background:linear-gradient(135deg,#060a14,#0a1128);border-radius:14px;padding:24px 36px;margin-top:48px;text-align:center;border-top:1px solid rgba(0,191,255,.1)}
-.app-footer .brand{color:#00BFFF;font-size:13px;font-weight:700;margin:0;letter-spacing:2px;text-transform:uppercase}
+.app-footer{background:linear-gradient(135deg,#060a14,#0a1128);border-radius:14px;padding:24px 36px;margin-top:48px;text-align:center;border-top:1px solid rgba(255,153,0,.1)}
+.app-footer .brand{color:#FF9900;font-size:13px;font-weight:700;margin:0;letter-spacing:2px;text-transform:uppercase}
 .app-footer .sub{color:rgba(255,255,255,.3);font-size:11px;margin:6px 0 0}
 </style>""", unsafe_allow_html=True)
 
@@ -342,7 +342,7 @@ with tab1:
     # Insight callout
     best = max([r1, r2, r3], key=lambda x: x["roi"])
     st.markdown(f"""<div class="insight">
-    <p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#00BFFF;font-weight:700;margin:0 0 8px">💡 Key Takeaway</p>
+    <p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#FF9900;font-weight:700;margin:0 0 8px">💡 Key Takeaway</p>
     <p class="headline">Alexa deployment generates up to ${best['inc_cp_room']*12:,.0f} in annual incremental profit per room — translating to ${ann_prop(best):,.0f}K per property annually.</p>
     <p class="body">Based on {int(avg_rooms_per_alexa_property):,} rooms per property across {alexa_properties} properties with Alexa</p>
     </div>""", unsafe_allow_html=True)
@@ -350,7 +350,7 @@ with tab1:
     # Visual: ROI comparison gauge chart
     st.markdown(f'<div class="stitle">ROI Comparison</div>', unsafe_allow_html=True)
     fig_gauge = go.Figure()
-    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#00BFFF"), ("Scenario 2", r2, "#00E676"), ("Scenario 3", r3, "#FFB84D")]):
+    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#4ECDC4"), ("Scenario 3", r3, "#FF9900")]):
         fig_gauge.add_trace(go.Indicator(
             mode="gauge+number+delta",
             value=r["roi"],
@@ -384,9 +384,9 @@ with tab1:
     fig_wf = go.Figure(go.Waterfall(
         x=wf_labels, y=wf_vals, measure=["absolute", "relative", "relative", "relative", "total"],
         connector=dict(line=dict(color="rgba(255,255,255,.15)", width=1, dash="dot")),
-        increasing=dict(marker=dict(color="#00E676")),
+        increasing=dict(marker=dict(color="#4ECDC4")),
         decreasing=dict(marker=dict(color="#FF5252")),
-        totals=dict(marker=dict(color="#00BFFF")),
+        totals=dict(marker=dict(color="#FF9900")),
         text=[f"${v:,.0f}" for v in wf_vals], textposition="outside",
         textfont=dict(size=14, color="#e0e6ed", family="Inter"),
     ))
@@ -450,7 +450,7 @@ with tab1:
         return f"""<div style="background:linear-gradient(145deg,#111d33,#162544);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.2)">
         <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#FF9900;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #FF9900">{title}</p>
         <table style="width:100%;border-collapse:collapse;font-size:13px">
-        <tr><th style="text-align:left;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);border-bottom:1px solid rgba(255,255,255,.1)">Metric</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.1)">S1</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.1)">S2</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.1)">S3</th></tr>
+        <tr><th style="text-align:left;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8a9bb0;border-bottom:1px solid rgba(255,255,255,.1)">Metric</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8a9bb0;border-bottom:1px solid rgba(255,255,255,.1)">S1</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8a9bb0;border-bottom:1px solid rgba(255,255,255,.1)">S2</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8a9bb0;border-bottom:1px solid rgba(255,255,255,.1)">S3</th></tr>
         {rows_html}
         </table></div>"""
 
@@ -461,7 +461,7 @@ with tab1:
 
     # Annual CP bar chart
     fig_cp = go.Figure()
-    for sn, r, color in [("Scenario 1", r1, "#00BFFF"), ("Scenario 2", r2, "#00E676"), ("Scenario 3", r3, "#FFB84D")]:
+    for sn, r, color in [("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#4ECDC4"), ("Scenario 3", r3, "#FF9900")]:
         fig_cp.add_trace(go.Bar(
             name=sn, x=["Annual CP / Room", "Annual CP / Property (000s)"],
             y=[r["inc_cp_room"] * 12, ann_prop(r)],
@@ -541,7 +541,7 @@ with tab2:
         wf_v = [live_r["total_inc_room"], -live_r["total_payment_room"], -live_r["amenity_cost_room"], live_r["inc_cp_room"]]
         fig_wf = go.Figure(go.Waterfall(x=wf_l, y=wf_v, measure=["absolute","relative","relative","total"],
             connector=dict(line=dict(color="#D5D9DD")), increasing=dict(marker=dict(color="#067D62")),
-            decreasing=dict(marker=dict(color="#C7511F")), totals=dict(marker=dict(color="#00BFFF")),
+            decreasing=dict(marker=dict(color="#C7511F")), totals=dict(marker=dict(color="#FF9900")),
             text=[f"${v:,.0f}" for v in wf_v], textposition="outside"))
         fig_wf.update_layout(height=380, plot_bgcolor="#FAFBFC", yaxis=dict(gridcolor="rgba(255,255,255,.08)"), margin=dict(t=30))
         st.plotly_chart(fig_wf, use_container_width=True)
