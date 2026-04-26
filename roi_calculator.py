@@ -55,6 +55,10 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-seri
 [data-testid="stSidebar"] .stSlider label span{color:#c8d0d8!important}
 [data-testid="collapsedControl"]{background:#FF9900!important;border-radius:0 8px 8px 0!important;padding:8px!important;opacity:1!important}
 [data-testid="collapsedControl"] svg{color:#fff!important;width:20px!important;height:20px!important}
+[data-testid="stSidebar"] button[kind="header"]{color:#FF9900!important;opacity:1!important}
+[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"]{opacity:1!important}
+[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] svg{color:#FF9900!important;width:24px!important;height:24px!important}
+[data-testid="stSidebarCollapsedControl"]{background:#FF9900!important;opacity:1!important}
 
 /* Tabs */
 .stTabs [data-baseweb="tab-list"]{gap:0;border-bottom:2px solid #e8ecf1}
@@ -75,7 +79,10 @@ def kpi(v, l, c="", delta=""):
 # SIDEBAR — ALL INPUTS
 # ═══════════════════════════════════════════════════════════════
 with st.sidebar:
-    st.markdown("## ⚙️ Model Inputs")
+    st.markdown("""<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <span style="font-size:18px;font-weight:800;color:#FF9900">⚙️ Model Inputs</span>
+    <span style="font-size:11px;color:#5c6b7a;background:#1a2744;padding:4px 10px;border-radius:6px">Press <b>X</b> at top-right to close →</span>
+    </div>""", unsafe_allow_html=True)
     partner_name = st.text_input("Partner Name", "Holland America Line")
 
     st.markdown("### 🏨 Property Metrics")
