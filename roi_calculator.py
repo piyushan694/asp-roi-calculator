@@ -34,7 +34,7 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-seri
 
 /* Scenario Cards */
 .scenario-card{background:#fff;border-radius:14px;padding:20px 24px;border:1px solid #e8ecef;box-shadow:0 2px 12px rgba(0,0,0,.04)}
-.scenario-card .tag{display:inline-block;padding:4px 14px;border-radius:12px;font-size:13px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
+.scenario-card .tag{display:inline-block;padding:5px 16px;border-radius:12px;font-size:14px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
 .tag-s1{background:#e8f4fd;color:#0052cc}.tag-s2{background:#e6f7f0;color:#067d62}.tag-s3{background:#fff4e5;color:#d4710a}
 
 /* Section Headers */
@@ -47,24 +47,11 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-seri
 .insight .headline{font-size:18px;font-weight:700;color:#fff;margin:0 0 6px;line-height:1.4}
 .insight .body{font-size:13px;color:rgba(255,255,255,.5);margin:0}
 
-/* Sidebar */
-[data-testid="stSidebar"]{background:#0d1b2a;border-right:1px solid #1a2744}
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] *{color:#c8d0d8!important}
-[data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3{color:#FF9900!important}
+/* Sidebar - simple clean approach */
+[data-testid="stSidebar"]{background:#0d1b2a}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span{color:#c8d0d8!important}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3{color:#FF9900!important}
 [data-testid="stSidebar"] label{color:#c8d0d8!important}
-[data-testid="stSidebar"] .stSlider label span{color:#c8d0d8!important}
-[data-testid="collapsedControl"]{background:#FF9900!important;border-radius:0 8px 8px 0!important;padding:8px!important;opacity:1!important}
-[data-testid="collapsedControl"] svg{color:#fff!important;width:20px!important;height:20px!important}
-[data-testid="stSidebar"] button[kind="header"]{color:#FF9900!important;opacity:1!important}
-[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"]{opacity:1!important}
-[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] svg{color:#FF9900!important;width:24px!important;height:24px!important}
-[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button{color:#FF9900!important;opacity:1!important}
-[data-testid="stSidebarCollapsedControl"]{background:#FF9900!important;opacity:1!important}
-[data-testid="stSidebar"] svg{color:#8896a4!important}
-[data-testid="stSidebar"] [class*="collapse"] svg{color:#FF9900!important}
-[data-testid="stSidebar"] button svg{color:#FF9900!important;opacity:1!important}
-[data-testid="stSidebar"] [data-testid="baseButton-header"]{background:rgba(255,153,0,.15)!important;border-radius:6px!important;opacity:1!important}
-[data-testid="stSidebar"] [data-testid="baseButton-header"] svg{color:#FF9900!important}
 
 /* Tabs */
 .stTabs [data-baseweb="tab-list"]{gap:0;border-bottom:2px solid #e8ecf1}
@@ -85,7 +72,7 @@ def kpi(v, l, c="", delta=""):
 # SIDEBAR — ALL INPUTS
 # ═══════════════════════════════════════════════════════════════
 with st.sidebar:
-    st.markdown("## ⚙️ Model Inputs")
+    st.markdown("## ⚙️ Deal Inputs")
     partner_name = st.text_input("Partner Name", "Holland America Line")
 
     st.markdown("### 🏨 Property Metrics")
@@ -367,7 +354,7 @@ with tab1:
         ))
     fig_gauge.update_layout(
         grid={"rows": 1, "columns": 3, "pattern": "independent"},
-        height=280, margin=dict(t=40, b=20, l=30, r=30),
+        height=320, margin=dict(t=60, b=20, l=40, r=40),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
     )
     st.plotly_chart(fig_gauge, use_container_width=True)
