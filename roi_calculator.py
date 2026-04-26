@@ -10,59 +10,57 @@ st.set_page_config(page_title="ASP Partner ROI Calculator", layout="wide", page_
 st.markdown("""<style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 #MainMenu,footer,header{visibility:hidden}
-html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-serif}
+html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-serif;color:#1a1a2e}
 
 /* Hero */
-.hero{background:linear-gradient(135deg,#0a0f1a 0%,#131b2e 40%,#1a2744 100%);border-radius:20px;padding:44px 52px;margin-bottom:32px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,153,0,.12) 0%,transparent 70%);border-radius:50%}
+.hero{background:linear-gradient(135deg,#0a0f1a 0%,#131b2e 40%,#1a2744 100%);border-radius:20px;padding:40px 48px;margin-bottom:32px;position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#FF9900,#FFB84D,#FF9900)}
-.hero h1{color:#FFF;font-size:34px;margin:0 0 8px;font-weight:800;letter-spacing:-.5px;position:relative}
-.hero .sub{color:#FFB84D;font-size:17px;margin:0;font-weight:500;position:relative}
-.hero .meta{color:rgba(255,255,255,.45);font-size:12px;margin-top:14px;position:relative;letter-spacing:.3px}
+.hero h1{color:#FFF;font-size:32px;margin:0 0 6px 0;font-weight:800;letter-spacing:-.5px;position:relative}
+.hero .sub{color:#FFB84D;font-size:16px;margin:0;font-weight:500;position:relative}
+.hero .meta{color:rgba(255,255,255,.4);font-size:11px;margin-top:12px;position:relative;letter-spacing:.5px;text-transform:uppercase}
 
-/* KPI Cards — Big Impact */
-.kpi-big{background:linear-gradient(145deg,#ffffff,#f8f9fb);border-radius:16px;padding:28px 20px;text-align:center;border:1px solid #e2e6ea;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .3s ease}
-.kpi-big:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
-.kpi-big .value{font-size:36px;font-weight:800;margin:0;line-height:1.1;letter-spacing:-.5px}
+/* KPI Cards */
+.kpi-big{background:linear-gradient(145deg,#ffffff,#f8f9fb);border-radius:14px;padding:26px 20px;text-align:center;border:1px solid #e2e6ea;box-shadow:0 4px 20px rgba(0,0,0,.05);transition:all .3s ease}
+.kpi-big:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.kpi-big .value{font-size:34px;font-weight:800;margin:0;line-height:1.1;letter-spacing:-.5px}
 .kpi-big .label{color:#8896a4;font-size:12px;margin:8px 0 0;text-transform:uppercase;letter-spacing:.5px;font-weight:600;white-space:nowrap}
 .kpi-big .delta{font-size:13px;margin-top:6px;font-weight:600}
 .kpi-big.green .value{color:#0a8f6c}.kpi-big.green{border-bottom:3px solid #0a8f6c}
-.kpi-big.blue .value{color:#0066cc}.kpi-big.blue{border-bottom:3px solid #0066cc}
+.kpi-big.blue .value{color:#0052cc}.kpi-big.blue{border-bottom:3px solid #0052cc}
 .kpi-big.orange .value{color:#d4710a}.kpi-big.orange{border-bottom:3px solid #FF9900}
 .kpi-big.gold .value{color:#b8860b}.kpi-big.gold{border-bottom:3px solid #DAA520}
-.kpi-big.hero-card{background:linear-gradient(145deg,#0a8f6c,#067d62);border:none}
-.kpi-big.hero-card .value{color:#fff;font-size:42px}.kpi-big.hero-card .label{color:rgba(255,255,255,.8)}
+.kpi-big.hero-card{background:linear-gradient(145deg,#0d1b2a,#1a2744);border:none;border-bottom:3px solid #FF9900}
+.kpi-big.hero-card .value{color:#fff;font-size:42px}.kpi-big.hero-card .label{color:rgba(255,255,255,.7)}
 
 /* Scenario Cards */
-.scenario-card{background:#fff;border-radius:16px;padding:24px;border:1px solid #e8ecef;box-shadow:0 2px 12px rgba(0,0,0,.04)}
-.scenario-card h3{font-size:16px;font-weight:700;margin:0 0 4px;color:#232F3E}
+.scenario-card{background:#fff;border-radius:14px;padding:20px 24px;border:1px solid #e8ecef;box-shadow:0 2px 12px rgba(0,0,0,.04)}
 .scenario-card .tag{display:inline-block;padding:4px 14px;border-radius:12px;font-size:13px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
-.tag-s1{background:#e8f4fd;color:#0066cc}.tag-s2{background:#e6f7f0;color:#067d62}.tag-s3{background:#fff4e5;color:#d4710a}
+.tag-s1{background:#e8f4fd;color:#0052cc}.tag-s2{background:#e6f7f0;color:#067d62}.tag-s3{background:#fff4e5;color:#d4710a}
 
 /* Section Headers */
-.stitle{font-size:20px;font-weight:800;color:#131b2e;border-left:4px solid #FF9900;padding-left:14px;margin:36px 0 16px;letter-spacing:-.3px}
-.stitle-sub{font-size:14px;color:#8896a4;font-weight:400;margin:-10px 0 20px 18px}
+.stitle{font-size:11px;text-transform:uppercase;letter-spacing:2.5px;font-weight:800;color:#0d1b2a;border-left:4px solid #FF9900;padding-left:14px;margin:36px 0 8px}
+.stitle-sub{font-size:14px;color:#8896a4;margin:0 0 20px 18px;font-weight:400}
 
-/* Insight callout */
-.insight{background:linear-gradient(135deg,#fff9f0,#fff5e6);border-radius:12px;padding:20px 24px;border-left:4px solid #FF9900;margin:16px 0}
-.insight .headline{font-size:15px;font-weight:700;color:#232F3E;margin:0 0 4px}.insight .body{font-size:13px;color:#5a6672;margin:0}
+/* Insight Box */
+.insight{background:#0d1b2a;border-radius:14px;padding:28px 32px;margin:24px 0;position:relative}
+.insight::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#FF9900;border-radius:4px 0 0 4px}
+.insight .headline{font-size:18px;font-weight:700;color:#fff;margin:0 0 6px;line-height:1.4}
+.insight .body{font-size:13px;color:rgba(255,255,255,.5);margin:0}
 
 /* Sidebar */
-[data-testid="stSidebar"]{background:linear-gradient(180deg,#0a0f1a,#131b2e)}
+[data-testid="stSidebar"]{background:linear-gradient(180deg,#0a0f1a,#131b2e);border-right:1px solid #1a2744}
 [data-testid="stSidebar"] *{color:#c8d0d8!important}
-[data-testid="stSidebar"] .stSlider>div>div>div{background:#FF9900!important}
-
-/* Tables */
-.dataframe{font-size:13px!important;border-radius:8px!important}
+[data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3{color:#FF9900!important}
 
 /* Tabs */
-.stTabs [data-baseweb="tab-list"]{gap:4px;background:#f0f2f5;border-radius:12px;padding:4px}
-.stTabs [data-baseweb="tab"]{border-radius:10px;font-weight:600;font-size:13px;padding:8px 20px}
-.stTabs [aria-selected="true"]{background:#fff!important;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.stTabs [data-baseweb="tab-list"]{gap:0;border-bottom:2px solid #e8ecf1}
+.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:12px 24px;color:#8896a4;border-bottom:2px solid transparent;margin-bottom:-2px}
+.stTabs [aria-selected="true"]{color:#0d1b2a!important;border-bottom:2px solid #FF9900!important}
 
 /* Footer */
-.app-footer{background:linear-gradient(135deg,#0a0f1a,#131b2e);border-radius:16px;padding:24px 36px;margin-top:48px;text-align:center}
-.app-footer .brand{color:#FF9900;font-size:16px;font-weight:700;margin:0}.app-footer .sub{color:rgba(255,255,255,.4);font-size:11px;margin:6px 0 0}
+.app-footer{background:#0d1b2a;border-radius:14px;padding:24px 36px;margin-top:48px;text-align:center}
+.app-footer .brand{color:#FF9900;font-size:14px;font-weight:700;margin:0;letter-spacing:1px;text-transform:uppercase}
+.app-footer .sub{color:rgba(255,255,255,.4);font-size:11px;margin:6px 0 0}
 </style>""", unsafe_allow_html=True)
 
 def kpi(v, l, c="", delta=""):
@@ -314,8 +312,9 @@ with tab1:
     # Insight callout
     best = max([r1, r2, r3], key=lambda x: x["roi"])
     st.markdown(f"""<div class="insight">
-    <p class="headline">💡 At {max(s1t,s2t,s3t)*100:.0f}% transaction adoption, Alexa generates up to ${best['inc_cp_room']*12:,.0f} in annual incremental profit per room</p>
-    <p class="body">Across {int(avg_rooms_per_alexa_property):,} rooms per property, that's ${ann_prop(best):,.0f}K in annual incremental contribution profit per property.</p>
+    <p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#FF9900;font-weight:700;margin:0 0 8px">💡 Key Takeaway</p>
+    <p class="headline">Alexa deployment generates up to ${best['inc_cp_room']*12:,.0f} in annual incremental profit per room — translating to ${ann_prop(best):,.0f}K per property annually.</p>
+    <p class="body">Based on {int(avg_rooms_per_alexa_property):,} rooms per property across {alexa_properties} properties with Alexa</p>
     </div>""", unsafe_allow_html=True)
 
     # Visual: ROI comparison gauge chart
