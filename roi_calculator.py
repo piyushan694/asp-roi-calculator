@@ -4,7 +4,7 @@ import numpy as np
 import plotly.graph_objects as go
 from datetime import datetime
 
-st.set_page_config(page_title="ASP Partner ROI Calculator", layout="wide", page_icon="🔶", initial_sidebar_state="expanded")
+st.set_page_config(page_title="ASP Partner ROI Calculator", layout="wide", page_icon="🔶", initial_sidebar_state="auto")
 
 # ── Premium Financial CSS ──
 st.markdown("""<style>
@@ -48,9 +48,10 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-seri
 .insight .body{font-size:13px;color:rgba(255,255,255,.5);margin:0}
 
 /* Sidebar */
-[data-testid="stSidebar"]{background:linear-gradient(180deg,#0a0f1a,#131b2e);border-right:1px solid #1a2744}
+[data-testid="stSidebar"]{background:linear-gradient(180deg,#0a0f1a,#131b2e);border-right:1px solid #1a2744;min-width:340px!important}
 [data-testid="stSidebar"] *{color:#c8d0d8!important}
 [data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3{color:#FF9900!important}
+[data-testid="collapsedControl"]{display:block!important}
 
 /* Tabs */
 .stTabs [data-baseweb="tab-list"]{gap:0;border-bottom:2px solid #e8ecf1}
@@ -643,5 +644,5 @@ with tab4:
 
 # Footer
 st.markdown(f"""<div class="app-footer">
-<p class="brand">🔶 Alexa Smart Properties</p>
-<p class="sub">{partner_name} &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; {datetime.now().strftime('%B %d, %Y')}</p></div>""", unsafe_allow_html=True)
+<p class="brand">Alexa Smart Properties</p>
+<p class="sub">Confidential</p></div>""", unsafe_allow_html=True)
