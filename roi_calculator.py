@@ -40,7 +40,7 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',sans-serif}
 .scenario-card .tag{display:inline-block;padding:5px 16px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
 .tag-s1{background:rgba(126,184,218,.12);color:#4ECDC4;border:1px solid rgba(126,184,218,.25)}
 .tag-s2{background:rgba(0,230,118,.12);color:#4ECDC4;border:1px solid rgba(0,230,118,.25)}
-.tag-s3{background:rgba(126,184,218,.12);color:#7EB8DA;border:1px solid rgba(126,184,218,.25)}
+.tag-s3{background:rgba(212,175,55,.12);color:#D4AF37;border:1px solid rgba(212,175,55,.25)}
 
 /* Section Headers - cyan accent */
 .stitle{font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#7EB8DA;border-left:4px solid #7EB8DA;padding-left:14px;margin:36px 0 10px}
@@ -350,7 +350,7 @@ with tab1:
     # Visual: ROI comparison gauge chart
     st.markdown(f'<div class="stitle">ROI Comparison</div>', unsafe_allow_html=True)
     fig_gauge = go.Figure()
-    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#7EB8DA"), ("Scenario 3", r3, "#7EB8DA")]):
+    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#4ECDC4"), ("Scenario 3", r3, "#D4AF37")]):
         fig_gauge.add_trace(go.Indicator(
             mode="gauge+number+delta",
             value=r["roi"],
@@ -461,7 +461,7 @@ with tab1:
 
     # Annual CP bar chart
     fig_cp = go.Figure()
-    for sn, r, color in [("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#7EB8DA"), ("Scenario 3", r3, "#7EB8DA")]:
+    for sn, r, color in [("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#4ECDC4"), ("Scenario 3", r3, "#D4AF37")]:
         fig_cp.add_trace(go.Bar(
             name=sn, x=["Annual CP / Room", "Annual CP / Property (000s)"],
             y=[r["inc_cp_room"] * 12, ann_prop(r)],
