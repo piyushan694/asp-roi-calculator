@@ -97,7 +97,7 @@ with st.sidebar:
     cycles_per_month = st.number_input("Cruises / Cycles per Month", value=4, min_value=1)
     guests_per_room = st.number_input("Guests per Room", value=2.0, step=0.1)
 
-    st.markdown("### 🚀 Projected Alexa Deployment")
+    st.markdown("### 📺 Projected Alexa Deployment")
     alexa_properties = st.number_input("Properties / Ships with Alexa", value=5, min_value=1)
     rooms_with_alexa = st.number_input("Total Rooms with Alexa", value=2500, min_value=1)
     rooms_per_cycle = st.number_input("Rooms per Cruise / Cycle", value=500, min_value=1)
