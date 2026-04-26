@@ -24,19 +24,19 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-seri
 .kpi-big{background:linear-gradient(145deg,#ffffff,#f8f9fb);border-radius:16px;padding:28px 20px;text-align:center;border:1px solid #e2e6ea;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .3s ease}
 .kpi-big:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
 .kpi-big .value{font-size:36px;font-weight:800;margin:0;line-height:1.1;letter-spacing:-.5px}
-.kpi-big .label{color:#8896a4;font-size:11px;margin:8px 0 0;text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.kpi-big .label{color:#8896a4;font-size:12px;margin:8px 0 0;text-transform:uppercase;letter-spacing:.5px;font-weight:600;white-space:nowrap}
 .kpi-big .delta{font-size:13px;margin-top:6px;font-weight:600}
 .kpi-big.green .value{color:#0a8f6c}.kpi-big.green{border-bottom:3px solid #0a8f6c}
 .kpi-big.blue .value{color:#0066cc}.kpi-big.blue{border-bottom:3px solid #0066cc}
 .kpi-big.orange .value{color:#d4710a}.kpi-big.orange{border-bottom:3px solid #FF9900}
 .kpi-big.gold .value{color:#b8860b}.kpi-big.gold{border-bottom:3px solid #DAA520}
 .kpi-big.hero-card{background:linear-gradient(145deg,#0a8f6c,#067d62);border:none}
-.kpi-big.hero-card .value{color:#fff;font-size:44px}.kpi-big.hero-card .label{color:rgba(255,255,255,.8)}
+.kpi-big.hero-card .value{color:#fff;font-size:42px}.kpi-big.hero-card .label{color:rgba(255,255,255,.8)}
 
 /* Scenario Cards */
 .scenario-card{background:#fff;border-radius:16px;padding:24px;border:1px solid #e8ecef;box-shadow:0 2px 12px rgba(0,0,0,.04)}
 .scenario-card h3{font-size:16px;font-weight:700;margin:0 0 4px;color:#232F3E}
-.scenario-card .tag{display:inline-block;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:700;letter-spacing:.5px}
+.scenario-card .tag{display:inline-block;padding:4px 14px;border-radius:12px;font-size:13px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
 .tag-s1{background:#e8f4fd;color:#0066cc}.tag-s2{background:#e6f7f0;color:#067d62}.tag-s3{background:#fff4e5;color:#d4710a}
 
 /* Section Headers */
