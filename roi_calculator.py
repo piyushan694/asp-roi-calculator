@@ -30,21 +30,36 @@ with st.sidebar:
     partner_name = st.text_input("Partner Name", "Holland America Line")
 
     st.markdown("### 🏨 Property Metrics")
-    total_properties = st.number_input("Total Properties/Ships", value=11, min_value=1)
-    total_rooms = st.number_input("Total Rooms/Staterooms", value=11394, min_value=1)
-    avg_rooms_property = st.number_input("Avg Rooms per Property", value=1036, min_value=1)
+    total_properties = st.number_input("Total Properties / Ships", value=11, min_value=1)
+    total_rooms = st.number_input("Total Rooms / Staterooms", value=11394, min_value=1)
+    avg_rooms_property = st.number_input("Avg Rooms per Property", value=int(total_rooms / total_properties) if total_properties > 0 else 1036, min_value=1)
     occupancy_pct = st.slider("Occupancy %", 50, 100, 96) / 100
     avg_stay_nights = st.number_input("Avg Guest Stay (nights)", value=7, min_value=1)
-    cycles_per_month = st.number_input("Cruises/Cycles per Month", value=4, min_value=1)
+    cycles_per_month = st.number_input("Cruises / Cycles per Month", value=4, min_value=1)
     guests_per_room = st.number_input("Guests per Room", value=2.0, step=0.1)
 
     st.markdown("### 🚀 Alexa Deployment")
-    rooms_with_alexa = st.number_input("Rooms with Alexa", value=2500, min_value=1)
-    rooms_per_cycle = st.number_input("Rooms per Cruise/Cycle", value=500, min_value=1)
+    alexa_properties = st.number_input("Properties / Ships with Alexa", value=5, min_value=1)
+    rooms_with_alexa = st.number_input("Total Rooms with Alexa", value=2500, min_value=1)
+    rooms_per_cycle = st.number_input("Rooms per Cruise / Cycle", value=500, min_value=1)
+    avg_rooms_per_alexa_property = rooms_with_alexa / alexa_properties if alexa_properties > 0 else rooms_with_alexa
+    st.caption(f"Avg rooms per Alexa property: **{avg_rooms_per_alexa_property:,.0f}**")
 
-    st.markdown("### 💵 Monthly Revenue per Room")
-    monthly_rev_per_room = st.number_input("Total Monthly Revenue/Room ($)", value=5851, min_value=1)
-    pre_boarding_pct = st.slider("Pre-boarding/Pre-arrival Revenue %", 0, 100, 60) / 100
+    st.markdown("### 💵 Revenue Inputs")
+    rev_method = st.radio("Revenue Input Method", ["Total Annual Revenue", "Average Revenue per Room"], index=0)
+    if rev_method == "Total Annual Revenue":
+        total_annual_rev = st.number_input("Total Annual Onboard / Ancillary Revenue ($)", value=800_000_000, step=1_000_000, format="%d")
+        # Pro-rate: Alexa rooms share of total rooms
+        alexa_share = rooms_with_alexa / total_rooms if total_rooms > 0 else 1
+        alexa_annual_rev = total_annual_rev * alexa_share
+        monthly_rev_per_room = total_annual_rev / total_rooms / 12 if total_rooms > 0 else 0
+        st.caption(f"Monthly revenue/room: **${monthly_rev_per_room:,.0f}** | Alexa share: **{alexa_share*100:.1f}%**")
+    else:
+        total_annual_rev = 0
+        monthly_rev_per_room = st.number_input("Avg Monthly Revenue per Room ($)", value=10000, min_value=1)
+        st.caption(f"Monthly revenue/room: **${monthly_rev_per_room:,.0f}**")
+
+    pre_boarding_pct = st.slider("Pre-boarding / Pre-arrival Revenue %", 0, 100, 60) / 100
     addressable_rev = monthly_rev_per_room * (1 - pre_boarding_pct)
     st.caption(f"Addressable monthly revenue/room: **${addressable_rev:,.0f}**")
 
@@ -217,55 +232,75 @@ with tab1:
     st.markdown(f'<div class="stitle">{partner_name} — ROI Summary</div>', unsafe_allow_html=True)
     c1, c2, c3 = st.columns(3)
     with c1:
-        st.markdown("**Scenario 1 — Conservative**")
-        s1t = st.slider("Txn via Alexa %", 1, 50, 8, key="e1t") / 100
-        s1i = st.slider("Incrementality %", 1, 100, 50, key="e1i") / 100
+        st.markdown("**Scenario 1**")
+        s1t = st.slider("Transactions via Alexa %", 1, 50, 8, key="e1t") / 100
+        s1i = st.slider("Incrementality via Alexa %", 1, 100, 50, key="e1i") / 100
     with c2:
-        st.markdown("**Scenario 2 — Base**")
-        s2t = st.slider("Txn via Alexa %", 1, 50, 10, key="e2t") / 100
-        s2i = st.slider("Incrementality %", 1, 100, 40, key="e2i") / 100
+        st.markdown("**Scenario 2**")
+        s2t = st.slider("Transactions via Alexa %", 1, 50, 10, key="e2t") / 100
+        s2i = st.slider("Incrementality via Alexa %", 1, 100, 40, key="e2i") / 100
     with c3:
-        st.markdown("**Scenario 3 — Optimistic**")
-        s3t = st.slider("Txn via Alexa %", 1, 50, 15, key="e3t") / 100
-        s3i = st.slider("Incrementality %", 1, 100, 80, key="e3i") / 100
+        st.markdown("**Scenario 3**")
+        s3t = st.slider("Transactions via Alexa %", 1, 50, 15, key="e3t") / 100
+        s3i = st.slider("Incrementality via Alexa %", 1, 100, 80, key="e3i") / 100
 
     r1, r2, r3 = calc_roi(s1t, s1i), calc_roi(s2t, s2i), calc_roi(s3t, s3i)
+    # Annual per property = monthly CP/room × 12 × (rooms_with_alexa / alexa_properties)
+    ann_prop = lambda r: r["inc_cp_room"] * 12 * avg_rooms_per_alexa_property / 1000
     st.markdown("---")
 
-    for lbl, r, css in [("Conservative", r1, "b"), ("Base Case", r2, "g"), ("Optimistic", r3, "r")]:
+    for lbl, r, css in [("Scenario 1", r1, "b"), ("Scenario 2", r2, "g"), ("Scenario 3", r3, "r")]:
         st.markdown(f"**{lbl}**")
-        k1, k2, k3, k4 = st.columns(4)
-        with k1: st.markdown(kpi(f"{r['roi']:.0f}%", "ROI", f"hl {css}"), unsafe_allow_html=True)
-        with k2: st.markdown(kpi(f"${r['inc_cp_room']:,.0f}", "Monthly CP/Room", css), unsafe_allow_html=True)
-        with k3: st.markdown(kpi(f"${r['inc_cp_room']*12:,.0f}", "Annual CP/Room", css), unsafe_allow_html=True)
-        with k4: st.markdown(kpi(f"${r['inc_cp_room']*12*rooms_per_cycle/1000:,.0f}K", "Annual CP/Property", css), unsafe_allow_html=True)
+        k1, k2, k3 = st.columns(3)
+        with k1: st.markdown(kpi(f"${r['inc_cp_room']:,.0f}", "Monthly per Room", f"hl {css}"), unsafe_allow_html=True)
+        with k2: st.markdown(kpi(f"${r['inc_cp_room']*12:,.0f}", "Annual per Room", css), unsafe_allow_html=True)
+        with k3: st.markdown(kpi(f"${ann_prop(r):,.0f}K", f"Annual per Property (in 000s)", css), unsafe_allow_html=True)
         st.markdown("")
 
     st.markdown("---")
-    st.markdown(f'<div class="stitle">Side-by-Side (Monthly per Room)</div>', unsafe_allow_html=True)
+
+    # Summary table with all 3 views per scenario
+    st.markdown(f'<div class="stitle">Side-by-Side Comparison</div>', unsafe_allow_html=True)
     def f(v): return f"${v:,.0f}"
-    rows = [
-        ("Txn via Alexa", f"{s1t*100:.0f}%", f"{s2t*100:.0f}%", f"{s3t*100:.0f}%"),
-        ("Incrementality", f"{s1i*100:.0f}%", f"{s2i*100:.0f}%", f"{s3i*100:.0f}%"),
-        ("", "", "", ""),
-        ("Total Revenue", f(r1["total_rev_room"]), f(r2["total_rev_room"]), f(r3["total_rev_room"])),
-        ("Alexa Benefits", f(r1["total_inc_room"]), f(r2["total_inc_room"]), f(r3["total_inc_room"])),
-        ("  ↳ Incremental Amenity Rev", f(r1["amenity_inc_room"]), f(r2["amenity_inc_room"]), f(r3["amenity_inc_room"])),
-        ("  ↳ Cost Savings", f(r1["cost_savings_room"]), f(r2["cost_savings_room"]), f(r3["cost_savings_room"])),
-        ("Total Payment to Alexa", f(-r1["total_payment_room"]), f(-r2["total_payment_room"]), f(-r3["total_payment_room"])),
-        ("  ↳ Subscription", f(-r1["sub_room"]), f(-r2["sub_room"]), f(-r3["sub_room"])),
-        ("  ↳ Rev-Share", f(-r1["amenity_rs_room"]), f(-r2["amenity_rs_room"]), f(-r3["amenity_rs_room"])),
-        ("  ↳ Fixed Fees", f(-r1["fixed_payment_room"]), f(-r2["fixed_payment_room"]), f(-r3["fixed_payment_room"])),
-        ("Incremental Amenity Cost", f(-r1["amenity_cost_room"]), f(-r2["amenity_cost_room"]), f(-r3["amenity_cost_room"])),
-        ("", "", "", ""),
-        ("Incremental CP", f(r1["inc_cp_room"]), f(r2["inc_cp_room"]), f(r3["inc_cp_room"])),
-        ("ROI %", f"{r1['roi']:.0f}%", f"{r2['roi']:.0f}%", f"{r3['roi']:.0f}%"),
-    ]
-    st.dataframe(pd.DataFrame(rows, columns=["Metric", "Scenario 1", "Scenario 2", "Scenario 3"]),
-                 use_container_width=True, hide_index=True, height=560)
+    def build_scenario_cols(r, st_pct, si_pct):
+        m = r["inc_cp_room"]; a = m * 12; p = a * avg_rooms_per_alexa_property / 1000
+        return [
+            (f"{st_pct*100:.0f}%", f"{st_pct*100:.0f}%", f"{st_pct*100:.0f}%"),
+            (f"{si_pct*100:.0f}%", f"{si_pct*100:.0f}%", f"{si_pct*100:.0f}%"),
+            ("", "", ""),
+            (f(r["total_rev_room"]), f(r["total_rev_room"]*12), f(r["total_rev_room"]*12*avg_rooms_per_alexa_property/1000)),
+            (f(r["total_inc_room"]), f(r["total_inc_room"]*12), f(r["total_inc_room"]*12*avg_rooms_per_alexa_property/1000)),
+            (f(r["amenity_inc_room"]), f(r["amenity_inc_room"]*12), f(r["amenity_inc_room"]*12*avg_rooms_per_alexa_property/1000)),
+            (f(r["cost_savings_room"]), f(r["cost_savings_room"]*12), f(r["cost_savings_room"]*12*avg_rooms_per_alexa_property/1000)),
+            (f(-r["total_payment_room"]), f(-r["total_payment_room"]*12), f(-r["total_payment_room"]*12*avg_rooms_per_alexa_property/1000)),
+            (f(-r["sub_room"]), f(-r["sub_room"]*12), f(-r["sub_room"]*12*avg_rooms_per_alexa_property/1000)),
+            (f(-r["amenity_rs_room"]), f(-r["amenity_rs_room"]*12), f(-r["amenity_rs_room"]*12*avg_rooms_per_alexa_property/1000)),
+            (f(-r["amenity_cost_room"]), f(-r["amenity_cost_room"]*12), f(-r["amenity_cost_room"]*12*avg_rooms_per_alexa_property/1000)),
+            ("", "", ""),
+            (f(r["inc_cp_room"]), f(r["inc_cp_room"]*12), f(r["inc_cp_room"]*12*avg_rooms_per_alexa_property/1000)),
+            (f"{r['roi']:.0f}%", f"{r['roi']:.0f}%", f"{r['roi']:.0f}%"),
+        ]
+    metrics = ["Transactions via Alexa", "Incrementality via Alexa", "",
+               "Total Revenue", "Alexa Benefits", "  ↳ Incremental Amenities Revenue", "  ↳ Cost Saving",
+               "Total Payment to Alexa", "  ↳ Fixed Subscription Fee", "  ↳ Rev-Share Payments",
+               "Incremental Amenities Cost", "",
+               "Incremental CP", "ROI %"]
+    s1c = build_scenario_cols(r1, s1t, s1i)
+    s2c = build_scenario_cols(r2, s2t, s2i)
+    s3c = build_scenario_cols(r3, s3t, s3i)
+    header_sub = ["Monthly per Room", "Annual per Room", "Annual per Property (in 000s)"]
+    summary_rows = []
+    for i, m in enumerate(metrics):
+        summary_rows.append({
+            "Metric": m,
+            "S1 Monthly/Room": s1c[i][0], "S1 Annual/Room": s1c[i][1], "S1 Annual/Property": s1c[i][2],
+            "S2 Monthly/Room": s2c[i][0], "S2 Annual/Room": s2c[i][1], "S2 Annual/Property": s2c[i][2],
+            "S3 Monthly/Room": s3c[i][0], "S3 Annual/Room": s3c[i][1], "S3 Annual/Property": s3c[i][2],
+        })
+    st.dataframe(pd.DataFrame(summary_rows), use_container_width=True, hide_index=True, height=560)
 
     fig = go.Figure()
-    fig.add_trace(go.Bar(x=["Conservative","Base","Optimistic"], y=[r1["roi"],r2["roi"],r3["roi"]],
+    fig.add_trace(go.Bar(x=["Scenario 1","Scenario 2","Scenario 3"], y=[r1["roi"],r2["roi"],r3["roi"]],
                          marker_color=["#0073BB","#067D62","#C7511F"],
                          text=[f"{v:.0f}%" for v in [r1["roi"],r2["roi"],r3["roi"]]], textposition="outside"))
     fig.update_layout(title="ROI % by Scenario", height=350, plot_bgcolor="#FAFBFC", yaxis=dict(gridcolor="#E8ECEF"))
@@ -325,7 +360,7 @@ with tab2:
         with k1: st.markdown(kpi(f"{live_r['roi']:.0f}%", "ROI", "hl g"), unsafe_allow_html=True)
         with k2: st.markdown(kpi(f"${live_r['inc_cp_room']:,.0f}", "Monthly CP/Room", "g"), unsafe_allow_html=True)
         with k3: st.markdown(kpi(f"${live_r['inc_cp_room']*12:,.0f}", "Annual CP/Room"), unsafe_allow_html=True)
-        with k4: st.markdown(kpi(f"${live_r['inc_cp_room']*12*rooms_per_cycle/1000:,.0f}K", "Annual CP/Property"), unsafe_allow_html=True)
+        with k4: st.markdown(kpi(f"${live_r['inc_cp_room']*12*avg_rooms_per_alexa_property/1000:,.0f}K", "Annual CP/Property"), unsafe_allow_html=True)
 
         st.markdown("---")
         st.markdown("**Revenue by Amenity (Monthly per Room)**")
