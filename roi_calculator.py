@@ -221,10 +221,9 @@ st.markdown(f"""<div class="hero"><h1>🔶 {partner_name} — Alexa ROI Calculat
 <p class="sub">Deal Financial Model &amp; Sensitivity Analysis</p>
 <p class="meta">Confidential | {datetime.now().strftime('%B %d, %Y')} | Expand sidebar (▸) to adjust assumptions</p></div>""", unsafe_allow_html=True)
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4 = st.tabs([
     "  📋 Executive Summary  ", "  🎮 Live Scenario Builder  ",
-    "  🔢 Calculation Walkthrough  ", "  📊 Sensitivity Analysis  ",
-    "  📈 Deployment Scenarios  "
+    "  🔢 Calculation Walkthrough  ", "  📊 Sensitivity Analysis  "
 ])
 
 # ─── TAB 1: EXECUTIVE SUMMARY (3 pre-set scenarios) ───
@@ -526,62 +525,6 @@ with tab4:
         height=450, xaxis_title="Ancillary Transaction %", yaxis_title="ASP Rev Share %",
         plot_bgcolor="#FAFBFC")
     st.plotly_chart(fig_pay, use_container_width=True)
-
-# ─── TAB 5: DEPLOYMENT SCENARIOS ───
-with tab5:
-    st.markdown(f'<div class="stitle">📈 Multi-Year Deployment Scenarios</div>', unsafe_allow_html=True)
-    d1, d2, d3 = st.columns(3)
-    with d1:
-        st.markdown("**Low Case**")
-        l_rs = st.number_input("Rev Share/Room ($)", value=10.0, key="lrs")
-        l_cv = st.text_input("Conversion % (Yr1-5)", "23.5,52.1,100,100,100", key="lcv")
-    with d2:
-        st.markdown("**Mid Case**")
-        m_rs = st.number_input("Rev Share/Room ($)", value=20.0, key="mrs")
-        m_cv = st.text_input("Conversion % (Yr1-5)", "23.5,60.5,100,100,100", key="mcv")
-    with d3:
-        st.markdown("**High Case**")
-        h_rs = st.number_input("Rev Share/Room ($)", value=35.0, key="hrs")
-        h_cv = st.text_input("Conversion % (Yr1-5)", "23.5,100,100,100,100", key="hcv")
-
-    def pconv(s):
-        try: return [float(x.strip())/100 for x in s.split(",")]
-        except: return [.235,.521,1,1,1]
-
-    def deploy(convs, mrs):
-        rows, prev = [], 0
-        for i, c in enumerate(convs):
-            tgt = int(total_rooms * c); nd = max(0, tgt - prev); avg = (prev + tgt) / 2
-            sc = avg * monthly_sub * 12; rc = avg * mrs * 12
-            rows.append({"Year": 2026+i+1, "New": nd, "IB(YE)": tgt, "IB(Avg)": int(avg),
-                         "Sub": sc, "RevShare": rc, "Setup": nd*device_setup, "Device": nd*device_price,
-                         "Total": sc+rc+nd*device_setup+nd*device_price, "Recurring": sc+rc})
-            prev = tgt
-        return pd.DataFrame(rows)
-
-    ldf, mdf, hdf = deploy(pconv(l_cv), l_rs), deploy(pconv(m_cv), m_rs), deploy(pconv(h_cv), h_rs)
-    st.markdown("---")
-    for lbl, df in [("Low", ldf), ("Mid", mdf), ("High", hdf)]:
-        st.markdown(f"**{lbl} Case**")
-        show = df.copy()
-        for c in show.columns:
-            if c != "Year":
-                show[c] = show[c].apply(lambda x: f"${x:,.0f}" if any(k in c for k in ["Sub","Rev","Setup","Device","Total","Recurring"]) else f"{x:,.0f}")
-        st.dataframe(show, use_container_width=True, hide_index=True)
-
-    fig_d = go.Figure()
-    for n, df, co in [("Low",ldf,"#0073BB"),("Mid",mdf,"#067D62"),("High",hdf,"#C7511F")]:
-        fig_d.add_trace(go.Bar(name=n, x=df["Year"], y=df["Recurring"], marker_color=co))
-    fig_d.update_layout(barmode="group", height=380, yaxis_title="Annual Recurring ($)", plot_bgcolor="#FAFBFC")
-    st.plotly_chart(fig_d, use_container_width=True)
-
-    # 5yr totals
-    st.dataframe(pd.DataFrame({
-        "": ["Total Cost (5yr)", "Recurring (5yr)", "Device+Setup (5yr)"],
-        "Low": [f"${ldf['Total'].sum():,.0f}", f"${ldf['Recurring'].sum():,.0f}", f"${(ldf['Setup'].sum()+ldf['Device'].sum()):,.0f}"],
-        "Mid": [f"${mdf['Total'].sum():,.0f}", f"${mdf['Recurring'].sum():,.0f}", f"${(mdf['Setup'].sum()+mdf['Device'].sum()):,.0f}"],
-        "High": [f"${hdf['Total'].sum():,.0f}", f"${hdf['Recurring'].sum():,.0f}", f"${(hdf['Setup'].sum()+hdf['Device'].sum()):,.0f}"],
-    }), use_container_width=True, hide_index=True)
 
 # Footer
 st.markdown(f"""<div style="background:#232F3E;border-radius:10px;padding:16px 28px;margin-top:36px;text-align:center">
