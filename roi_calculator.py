@@ -53,6 +53,8 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-seri
 [data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3{color:#FF9900!important}
 [data-testid="stSidebar"] label{color:#c8d0d8!important}
 [data-testid="stSidebar"] .stSlider label span{color:#c8d0d8!important}
+[data-testid="collapsedControl"]{background:#FF9900!important;border-radius:0 8px 8px 0!important;padding:8px!important;opacity:1!important}
+[data-testid="collapsedControl"] svg{color:#fff!important;width:20px!important;height:20px!important}
 
 /* Tabs */
 .stTabs [data-baseweb="tab-list"]{gap:0;border-bottom:2px solid #e8ecf1}
@@ -267,6 +269,12 @@ def calc_roi(txn_pct, inc_pct):
 st.markdown(f"""<div class="hero"><h1>🔶 Alexa Smart Properties</h1>
 <p class="sub">{partner_name} — Return on Investment Analysis</p>
 <p class="meta">CONFIDENTIAL — For Partner Discussion Only &nbsp;·&nbsp; {datetime.now().strftime('%B %d, %Y')}</p></div>""", unsafe_allow_html=True)
+
+# Clear instruction for sidebar
+st.markdown("""<div style="background:#fff4e5;border:1px solid #FF9900;border-radius:8px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+<span style="font-size:20px">⚙️</span>
+<span style="font-size:13px;color:#0d1b2a;font-weight:600">Model Inputs → Click the <b>▸</b> arrow at the top-left corner to open the input panel</span>
+</div>""", unsafe_allow_html=True)
 
 tab1, tab2, tab3, tab4 = st.tabs([
     "  📋 Executive Summary  ", "  🎮 Live Scenario Builder  ",
