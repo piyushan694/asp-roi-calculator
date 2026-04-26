@@ -395,70 +395,68 @@ with tab1:
                          margin=dict(t=20, b=40), font=dict(family="Inter"))
     st.plotly_chart(fig_wf, use_container_width=True)
 
-    # Scenario Detail — 3 cards side by side
-    st.markdown(f'<div class="stitle">Scenario Detail</div>', unsafe_allow_html=True)
+    # Detailed Comparison — 3 cards: Monthly/Room, Annual/Room, Annual/Property
+    st.markdown(f'<div class="stitle">Detailed Comparison</div>', unsafe_allow_html=True)
     def f(v): return f"${v:,.0f}"
+    ap = avg_rooms_per_alexa_property
 
-    def scenario_card_html(label, r, tp, ip, border_color):
-        rows = [
-            ("Total Revenue", f(r["total_rev_room"])),
-            ("Alexa Benefits", f(r["total_inc_room"])),
-            ("Payment to Alexa", f(-r["total_payment_room"])),
-            ("Amenity Cost", f(-r["amenity_cost_room"])),
-        ]
-        rows_html = "".join(f'<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.05);font-size:13px"><span style="color:#5c6b7a">{name}</span><span style="font-weight:500;color:#0d1b2e">{val}</span></div>' for name, val in rows)
-        return f"""<div style="background:#fff;border-radius:12px;padding:24px;border:1px solid #e8ecef;box-shadow:0 2px 12px rgba(0,0,0,.04);height:100%">
-        <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:{border_color};margin:0 0 16px;padding-bottom:8px;border-bottom:2px solid {border_color}">{label} ({tp*100:.0f}% / {ip*100:.0f}%)</p>
+    detail_metrics = [
+        ("Transactions via Alexa", f"{s1t*100:.0f}%", f"{s2t*100:.0f}%", f"{s3t*100:.0f}%", f"{s1t*100:.0f}%", f"{s2t*100:.0f}%", f"{s3t*100:.0f}%", f"{s1t*100:.0f}%", f"{s2t*100:.0f}%", f"{s3t*100:.0f}%"),
+        ("Incrementality via Alexa", f"{s1i*100:.0f}%", f"{s2i*100:.0f}%", f"{s3i*100:.0f}%", f"{s1i*100:.0f}%", f"{s2i*100:.0f}%", f"{s3i*100:.0f}%", f"{s1i*100:.0f}%", f"{s2i*100:.0f}%", f"{s3i*100:.0f}%"),
+    ]
+    fin_metrics = [
+        ("Total Revenue", [r1["total_rev_room"], r2["total_rev_room"], r3["total_rev_room"]]),
+        ("Alexa Benefits", [r1["total_inc_room"], r2["total_inc_room"], r3["total_inc_room"]]),
+        ("  ↳ Incremental Amenities Revenue", [r1["amenity_inc_room"], r2["amenity_inc_room"], r3["amenity_inc_room"]]),
+        ("  ↳ Cost Saving", [r1["cost_savings_room"], r2["cost_savings_room"], r3["cost_savings_room"]]),
+        ("Total Payment to Alexa", [-r1["total_payment_room"], -r2["total_payment_room"], -r3["total_payment_room"]]),
+        ("  ↳ Fixed Subscription Fee", [-r1["sub_room"], -r2["sub_room"], -r3["sub_room"]]),
+        ("  ↳ Rev-Share Payments", [-r1["amenity_rs_room"], -r2["amenity_rs_room"], -r3["amenity_rs_room"]]),
+        ("Incremental Amenities Cost", [-r1["amenity_cost_room"], -r2["amenity_cost_room"], -r3["amenity_cost_room"]]),
+    ]
+    bottom_metrics = [
+        ("Incremental CP", [r1["inc_cp_room"], r2["inc_cp_room"], r3["inc_cp_room"]]),
+    ]
+    roi_row = ("ROI %", [f"{r1['roi']:.0f}%", f"{r2['roi']:.0f}%", f"{r3['roi']:.0f}%"])
+
+    def build_card_table(title, multiplier, is_thousands=False):
+        """Build an HTML table card for a given time period."""
+        div = 1000 if is_thousands else 1
+        rows_html = ""
+        # Assumption rows
+        for label, s1v, s2v, s3v, *_ in detail_metrics:
+            rows_html += f'<tr><td style="text-align:left;font-weight:500;padding:6px 12px;border-bottom:1px solid #f0f2f5">{label}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s1v}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s2v}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s3v}</td></tr>'
+        # Spacer
+        rows_html += '<tr><td colspan="4" style="padding:4px"></td></tr>'
+        # Financial rows
+        for label, vals in fin_metrics:
+            s1 = f"${vals[0]*multiplier/div:,.0f}"
+            s2 = f"${vals[1]*multiplier/div:,.0f}"
+            s3 = f"${vals[2]*multiplier/div:,.0f}"
+            indent = "padding-left:24px;color:#5c6b7a" if label.startswith("  ") else "font-weight:500"
+            rows_html += f'<tr><td style="text-align:left;{indent};padding:6px 12px;border-bottom:1px solid #f0f2f5">{label}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s1}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s2}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s3}</td></tr>'
+        # Spacer
+        rows_html += '<tr><td colspan="4" style="padding:4px"></td></tr>'
+        # CP row (bold)
+        for label, vals in bottom_metrics:
+            s1 = f"${vals[0]*multiplier/div:,.0f}"
+            s2 = f"${vals[1]*multiplier/div:,.0f}"
+            s3 = f"${vals[2]*multiplier/div:,.0f}"
+            rows_html += f'<tr style="border-top:2px solid #0d1b2a"><td style="text-align:left;font-weight:800;padding:8px 12px">{label}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{s1}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{s2}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{s3}</td></tr>'
+        # ROI row
+        rows_html += f'<tr><td style="text-align:left;font-weight:800;padding:8px 12px">{roi_row[0]}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{roi_row[1][0]}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{roi_row[1][1]}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{roi_row[1][2]}</td></tr>'
+
+        return f"""<div style="background:#fff;border-radius:12px;padding:20px;border:1px solid #e8ecef;box-shadow:0 2px 12px rgba(0,0,0,.04)">
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#0d1b2a;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #FF9900">{title}</p>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <tr><th style="text-align:left;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8896a4;border-bottom:1px solid #e8ecef">Metric</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#0052cc;border-bottom:1px solid #e8ecef">S1</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#067d62;border-bottom:1px solid #e8ecef">S2</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#c7511f;border-bottom:1px solid #e8ecef">S3</th></tr>
         {rows_html}
-        <div style="display:flex;justify-content:space-between;padding:10px 0 0;margin-top:8px;border-top:2px solid #0d1b2a;font-size:14px">
-            <span style="font-weight:800;color:#0d1b2a">Incremental CP</span>
-            <span style="font-weight:800;color:#0d1b2a">{f(r['inc_cp_room'])}</span>
-        </div>
-        </div>"""
+        </table></div>"""
 
-    sc1, sc2, sc3 = st.columns(3)
-    with sc1: st.markdown(scenario_card_html("Scenario 1", r1, s1t, s1i, "#0052cc"), unsafe_allow_html=True)
-    with sc2: st.markdown(scenario_card_html("Scenario 2", r2, s2t, s2i, "#067d62"), unsafe_allow_html=True)
-    with sc3: st.markdown(scenario_card_html("Scenario 3", r3, s3t, s3i, "#c7511f"), unsafe_allow_html=True)
-
-    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
-
-    # Full detailed comparison table (kept for reference)
-    with st.expander("View Full Detailed Comparison Table"):
-        def build_scenario_cols(r, st_pct, si_pct):
-            return [
-                (f"{st_pct*100:.0f}%", f"{st_pct*100:.0f}%", f"{st_pct*100:.0f}%"),
-                (f"{si_pct*100:.0f}%", f"{si_pct*100:.0f}%", f"{si_pct*100:.0f}%"),
-                ("", "", ""),
-                (f(r["total_rev_room"]), f(r["total_rev_room"]*12), f(r["total_rev_room"]*12*avg_rooms_per_alexa_property/1000)),
-                (f(r["total_inc_room"]), f(r["total_inc_room"]*12), f(r["total_inc_room"]*12*avg_rooms_per_alexa_property/1000)),
-                (f(r["amenity_inc_room"]), f(r["amenity_inc_room"]*12), f(r["amenity_inc_room"]*12*avg_rooms_per_alexa_property/1000)),
-                (f(r["cost_savings_room"]), f(r["cost_savings_room"]*12), f(r["cost_savings_room"]*12*avg_rooms_per_alexa_property/1000)),
-                (f(-r["total_payment_room"]), f(-r["total_payment_room"]*12), f(-r["total_payment_room"]*12*avg_rooms_per_alexa_property/1000)),
-                (f(-r["sub_room"]), f(-r["sub_room"]*12), f(-r["sub_room"]*12*avg_rooms_per_alexa_property/1000)),
-                (f(-r["amenity_rs_room"]), f(-r["amenity_rs_room"]*12), f(-r["amenity_rs_room"]*12*avg_rooms_per_alexa_property/1000)),
-                (f(-r["amenity_cost_room"]), f(-r["amenity_cost_room"]*12), f(-r["amenity_cost_room"]*12*avg_rooms_per_alexa_property/1000)),
-                ("", "", ""),
-                (f(r["inc_cp_room"]), f(r["inc_cp_room"]*12), f(r["inc_cp_room"]*12*avg_rooms_per_alexa_property/1000)),
-                (f"{r['roi']:.0f}%", f"{r['roi']:.0f}%", f"{r['roi']:.0f}%"),
-            ]
-        metrics = ["Transactions via Alexa", "Incrementality via Alexa", "",
-                   "Total Revenue", "Alexa Benefits", "  ↳ Incremental Amenities Revenue", "  ↳ Cost Saving",
-                   "Total Payment to Alexa", "  ↳ Fixed Subscription Fee", "  ↳ Rev-Share Payments",
-                   "Incremental Amenities Cost", "",
-                   "Incremental CP", "ROI %"]
-        s1c = build_scenario_cols(r1, s1t, s1i)
-        s2c = build_scenario_cols(r2, s2t, s2i)
-        s3c = build_scenario_cols(r3, s3t, s3i)
-        summary_rows = []
-        for i, m in enumerate(metrics):
-            summary_rows.append({
-                "Metric": m,
-                "S1 Monthly/Room": s1c[i][0], "S1 Annual/Room": s1c[i][1], "S1 Annual/Property": s1c[i][2],
-                "S2 Monthly/Room": s2c[i][0], "S2 Annual/Room": s2c[i][1], "S2 Annual/Property": s2c[i][2],
-                "S3 Monthly/Room": s3c[i][0], "S3 Annual/Room": s3c[i][1], "S3 Annual/Property": s3c[i][2],
-            })
-        st.dataframe(pd.DataFrame(summary_rows), use_container_width=True, hide_index=True, height=560)
+    tc1, tc2, tc3 = st.columns(3)
+    with tc1: st.markdown(build_card_table("Monthly per Room", 1), unsafe_allow_html=True)
+    with tc2: st.markdown(build_card_table("Annual per Room", 12), unsafe_allow_html=True)
+    with tc3: st.markdown(build_card_table("Annual per Property (in 000s)", 12, is_thousands=True), unsafe_allow_html=True)
 
     # Annual CP bar chart
     fig_cp = go.Figure()
