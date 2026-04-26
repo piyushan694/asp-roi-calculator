@@ -18,7 +18,7 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',sans-serif}
 /* Hero - Alexa deck gradient with blue glow */
 .hero{background:linear-gradient(135deg,#080c18 0%,#0a1128 40%,#0d2847 80%,#1a5276 100%);border-radius:16px;padding:40px 48px;margin-bottom:32px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;bottom:-40%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(126,184,218,.12) 0%,transparent 70%);border-radius:50%}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF9900,#FFB84D,#FF9900)}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4ECDC4,#7EB8DA,#4ECDC4)}
 .hero h1{color:#FFF;font-size:30px;margin:0 0 6px;font-weight:800;letter-spacing:-.5px;position:relative}
 .hero .sub{color:#4ECDC4;font-size:16px;margin:0;font-weight:600;position:relative}
 .hero .meta{color:rgba(255,255,255,.35);font-size:10px;margin-top:12px;position:relative;letter-spacing:1.5px;text-transform:uppercase}
@@ -32,7 +32,7 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',sans-serif}
 .kpi-big.green .value{color:#4ECDC4}.kpi-big.green{border-bottom:3px solid #4ECDC4}
 .kpi-big.blue .value{color:#4ECDC4}.kpi-big.blue{border-bottom:3px solid #4ECDC4}
 .kpi-big.orange .value{color:#FFB84D}.kpi-big.orange{border-bottom:3px solid #4ECDC4}
-.kpi-big.hero-card{background:linear-gradient(135deg,#FF9900,#e68a00);border:none;box-shadow:0 8px 32px rgba(255,153,0,.2)}
+.kpi-big.hero-card{background:linear-gradient(135deg,#4ECDC4,#3db8b0);border:none;box-shadow:0 8px 32px rgba(78,205,196,.2)}
 .kpi-big.hero-card .value{color:#fff;font-size:42px;text-shadow:0 2px 12px rgba(0,0,0,.3)}.kpi-big.hero-card .label{color:rgba(255,255,255,.85)}
 
 /* Scenario Cards */
@@ -40,7 +40,7 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',sans-serif}
 .scenario-card .tag{display:inline-block;padding:5px 16px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
 .tag-s1{background:rgba(126,184,218,.12);color:#4ECDC4;border:1px solid rgba(126,184,218,.25)}
 .tag-s2{background:rgba(0,230,118,.12);color:#4ECDC4;border:1px solid rgba(0,230,118,.25)}
-.tag-s3{background:rgba(255,153,0,.12);color:#FF9900;border:1px solid rgba(255,153,0,.25)}
+.tag-s3{background:rgba(126,184,218,.12);color:#7EB8DA;border:1px solid rgba(126,184,218,.25)}
 
 /* Section Headers - cyan accent */
 .stitle{font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#7EB8DA;border-left:4px solid #7EB8DA;padding-left:14px;margin:36px 0 10px}
@@ -83,7 +83,7 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',sans-serif}
 </style>""", unsafe_allow_html=True)
 
 def kpi(v, l, c="", delta=""):
-    d = f'<p class="delta" style="color:{("#0a8f6c" if "+" in str(delta) or delta=="" else "#c7511f")}">{delta}</p>' if delta else ""
+    d = f'<p class="delta" style="color:{("#0a8f6c" if "+" in str(delta) or delta=="" else "#5C7A99")}">{delta}</p>' if delta else ""
     return f'<div class="kpi-big {c}"><p class="value">{v}</p><p class="label">{l}</p>{d}</div>'
 
 # ═══════════════════════════════════════════════════════════════
@@ -350,7 +350,7 @@ with tab1:
     # Visual: ROI comparison gauge chart
     st.markdown(f'<div class="stitle">ROI Comparison</div>', unsafe_allow_html=True)
     fig_gauge = go.Figure()
-    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#4ECDC4"), ("Scenario 3", r3, "#FF9900")]):
+    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#7EB8DA"), ("Scenario 3", r3, "#7EB8DA")]):
         fig_gauge.add_trace(go.Indicator(
             mode="gauge+number+delta",
             value=r["roi"],
@@ -362,9 +362,9 @@ with tab1:
                 "bgcolor": "#111d33",
                 "borderwidth": 0,
                 "steps": [
-                    {"range": [0, 20], "color": "#2d1515"},
-                    {"range": [20, 50], "color": "#2d2a15"},
-                    {"range": [50, 150], "color": "#152d1a"},
+                    {"range": [0, 20], "color": "#1a2233"},
+                    {"range": [20, 50], "color": "#1a2a33"},
+                    {"range": [50, 150], "color": "#1a3333"},
                 ],
                 "threshold": {"line": {"color": "#232F3E", "width": 2}, "thickness": 0.8, "value": r["roi"]},
             },
@@ -385,8 +385,8 @@ with tab1:
         x=wf_labels, y=wf_vals, measure=["absolute", "relative", "relative", "relative", "total"],
         connector=dict(line=dict(color="rgba(255,255,255,.15)", width=1, dash="dot")),
         increasing=dict(marker=dict(color="#4ECDC4")),
-        decreasing=dict(marker=dict(color="#FF5252")),
-        totals=dict(marker=dict(color="#4ECDC4")),
+        decreasing=dict(marker=dict(color="#5C7A99")),
+        totals=dict(marker=dict(color="#7EB8DA")),
         text=[f"${v:,.0f}" for v in wf_vals], textposition="outside",
         textfont=dict(size=14, color="#e0e6ed", family="Inter"),
     ))
@@ -461,7 +461,7 @@ with tab1:
 
     # Annual CP bar chart
     fig_cp = go.Figure()
-    for sn, r, color in [("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#4ECDC4"), ("Scenario 3", r3, "#FF9900")]:
+    for sn, r, color in [("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#7EB8DA"), ("Scenario 3", r3, "#7EB8DA")]:
         fig_cp.add_trace(go.Bar(
             name=sn, x=["Annual CP / Room", "Annual CP / Property (000s)"],
             y=[r["inc_cp_room"] * 12, ann_prop(r)],
@@ -541,7 +541,7 @@ with tab2:
         wf_v = [live_r["total_inc_room"], -live_r["total_payment_room"], -live_r["amenity_cost_room"], live_r["inc_cp_room"]]
         fig_wf = go.Figure(go.Waterfall(x=wf_l, y=wf_v, measure=["absolute","relative","relative","total"],
             connector=dict(line=dict(color="#D5D9DD")), increasing=dict(marker=dict(color="#067D62")),
-            decreasing=dict(marker=dict(color="#C7511F")), totals=dict(marker=dict(color="#4ECDC4")),
+            decreasing=dict(marker=dict(color="#C7511F")), totals=dict(marker=dict(color="#7EB8DA")),
             text=[f"${v:,.0f}" for v in wf_v], textposition="outside"))
         fig_wf.update_layout(height=380, plot_bgcolor="#FAFBFC", yaxis=dict(gridcolor="rgba(255,255,255,.08)"), margin=dict(t=30))
         st.plotly_chart(fig_wf, use_container_width=True)
@@ -688,7 +688,7 @@ with tab4:
 
     fig_pay = go.Figure(data=go.Heatmap(
         z=pay_heat, x=[f"{t*100:.0f}%" for t in txn_ax], y=[f"{r*100:.0f}%" for r in rs_ax],
-        colorscale=[[0,"#111d33"],[0.5,"#2d2a15"],[1,"#FF5252"]], text=[[f"${v:,.0f}" for v in row] for row in pay_heat],
+        colorscale=[[0,"#111d33"],[0.5,"#1a2a33"],[1,"#5C7A99"]], text=[[f"${v:,.0f}" for v in row] for row in pay_heat],
         texttemplate="%{text}", textfont=dict(size=10), colorbar=dict(title="$/Room"),
     ))
     fig_pay.update_layout(title="Monthly Payment per Room (Sub + Rev Share + Fees)",
