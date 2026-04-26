@@ -6,62 +6,79 @@ from datetime import datetime
 
 st.set_page_config(page_title="ASP Partner ROI Calculator", layout="wide", page_icon="🔶", initial_sidebar_state="expanded")
 
-# ── Premium Financial CSS ──
+# ── Alexa BD Pitch Deck Theme ──
 st.markdown("""<style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 #MainMenu,footer{visibility:hidden}
-html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-serif;color:#1a1a2e}
+html,body,[class*="css"]{font-family:'Inter','Amazon Ember',sans-serif}
+.block-container{max-width:1400px}
 
-/* Hero */
-.hero{background:linear-gradient(135deg,#0a0f1a 0%,#131b2e 40%,#1a2744 100%);border-radius:20px;padding:40px 48px;margin-bottom:32px;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#FF9900,#FFB84D,#FF9900)}
-.hero h1{color:#FFF;font-size:32px;margin:0 0 6px 0;font-weight:800;letter-spacing:-.5px;position:relative}
-.hero .sub{color:#FFB84D;font-size:16px;margin:0;font-weight:500;position:relative}
-.hero .meta{color:rgba(255,255,255,.4);font-size:11px;margin-top:12px;position:relative;letter-spacing:.5px;text-transform:uppercase}
+/* Dark theme background matching pitch deck */
+.stApp{background:linear-gradient(180deg,#080c18 0%,#0a1128 50%,#0d1b2e 100%)}
+.stApp,[class*="css"]{color:#e0e6ed}
 
-/* KPI Cards */
-.kpi-big{background:linear-gradient(145deg,#ffffff,#f8f9fb);border-radius:14px;padding:26px 20px;text-align:center;border:1px solid #e2e6ea;box-shadow:0 4px 20px rgba(0,0,0,.05);transition:all .3s ease}
-.kpi-big:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.08)}
-.kpi-big .value{font-size:34px;font-weight:800;margin:0;line-height:1.1;letter-spacing:-.5px}
-.kpi-big .label{color:#8896a4;font-size:12px;margin:8px 0 0;text-transform:uppercase;letter-spacing:.5px;font-weight:600;white-space:nowrap}
-.kpi-big .delta{font-size:13px;margin-top:6px;font-weight:600}
-.kpi-big.green .value{color:#0a8f6c}.kpi-big.green{border-bottom:3px solid #0a8f6c}
-.kpi-big.blue .value{color:#0052cc}.kpi-big.blue{border-bottom:3px solid #0052cc}
-.kpi-big.orange .value{color:#d4710a}.kpi-big.orange{border-bottom:3px solid #FF9900}
-.kpi-big.gold .value{color:#b8860b}.kpi-big.gold{border-bottom:3px solid #DAA520}
-.kpi-big.hero-card{background:linear-gradient(145deg,#0d1b2a,#1a2744);border:none;border-bottom:3px solid #FF9900}
-.kpi-big.hero-card .value{color:#fff;font-size:42px}.kpi-big.hero-card .label{color:rgba(255,255,255,.7)}
+/* Hero - matching slide 1 dark gradient with blue glow */
+.hero{background:linear-gradient(135deg,#080c18 0%,#0a1128 40%,#0d2847 80%,#1a5276 100%);border-radius:16px;padding:40px 48px;margin-bottom:32px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;bottom:-40%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,191,255,.15) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00BFFF,#00E5FF,#00BFFF)}
+.hero h1{color:#FFF;font-size:30px;margin:0 0 6px;font-weight:800;letter-spacing:-.5px;position:relative}
+.hero .sub{color:#00BFFF;font-size:16px;margin:0;font-weight:600;position:relative}
+.hero .meta{color:rgba(255,255,255,.35);font-size:10px;margin-top:12px;position:relative;letter-spacing:1.5px;text-transform:uppercase}
+
+/* KPI Cards - dark cards matching pitch deck style */
+.kpi-big{background:linear-gradient(145deg,#0d1b2e,#132240);border-radius:12px;padding:24px 18px;text-align:center;border:1px solid rgba(0,191,255,.15);box-shadow:0 4px 20px rgba(0,0,0,.3);transition:all .3s ease}
+.kpi-big:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,191,255,.1);border-color:rgba(0,191,255,.3)}
+.kpi-big .value{font-size:34px;font-weight:800;margin:0;line-height:1.1;letter-spacing:-.5px;color:#fff}
+.kpi-big .label{color:rgba(255,255,255,.5);font-size:11px;margin:8px 0 0;text-transform:uppercase;letter-spacing:.8px;font-weight:600;white-space:nowrap}
+.kpi-big.green .value{color:#00E676}.kpi-big.green{border-bottom:3px solid #00E676}
+.kpi-big.blue .value{color:#00BFFF}.kpi-big.blue{border-bottom:3px solid #00BFFF}
+.kpi-big.orange .value{color:#FF9900}.kpi-big.orange{border-bottom:3px solid #FF9900}
+.kpi-big.hero-card{background:linear-gradient(145deg,#00BFFF,#0088cc);border:none}
+.kpi-big.hero-card .value{color:#fff;font-size:40px}.kpi-big.hero-card .label{color:rgba(255,255,255,.8)}
 
 /* Scenario Cards */
-.scenario-card{background:#fff;border-radius:14px;padding:20px 24px;border:1px solid #e8ecef;box-shadow:0 2px 12px rgba(0,0,0,.04)}
-.scenario-card .tag{display:inline-block;padding:5px 16px;border-radius:12px;font-size:14px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
-.tag-s1{background:#e8f4fd;color:#0052cc}.tag-s2{background:#e6f7f0;color:#067d62}.tag-s3{background:#fff4e5;color:#d4710a}
+.scenario-card{background:rgba(13,27,46,.6);border-radius:12px;padding:20px 24px;border:1px solid rgba(0,191,255,.1)}
+.scenario-card .tag{display:inline-block;padding:5px 16px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
+.tag-s1{background:rgba(0,191,255,.15);color:#00BFFF}.tag-s2{background:rgba(0,230,118,.15);color:#00E676}.tag-s3{background:rgba(255,153,0,.15);color:#FF9900}
 
-/* Section Headers */
-.stitle{font-size:11px;text-transform:uppercase;letter-spacing:2.5px;font-weight:800;color:#0d1b2a;border-left:4px solid #FF9900;padding-left:14px;margin:36px 0 8px}
-.stitle-sub{font-size:14px;color:#8896a4;margin:0 0 20px 18px;font-weight:400}
+/* Section Headers - cyan accent like pitch deck */
+.stitle{font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#00BFFF;border-left:4px solid #00BFFF;padding-left:14px;margin:36px 0 8px}
+.stitle-sub{font-size:14px;color:rgba(255,255,255,.5);margin:0 0 20px 18px;font-weight:400}
 
-/* Insight Box */
-.insight{background:#0d1b2a;border-radius:14px;padding:28px 32px;margin:24px 0;position:relative}
-.insight::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#FF9900;border-radius:4px 0 0 4px}
+/* Insight Box - dark with cyan accent */
+.insight{background:linear-gradient(135deg,#0d1b2e,#132240);border-radius:12px;padding:28px 32px;margin:24px 0;position:relative;border:1px solid rgba(0,191,255,.15)}
+.insight::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#00BFFF,#00E5FF);border-radius:4px 0 0 4px}
 .insight .headline{font-size:18px;font-weight:700;color:#fff;margin:0 0 6px;line-height:1.4}
-.insight .body{font-size:13px;color:rgba(255,255,255,.5);margin:0}
+.insight .body{font-size:13px;color:rgba(255,255,255,.4);margin:0}
 
-/* Sidebar - simple clean approach */
-[data-testid="stSidebar"]{background:#0d1b2a}
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span{color:#c8d0d8!important}
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3{color:#FF9900!important}
-[data-testid="stSidebar"] label{color:#c8d0d8!important}
+/* Sidebar - dark matching theme */
+[data-testid="stSidebar"]{background:linear-gradient(180deg,#060a14,#0a1128)}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span{color:#a0b0c0!important}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3{color:#00BFFF!important}
+[data-testid="stSidebar"] label{color:#a0b0c0!important}
 
-/* Tabs */
-.stTabs [data-baseweb="tab-list"]{gap:0;border-bottom:2px solid #e8ecf1}
-.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:12px 24px;color:#8896a4;border-bottom:2px solid transparent;margin-bottom:-2px}
-.stTabs [aria-selected="true"]{color:#0d1b2a!important;border-bottom:2px solid #FF9900!important}
+/* Tabs - dark theme */
+.stTabs [data-baseweb="tab-list"]{gap:0;border-bottom:2px solid rgba(0,191,255,.15);background:transparent}
+.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:12px 24px;color:rgba(255,255,255,.4);border-bottom:2px solid transparent;margin-bottom:-2px;background:transparent}
+.stTabs [aria-selected="true"]{color:#00BFFF!important;border-bottom:2px solid #00BFFF!important;background:transparent!important}
+
+/* Tables - dark theme */
+[data-testid="stDataFrame"]{background:rgba(13,27,46,.5);border-radius:8px}
+
+/* Sliders - cyan */
+.stSlider>div>div>div>div{background:#00BFFF!important}
+
+/* Metrics */
+[data-testid="stMetricValue"]{color:#fff!important}
+[data-testid="stMetricLabel"]{color:rgba(255,255,255,.5)!important}
 
 /* Footer */
-.app-footer{background:#0d1b2a;border-radius:14px;padding:24px 36px;margin-top:48px;text-align:center}
-.app-footer .brand{color:#FF9900;font-size:14px;font-weight:700;margin:0;letter-spacing:1px;text-transform:uppercase}
-.app-footer .sub{color:rgba(255,255,255,.4);font-size:11px;margin:6px 0 0}
+.app-footer{background:linear-gradient(135deg,#060a14,#0a1128);border-radius:12px;padding:24px 36px;margin-top:48px;text-align:center;border-top:2px solid rgba(0,191,255,.1)}
+.app-footer .brand{color:#00BFFF;font-size:13px;font-weight:700;margin:0;letter-spacing:2px;text-transform:uppercase}
+.app-footer .sub{color:rgba(255,255,255,.3);font-size:11px;margin:6px 0 0}
+
+/* Plotly charts transparent */
+.js-plotly-plot .plotly{background:transparent!important}
 </style>""", unsafe_allow_html=True)
 
 def kpi(v, l, c="", delta=""):
@@ -324,7 +341,7 @@ with tab1:
     # Insight callout
     best = max([r1, r2, r3], key=lambda x: x["roi"])
     st.markdown(f"""<div class="insight">
-    <p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#FF9900;font-weight:700;margin:0 0 8px">💡 Key Takeaway</p>
+    <p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#00BFFF;font-weight:700;margin:0 0 8px">💡 Key Takeaway</p>
     <p class="headline">Alexa deployment generates up to ${best['inc_cp_room']*12:,.0f} in annual incremental profit per room — translating to ${ann_prop(best):,.0f}K per property annually.</p>
     <p class="body">Based on {int(avg_rooms_per_alexa_property):,} rooms per property across {alexa_properties} properties with Alexa</p>
     </div>""", unsafe_allow_html=True)
@@ -332,16 +349,16 @@ with tab1:
     # Visual: ROI comparison gauge chart
     st.markdown(f'<div class="stitle">ROI Comparison</div>', unsafe_allow_html=True)
     fig_gauge = go.Figure()
-    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#0066cc"), ("Scenario 2", r2, "#0a8f6c"), ("Scenario 3", r3, "#FF9900")]):
+    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#00BFFF"), ("Scenario 2", r2, "#00E676"), ("Scenario 3", r3, "#FF9900")]):
         fig_gauge.add_trace(go.Indicator(
             mode="gauge+number+delta",
             value=r["roi"],
-            title={"text": sn, "font": {"size": 16, "color": "#232F3E"}},
-            number={"suffix": "%", "font": {"size": 32, "color": "#232F3E"}},
+            title={"text": sn, "font": {"size": 16, "color": "#e0e6ed"}},
+            number={"suffix": "%", "font": {"size": 32, "color": "#fff"}},
             gauge={
                 "axis": {"range": [0, max(150, r["roi"] + 30)], "tickcolor": "#d0d5dd"},
                 "bar": {"color": color, "thickness": 0.7},
-                "bgcolor": "#f0f2f5",
+                "bgcolor": "#0d1b2e",
                 "borderwidth": 0,
                 "steps": [
                     {"range": [0, 20], "color": "#fde8e8"},
@@ -365,12 +382,12 @@ with tab1:
     wf_vals = [r2["amenity_inc_room"], r2["cost_savings_room"], -r2["total_payment_room"], -r2["amenity_cost_room"], r2["inc_cp_room"]]
     fig_wf = go.Figure(go.Waterfall(
         x=wf_labels, y=wf_vals, measure=["absolute", "relative", "relative", "relative", "total"],
-        connector=dict(line=dict(color="#d0d5dd", width=1)),
-        increasing=dict(marker=dict(color="#0a8f6c", line=dict(color="#067d62", width=1))),
-        decreasing=dict(marker=dict(color="#e74c3c", line=dict(color="#c0392b", width=1))),
-        totals=dict(marker=dict(color="#FF9900", line=dict(color="#d4710a", width=1))),
+        connector=dict(line=dict(color="rgba(255,255,255,.15)", width=1, dash="dot")),
+        increasing=dict(marker=dict(color="#00E676")),
+        decreasing=dict(marker=dict(color="#FF5252")),
+        totals=dict(marker=dict(color="#00BFFF")),
         text=[f"${v:,.0f}" for v in wf_vals], textposition="outside",
-        textfont=dict(size=14, color="#232F3E", family="Inter"),
+        textfont=dict(size=14, color="#e0e6ed", family="Inter"),
     ))
     fig_wf.update_layout(height=420, plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
                          yaxis=dict(gridcolor="#eef0f3", title="$ per Room / Month", title_font=dict(size=12, color="#8896a4")),
@@ -418,13 +435,13 @@ with tab1:
 
     # Annual CP bar chart
     fig_cp = go.Figure()
-    for sn, r, color in [("Scenario 1", r1, "#0066cc"), ("Scenario 2", r2, "#0a8f6c"), ("Scenario 3", r3, "#FF9900")]:
+    for sn, r, color in [("Scenario 1", r1, "#00BFFF"), ("Scenario 2", r2, "#00E676"), ("Scenario 3", r3, "#FF9900")]:
         fig_cp.add_trace(go.Bar(
             name=sn, x=["Annual CP / Room", "Annual CP / Property (000s)"],
             y=[r["inc_cp_room"] * 12, ann_prop(r)],
-            marker_color=color, marker_line=dict(color="#232F3E", width=0.5),
+            marker_color=color, marker_line=dict(color="#e0e6ed", width=0.5),
             text=[f"${r['inc_cp_room']*12:,.0f}", f"${ann_prop(r):,.0f}K"],
-            textposition="outside", textfont=dict(size=13, family="Inter", color="#232F3E"),
+            textposition="outside", textfont=dict(size=13, family="Inter", color="#e0e6ed"),
         ))
     fig_cp.update_layout(barmode="group", height=380, plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
                          yaxis=dict(gridcolor="#eef0f3"), margin=dict(t=40, b=40),
@@ -500,7 +517,7 @@ with tab2:
             connector=dict(line=dict(color="#D5D9DD")), increasing=dict(marker=dict(color="#067D62")),
             decreasing=dict(marker=dict(color="#C7511F")), totals=dict(marker=dict(color="#FF9900")),
             text=[f"${v:,.0f}" for v in wf_v], textposition="outside"))
-        fig_wf.update_layout(height=380, plot_bgcolor="#FAFBFC", yaxis=dict(gridcolor="#E8ECEF"), margin=dict(t=30))
+        fig_wf.update_layout(height=380, plot_bgcolor="#FAFBFC", yaxis=dict(gridcolor="rgba(255,255,255,.08)"), margin=dict(t=30))
         st.plotly_chart(fig_wf, use_container_width=True)
 
 # ─── TAB 3: CALCULATION WALKTHROUGH ───
