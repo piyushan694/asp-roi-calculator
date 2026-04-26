@@ -9,7 +9,7 @@ st.set_page_config(page_title="ASP Partner ROI Calculator", layout="wide", page_
 # ── Premium Financial CSS ──
 st.markdown("""<style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-#MainMenu,footer,header{visibility:hidden}
+#MainMenu,footer{visibility:hidden}
 html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-serif;color:#1a1a2e}
 
 /* Hero */
@@ -270,11 +270,7 @@ st.markdown(f"""<div class="hero"><h1>🔶 Alexa Smart Properties</h1>
 <p class="sub">{partner_name} — Return on Investment Analysis</p>
 <p class="meta">CONFIDENTIAL — For Partner Discussion Only &nbsp;·&nbsp; {datetime.now().strftime('%B %d, %Y')}</p></div>""", unsafe_allow_html=True)
 
-# Clear instruction for sidebar
-st.markdown("""<div style="background:#fff4e5;border:1px solid #FF9900;border-radius:8px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:8px">
-<span style="font-size:20px">⚙️</span>
-<span style="font-size:13px;color:#0d1b2a;font-weight:600">Model Inputs → Click the <b>▸</b> arrow at the top-left corner to open the input panel</span>
-</div>""", unsafe_allow_html=True)
+# Sidebar toggle is in the Streamlit header (top-left)
 
 tab1, tab2, tab3, tab4 = st.tabs([
     "  📋 Executive Summary  ", "  🎮 Live Scenario Builder  ",
