@@ -395,44 +395,70 @@ with tab1:
                          margin=dict(t=20, b=40), font=dict(family="Inter"))
     st.plotly_chart(fig_wf, use_container_width=True)
 
-    # Detailed comparison table
-    st.markdown(f'<div class="stitle">Detailed Comparison</div>', unsafe_allow_html=True)
+    # Scenario Detail — 3 cards side by side
+    st.markdown(f'<div class="stitle">Scenario Detail</div>', unsafe_allow_html=True)
     def f(v): return f"${v:,.0f}"
-    def build_scenario_cols(r, st_pct, si_pct):
-        m = r["inc_cp_room"]; a = m * 12; p = a * avg_rooms_per_alexa_property / 1000
-        return [
-            (f"{st_pct*100:.0f}%", f"{st_pct*100:.0f}%", f"{st_pct*100:.0f}%"),
-            (f"{si_pct*100:.0f}%", f"{si_pct*100:.0f}%", f"{si_pct*100:.0f}%"),
-            ("", "", ""),
-            (f(r["total_rev_room"]), f(r["total_rev_room"]*12), f(r["total_rev_room"]*12*avg_rooms_per_alexa_property/1000)),
-            (f(r["total_inc_room"]), f(r["total_inc_room"]*12), f(r["total_inc_room"]*12*avg_rooms_per_alexa_property/1000)),
-            (f(r["amenity_inc_room"]), f(r["amenity_inc_room"]*12), f(r["amenity_inc_room"]*12*avg_rooms_per_alexa_property/1000)),
-            (f(r["cost_savings_room"]), f(r["cost_savings_room"]*12), f(r["cost_savings_room"]*12*avg_rooms_per_alexa_property/1000)),
-            (f(-r["total_payment_room"]), f(-r["total_payment_room"]*12), f(-r["total_payment_room"]*12*avg_rooms_per_alexa_property/1000)),
-            (f(-r["sub_room"]), f(-r["sub_room"]*12), f(-r["sub_room"]*12*avg_rooms_per_alexa_property/1000)),
-            (f(-r["amenity_rs_room"]), f(-r["amenity_rs_room"]*12), f(-r["amenity_rs_room"]*12*avg_rooms_per_alexa_property/1000)),
-            (f(-r["amenity_cost_room"]), f(-r["amenity_cost_room"]*12), f(-r["amenity_cost_room"]*12*avg_rooms_per_alexa_property/1000)),
-            ("", "", ""),
-            (f(r["inc_cp_room"]), f(r["inc_cp_room"]*12), f(r["inc_cp_room"]*12*avg_rooms_per_alexa_property/1000)),
-            (f"{r['roi']:.0f}%", f"{r['roi']:.0f}%", f"{r['roi']:.0f}%"),
+
+    def scenario_card_html(label, r, tp, ip, border_color):
+        rows = [
+            ("Total Revenue", f(r["total_rev_room"])),
+            ("Alexa Benefits", f(r["total_inc_room"])),
+            ("Payment to Alexa", f(-r["total_payment_room"])),
+            ("Amenity Cost", f(-r["amenity_cost_room"])),
         ]
-    metrics = ["Transactions via Alexa", "Incrementality via Alexa", "",
-               "Total Revenue", "Alexa Benefits", "  ↳ Incremental Amenities Revenue", "  ↳ Cost Saving",
-               "Total Payment to Alexa", "  ↳ Fixed Subscription Fee", "  ↳ Rev-Share Payments",
-               "Incremental Amenities Cost", "",
-               "Incremental CP", "ROI %"]
-    s1c = build_scenario_cols(r1, s1t, s1i)
-    s2c = build_scenario_cols(r2, s2t, s2i)
-    s3c = build_scenario_cols(r3, s3t, s3i)
-    summary_rows = []
-    for i, m in enumerate(metrics):
-        summary_rows.append({
-            "Metric": m,
-            "S1 Monthly/Room": s1c[i][0], "S1 Annual/Room": s1c[i][1], "S1 Annual/Property": s1c[i][2],
-            "S2 Monthly/Room": s2c[i][0], "S2 Annual/Room": s2c[i][1], "S2 Annual/Property": s2c[i][2],
-            "S3 Monthly/Room": s3c[i][0], "S3 Annual/Room": s3c[i][1], "S3 Annual/Property": s3c[i][2],
-        })
-    st.dataframe(pd.DataFrame(summary_rows), use_container_width=True, hide_index=True, height=560)
+        rows_html = "".join(f'<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.05);font-size:13px"><span style="color:#5c6b7a">{name}</span><span style="font-weight:500;color:#0d1b2e">{val}</span></div>' for name, val in rows)
+        return f"""<div style="background:#fff;border-radius:12px;padding:24px;border:1px solid #e8ecef;box-shadow:0 2px 12px rgba(0,0,0,.04);height:100%">
+        <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:{border_color};margin:0 0 16px;padding-bottom:8px;border-bottom:2px solid {border_color}">{label} ({tp*100:.0f}% / {ip*100:.0f}%)</p>
+        {rows_html}
+        <div style="display:flex;justify-content:space-between;padding:10px 0 0;margin-top:8px;border-top:2px solid #0d1b2a;font-size:14px">
+            <span style="font-weight:800;color:#0d1b2a">Incremental CP</span>
+            <span style="font-weight:800;color:#0d1b2a">{f(r['inc_cp_room'])}</span>
+        </div>
+        </div>"""
+
+    sc1, sc2, sc3 = st.columns(3)
+    with sc1: st.markdown(scenario_card_html("Scenario 1", r1, s1t, s1i, "#0052cc"), unsafe_allow_html=True)
+    with sc2: st.markdown(scenario_card_html("Scenario 2", r2, s2t, s2i, "#067d62"), unsafe_allow_html=True)
+    with sc3: st.markdown(scenario_card_html("Scenario 3", r3, s3t, s3i, "#c7511f"), unsafe_allow_html=True)
+
+    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
+
+    # Full detailed comparison table (kept for reference)
+    with st.expander("View Full Detailed Comparison Table"):
+        def build_scenario_cols(r, st_pct, si_pct):
+            return [
+                (f"{st_pct*100:.0f}%", f"{st_pct*100:.0f}%", f"{st_pct*100:.0f}%"),
+                (f"{si_pct*100:.0f}%", f"{si_pct*100:.0f}%", f"{si_pct*100:.0f}%"),
+                ("", "", ""),
+                (f(r["total_rev_room"]), f(r["total_rev_room"]*12), f(r["total_rev_room"]*12*avg_rooms_per_alexa_property/1000)),
+                (f(r["total_inc_room"]), f(r["total_inc_room"]*12), f(r["total_inc_room"]*12*avg_rooms_per_alexa_property/1000)),
+                (f(r["amenity_inc_room"]), f(r["amenity_inc_room"]*12), f(r["amenity_inc_room"]*12*avg_rooms_per_alexa_property/1000)),
+                (f(r["cost_savings_room"]), f(r["cost_savings_room"]*12), f(r["cost_savings_room"]*12*avg_rooms_per_alexa_property/1000)),
+                (f(-r["total_payment_room"]), f(-r["total_payment_room"]*12), f(-r["total_payment_room"]*12*avg_rooms_per_alexa_property/1000)),
+                (f(-r["sub_room"]), f(-r["sub_room"]*12), f(-r["sub_room"]*12*avg_rooms_per_alexa_property/1000)),
+                (f(-r["amenity_rs_room"]), f(-r["amenity_rs_room"]*12), f(-r["amenity_rs_room"]*12*avg_rooms_per_alexa_property/1000)),
+                (f(-r["amenity_cost_room"]), f(-r["amenity_cost_room"]*12), f(-r["amenity_cost_room"]*12*avg_rooms_per_alexa_property/1000)),
+                ("", "", ""),
+                (f(r["inc_cp_room"]), f(r["inc_cp_room"]*12), f(r["inc_cp_room"]*12*avg_rooms_per_alexa_property/1000)),
+                (f"{r['roi']:.0f}%", f"{r['roi']:.0f}%", f"{r['roi']:.0f}%"),
+            ]
+        metrics = ["Transactions via Alexa", "Incrementality via Alexa", "",
+                   "Total Revenue", "Alexa Benefits", "  ↳ Incremental Amenities Revenue", "  ↳ Cost Saving",
+                   "Total Payment to Alexa", "  ↳ Fixed Subscription Fee", "  ↳ Rev-Share Payments",
+                   "Incremental Amenities Cost", "",
+                   "Incremental CP", "ROI %"]
+        s1c = build_scenario_cols(r1, s1t, s1i)
+        s2c = build_scenario_cols(r2, s2t, s2i)
+        s3c = build_scenario_cols(r3, s3t, s3i)
+        summary_rows = []
+        for i, m in enumerate(metrics):
+            summary_rows.append({
+                "Metric": m,
+                "S1 Monthly/Room": s1c[i][0], "S1 Annual/Room": s1c[i][1], "S1 Annual/Property": s1c[i][2],
+                "S2 Monthly/Room": s2c[i][0], "S2 Annual/Room": s2c[i][1], "S2 Annual/Property": s2c[i][2],
+                "S3 Monthly/Room": s3c[i][0], "S3 Annual/Room": s3c[i][1], "S3 Annual/Property": s3c[i][2],
+            })
+        st.dataframe(pd.DataFrame(summary_rows), use_container_width=True, hide_index=True, height=560)
 
     # Annual CP bar chart
     fig_cp = go.Figure()
