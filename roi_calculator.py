@@ -62,6 +62,9 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-seri
 [data-testid="stSidebarCollapsedControl"]{background:#FF9900!important;opacity:1!important}
 [data-testid="stSidebar"] svg{color:#8896a4!important}
 [data-testid="stSidebar"] [class*="collapse"] svg{color:#FF9900!important}
+[data-testid="stSidebar"] button svg{color:#FF9900!important;opacity:1!important}
+[data-testid="stSidebar"] [data-testid="baseButton-header"]{background:rgba(255,153,0,.15)!important;border-radius:6px!important;opacity:1!important}
+[data-testid="stSidebar"] [data-testid="baseButton-header"] svg{color:#FF9900!important}
 
 /* Tabs */
 .stTabs [data-baseweb="tab-list"]{gap:0;border-bottom:2px solid #e8ecf1}
@@ -94,7 +97,7 @@ with st.sidebar:
     cycles_per_month = st.number_input("Cruises / Cycles per Month", value=4, min_value=1)
     guests_per_room = st.number_input("Guests per Room", value=2.0, step=0.1)
 
-    st.markdown("### 🚀 Alexa Deployment")
+    st.markdown("### 🚀 Projected Alexa Deployment")
     alexa_properties = st.number_input("Properties / Ships with Alexa", value=5, min_value=1)
     rooms_with_alexa = st.number_input("Total Rooms with Alexa", value=2500, min_value=1)
     rooms_per_cycle = st.number_input("Rooms per Cruise / Cycle", value=500, min_value=1)
@@ -273,9 +276,18 @@ def calc_roi(txn_pct, inc_pct):
 # ═══════════════════════════════════════════════════════════════
 # HERO & TABS
 # ═══════════════════════════════════════════════════════════════
-st.markdown(f"""<div class="hero"><h1>🔶 Alexa Smart Properties</h1>
+st.markdown(f"""<div class="hero">
+<div style="display:flex;align-items:center;gap:24px">
+<div style="flex:1">
+<h1>🔶 Alexa Smart Properties</h1>
 <p class="sub">{partner_name} — Return on Investment Analysis</p>
-<p class="meta">CONFIDENTIAL — For Partner Discussion Only &nbsp;·&nbsp; {datetime.now().strftime('%B %d, %Y')}</p></div>""", unsafe_allow_html=True)
+<p class="meta">CONFIDENTIAL — For Partner Discussion Only &nbsp;·&nbsp; {datetime.now().strftime('%B %d, %Y')}</p>
+</div>
+<div style="flex:0 0 auto">
+<img src="https://m.media-amazon.com/images/I/61fBMR-yURL._AC_SL1000_.jpg" style="height:120px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.3)" alt="Echo Show 15">
+</div>
+</div>
+</div>""", unsafe_allow_html=True)
 
 # Sidebar toggle is in the Streamlit header (top-left)
 
