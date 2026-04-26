@@ -383,7 +383,7 @@ with tab1:
         decreasing=dict(marker=dict(color="#FF5252")),
         totals=dict(marker=dict(color="#00BFFF")),
         text=[f"${v:,.0f}" for v in wf_vals], textposition="outside",
-        textfont=dict(size=14, color="#e0e6ed", family="Inter"),
+        textfont=dict(size=14, color="#0d1b2e", family="Inter"),
     ))
     fig_wf.update_layout(height=420, plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
                          yaxis=dict(gridcolor="#eef0f3", title="$ per Room / Month", title_font=dict(size=12, color="#8896a4")),
@@ -435,9 +435,9 @@ with tab1:
         fig_cp.add_trace(go.Bar(
             name=sn, x=["Annual CP / Room", "Annual CP / Property (000s)"],
             y=[r["inc_cp_room"] * 12, ann_prop(r)],
-            marker_color=color, marker_line=dict(color="#e0e6ed", width=0.5),
+            marker_color=color, marker_line=dict(color="#0d1b2e", width=0.5),
             text=[f"${r['inc_cp_room']*12:,.0f}", f"${ann_prop(r):,.0f}K"],
-            textposition="outside", textfont=dict(size=13, family="Inter", color="#e0e6ed"),
+            textposition="outside", textfont=dict(size=13, family="Inter", color="#0d1b2e"),
         ))
     fig_cp.update_layout(barmode="group", height=380, plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
                          yaxis=dict(gridcolor="#eef0f3"), margin=dict(t=40, b=40),
