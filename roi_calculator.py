@@ -425,7 +425,7 @@ with tab1:
         rows_html = ""
         # Assumption rows
         for label, s1v, s2v, s3v, *_ in detail_metrics:
-            rows_html += f'<tr><td style="text-align:left;font-weight:500;padding:6px 12px;border-bottom:1px solid #f0f2f5">{label}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s1v}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s2v}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s3v}</td></tr>'
+            rows_html += f'<tr><td style="text-align:left;font-weight:500;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:#c0cad4">{label}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:#e0e6ed">{s1v}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:#e0e6ed">{s2v}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:#e0e6ed">{s3v}</td></tr>'
         # Spacer
         rows_html += '<tr><td colspan="4" style="padding:4px"></td></tr>'
         # Financial rows
@@ -433,8 +433,8 @@ with tab1:
             s1 = f"${vals[0]*multiplier/div:,.0f}"
             s2 = f"${vals[1]*multiplier/div:,.0f}"
             s3 = f"${vals[2]*multiplier/div:,.0f}"
-            indent = "padding-left:24px;color:#5c6b7a" if label.startswith("  ") else "font-weight:500"
-            rows_html += f'<tr><td style="text-align:left;{indent};padding:6px 12px;border-bottom:1px solid #f0f2f5">{label}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s1}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s2}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid #f0f2f5">{s3}</td></tr>'
+            indent = "padding-left:24px;color:#7a8a9a" if label.startswith("  ") else "font-weight:500;color:#c0cad4"
+            rows_html += f'<tr><td style="text-align:left;{indent};padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06)">{label}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:#e0e6ed">{s1}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:#e0e6ed">{s2}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:#e0e6ed">{s3}</td></tr>'
         # Spacer
         rows_html += '<tr><td colspan="4" style="padding:4px"></td></tr>'
         # CP row (bold)
@@ -442,14 +442,14 @@ with tab1:
             s1 = f"${vals[0]*multiplier/div:,.0f}"
             s2 = f"${vals[1]*multiplier/div:,.0f}"
             s3 = f"${vals[2]*multiplier/div:,.0f}"
-            rows_html += f'<tr style="border-top:2px solid #0d1b2a"><td style="text-align:left;font-weight:800;padding:8px 12px">{label}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{s1}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{s2}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{s3}</td></tr>'
+            rows_html += f'<tr style="border-top:2px solid #00BFFF"><td style="text-align:left;font-weight:800;padding:8px 12px;color:#fff">{label}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#00BFFF">{s1}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#00E676">{s2}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#FFB84D">{s3}</td></tr>'
         # ROI row
-        rows_html += f'<tr><td style="text-align:left;font-weight:800;padding:8px 12px">{roi_row[0]}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{roi_row[1][0]}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{roi_row[1][1]}</td><td style="text-align:right;font-weight:800;padding:8px 12px">{roi_row[1][2]}</td></tr>'
+        rows_html += f'<tr><td style="text-align:left;font-weight:800;padding:8px 12px;color:#fff">{roi_row[0]}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#00BFFF">{roi_row[1][0]}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#00E676">{roi_row[1][1]}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#FFB84D">{roi_row[1][2]}</td></tr>'
 
-        return f"""<div style="background:#fff;border-radius:12px;padding:20px;border:1px solid #e8ecef;box-shadow:0 2px 12px rgba(0,0,0,.04)">
-        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#0d1b2a;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #FF9900">{title}</p>
+        return f"""<div style="background:linear-gradient(145deg,#111d33,#162544);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.2)">
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#00BFFF;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #00BFFF">{title}</p>
         <table style="width:100%;border-collapse:collapse;font-size:13px">
-        <tr><th style="text-align:left;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8896a4;border-bottom:1px solid #e8ecef">Metric</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#0052cc;border-bottom:1px solid #e8ecef">S1</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#067d62;border-bottom:1px solid #e8ecef">S2</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#c7511f;border-bottom:1px solid #e8ecef">S3</th></tr>
+        <tr><th style="text-align:left;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4);border-bottom:1px solid rgba(255,255,255,.1)">Metric</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#00BFFF;border-bottom:1px solid rgba(255,255,255,.1)">S1</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#00E676;border-bottom:1px solid rgba(255,255,255,.1)">S2</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#FFB84D;border-bottom:1px solid rgba(255,255,255,.1)">S3</th></tr>
         {rows_html}
         </table></div>"""
 
