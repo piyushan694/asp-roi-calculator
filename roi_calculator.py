@@ -6,21 +6,68 @@ from datetime import datetime
 
 st.set_page_config(page_title="ASP Partner ROI Calculator", layout="wide", page_icon="🔶", initial_sidebar_state="expanded")
 
-# ── CSS ──
+# ── Premium Financial CSS ──
 st.markdown("""<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 #MainMenu,footer,header{visibility:hidden}
-html,body,[class*="css"]{font-family:'Amazon Ember','Segoe UI',Helvetica,Arial,sans-serif}
-.hero{background:linear-gradient(135deg,#232F3E,#37475A,#485769);border-radius:14px;padding:30px 40px;margin-bottom:24px;border-bottom:4px solid #FF9900}
-.hero h1{color:#FFF;font-size:28px;margin:0 0 4px 0;font-weight:700}.hero .sub{color:#FF9900;font-size:15px;margin:0}.hero .meta{color:#A0AAB4;font-size:11px;margin-top:8px}
-.kpi{background:#FFF;border-radius:10px;padding:18px 14px;text-align:center;border:1px solid #E8ECEF;box-shadow:0 2px 6px rgba(0,0,0,.04)}
-.kpi .v{color:#232F3E;font-size:26px;font-weight:700;margin:0;line-height:1.2}.kpi .l{color:#6B7785;font-size:11px;margin:4px 0 0;text-transform:uppercase;letter-spacing:.4px}
-.kpi.hl{border-left:4px solid #FF9900}.kpi.g .v{color:#067D62}.kpi.r .v{color:#C7511F}.kpi.b .v{color:#0073BB}
-.stitle{font-size:18px;font-weight:700;color:#232F3E;border-left:4px solid #FF9900;padding-left:12px;margin:28px 0 12px}
-[data-testid="stSidebar"]{background:#232F3E}[data-testid="stSidebar"] *{color:#D5D9DD!important}
+html,body,[class*="css"]{font-family:'Inter','Amazon Ember','Segoe UI',sans-serif}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#0a0f1a 0%,#131b2e 40%,#1a2744 100%);border-radius:20px;padding:44px 52px;margin-bottom:32px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,153,0,.12) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#FF9900,#FFB84D,#FF9900)}
+.hero h1{color:#FFF;font-size:34px;margin:0 0 8px;font-weight:800;letter-spacing:-.5px;position:relative}
+.hero .sub{color:#FFB84D;font-size:17px;margin:0;font-weight:500;position:relative}
+.hero .meta{color:rgba(255,255,255,.45);font-size:12px;margin-top:14px;position:relative;letter-spacing:.3px}
+
+/* KPI Cards — Big Impact */
+.kpi-big{background:linear-gradient(145deg,#ffffff,#f8f9fb);border-radius:16px;padding:28px 20px;text-align:center;border:1px solid #e2e6ea;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .3s ease}
+.kpi-big:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.kpi-big .value{font-size:36px;font-weight:800;margin:0;line-height:1.1;letter-spacing:-.5px}
+.kpi-big .label{color:#8896a4;font-size:11px;margin:8px 0 0;text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.kpi-big .delta{font-size:13px;margin-top:6px;font-weight:600}
+.kpi-big.green .value{color:#0a8f6c}.kpi-big.green{border-bottom:3px solid #0a8f6c}
+.kpi-big.blue .value{color:#0066cc}.kpi-big.blue{border-bottom:3px solid #0066cc}
+.kpi-big.orange .value{color:#d4710a}.kpi-big.orange{border-bottom:3px solid #FF9900}
+.kpi-big.gold .value{color:#b8860b}.kpi-big.gold{border-bottom:3px solid #DAA520}
+.kpi-big.hero-card{background:linear-gradient(145deg,#0a8f6c,#067d62);border:none}
+.kpi-big.hero-card .value{color:#fff;font-size:44px}.kpi-big.hero-card .label{color:rgba(255,255,255,.8)}
+
+/* Scenario Cards */
+.scenario-card{background:#fff;border-radius:16px;padding:24px;border:1px solid #e8ecef;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.scenario-card h3{font-size:16px;font-weight:700;margin:0 0 4px;color:#232F3E}
+.scenario-card .tag{display:inline-block;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:700;letter-spacing:.5px}
+.tag-s1{background:#e8f4fd;color:#0066cc}.tag-s2{background:#e6f7f0;color:#067d62}.tag-s3{background:#fff4e5;color:#d4710a}
+
+/* Section Headers */
+.stitle{font-size:20px;font-weight:800;color:#131b2e;border-left:4px solid #FF9900;padding-left:14px;margin:36px 0 16px;letter-spacing:-.3px}
+.stitle-sub{font-size:14px;color:#8896a4;font-weight:400;margin:-10px 0 20px 18px}
+
+/* Insight callout */
+.insight{background:linear-gradient(135deg,#fff9f0,#fff5e6);border-radius:12px;padding:20px 24px;border-left:4px solid #FF9900;margin:16px 0}
+.insight .headline{font-size:15px;font-weight:700;color:#232F3E;margin:0 0 4px}.insight .body{font-size:13px;color:#5a6672;margin:0}
+
+/* Sidebar */
+[data-testid="stSidebar"]{background:linear-gradient(180deg,#0a0f1a,#131b2e)}
+[data-testid="stSidebar"] *{color:#c8d0d8!important}
+[data-testid="stSidebar"] .stSlider>div>div>div{background:#FF9900!important}
+
+/* Tables */
+.dataframe{font-size:13px!important;border-radius:8px!important}
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"]{gap:4px;background:#f0f2f5;border-radius:12px;padding:4px}
+.stTabs [data-baseweb="tab"]{border-radius:10px;font-weight:600;font-size:13px;padding:8px 20px}
+.stTabs [aria-selected="true"]{background:#fff!important;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+
+/* Footer */
+.app-footer{background:linear-gradient(135deg,#0a0f1a,#131b2e);border-radius:16px;padding:24px 36px;margin-top:48px;text-align:center}
+.app-footer .brand{color:#FF9900;font-size:16px;font-weight:700;margin:0}.app-footer .sub{color:rgba(255,255,255,.4);font-size:11px;margin:6px 0 0}
 </style>""", unsafe_allow_html=True)
 
-def kpi(v, l, c=""):
-    return f'<div class="kpi {c}"><p class="v">{v}</p><p class="l">{l}</p></div>'
+def kpi(v, l, c="", delta=""):
+    d = f'<p class="delta" style="color:{("#0a8f6c" if "+" in str(delta) or delta=="" else "#c7511f")}">{delta}</p>' if delta else ""
+    return f'<div class="kpi-big {c}"><p class="value">{v}</p><p class="label">{l}</p>{d}</div>'
 
 # ═══════════════════════════════════════════════════════════════
 # SIDEBAR — ALL INPUTS
@@ -217,49 +264,110 @@ def calc_roi(txn_pct, inc_pct):
 # ═══════════════════════════════════════════════════════════════
 # HERO & TABS
 # ═══════════════════════════════════════════════════════════════
-st.markdown(f"""<div class="hero"><h1>🔶 {partner_name} — Alexa ROI Calculator</h1>
-<p class="sub">Deal Financial Model &amp; Sensitivity Analysis</p>
-<p class="meta">Confidential | {datetime.now().strftime('%B %d, %Y')} | Expand sidebar (▸) to adjust assumptions</p></div>""", unsafe_allow_html=True)
+st.markdown(f"""<div class="hero"><h1>🔶 Alexa Smart Properties</h1>
+<p class="sub">{partner_name} — Return on Investment Analysis</p>
+<p class="meta">CONFIDENTIAL — For Partner Discussion Only &nbsp;·&nbsp; {datetime.now().strftime('%B %d, %Y')}</p></div>""", unsafe_allow_html=True)
 
 tab1, tab2, tab3, tab4 = st.tabs([
     "  📋 Executive Summary  ", "  🎮 Live Scenario Builder  ",
     "  🔢 Calculation Walkthrough  ", "  📊 Sensitivity Analysis  "
 ])
 
-# ─── TAB 1: EXECUTIVE SUMMARY (3 pre-set scenarios) ───
+# ─── TAB 1: EXECUTIVE SUMMARY ───
 with tab1:
     st.markdown(f'<div class="stitle">{partner_name} — ROI Summary</div>', unsafe_allow_html=True)
+    st.markdown('<p class="stitle-sub">Three scenarios modeling Alexa deployment impact on incremental revenue and profitability</p>', unsafe_allow_html=True)
+
     c1, c2, c3 = st.columns(3)
     with c1:
-        st.markdown("**Scenario 1**")
+        st.markdown('<div class="scenario-card"><span class="tag tag-s1">SCENARIO 1</span>', unsafe_allow_html=True)
         s1t = st.slider("Transactions via Alexa %", 1, 50, 8, key="e1t") / 100
         s1i = st.slider("Incrementality via Alexa %", 1, 100, 50, key="e1i") / 100
+        st.markdown('</div>', unsafe_allow_html=True)
     with c2:
-        st.markdown("**Scenario 2**")
+        st.markdown('<div class="scenario-card"><span class="tag tag-s2">SCENARIO 2</span>', unsafe_allow_html=True)
         s2t = st.slider("Transactions via Alexa %", 1, 50, 10, key="e2t") / 100
         s2i = st.slider("Incrementality via Alexa %", 1, 100, 40, key="e2i") / 100
+        st.markdown('</div>', unsafe_allow_html=True)
     with c3:
-        st.markdown("**Scenario 3**")
+        st.markdown('<div class="scenario-card"><span class="tag tag-s3">SCENARIO 3</span>', unsafe_allow_html=True)
         s3t = st.slider("Transactions via Alexa %", 1, 50, 15, key="e3t") / 100
         s3i = st.slider("Incrementality via Alexa %", 1, 100, 80, key="e3i") / 100
+        st.markdown('</div>', unsafe_allow_html=True)
 
     r1, r2, r3 = calc_roi(s1t, s1i), calc_roi(s2t, s2i), calc_roi(s3t, s3i)
-    # Annual per property = monthly CP/room × 12 × (rooms_with_alexa / alexa_properties)
     ann_prop = lambda r: r["inc_cp_room"] * 12 * avg_rooms_per_alexa_property / 1000
+
+    # Hero ROI cards — the money shot
     st.markdown("---")
+    st.markdown(f'<div class="stitle">Incremental Contribution Profit</div>', unsafe_allow_html=True)
 
-    for lbl, r, css in [("Scenario 1", r1, "b"), ("Scenario 2", r2, "g"), ("Scenario 3", r3, "r")]:
-        st.markdown(f"**{lbl}**")
-        k1, k2, k3 = st.columns(3)
-        with k1: st.markdown(kpi(f"${r['inc_cp_room']:,.0f}", "Monthly per Room", f"hl {css}"), unsafe_allow_html=True)
-        with k2: st.markdown(kpi(f"${r['inc_cp_room']*12:,.0f}", "Annual per Room", css), unsafe_allow_html=True)
-        with k3: st.markdown(kpi(f"${ann_prop(r):,.0f}K", f"Annual per Property (in 000s)", css), unsafe_allow_html=True)
-        st.markdown("")
+    for sn, r, tag, color in [("Scenario 1", r1, "tag-s1", "blue"), ("Scenario 2", r2, "tag-s2", "green"), ("Scenario 3", r3, "tag-s3", "orange")]:
+        st.markdown(f'<span class="tag {tag}" style="margin-bottom:8px;display:inline-block">{sn}</span>', unsafe_allow_html=True)
+        k1, k2, k3, k4 = st.columns(4)
+        with k1: st.markdown(kpi(f"{r['roi']:.0f}%", "Return on Investment", "hero-card" if r['roi'] > 30 else f"{color}"), unsafe_allow_html=True)
+        with k2: st.markdown(kpi(f"${r['inc_cp_room']:,.0f}", "Monthly per Room", color), unsafe_allow_html=True)
+        with k3: st.markdown(kpi(f"${r['inc_cp_room']*12:,.0f}", "Annual per Room", color), unsafe_allow_html=True)
+        with k4: st.markdown(kpi(f"${ann_prop(r):,.0f}K", "Annual per Property (000s)", color), unsafe_allow_html=True)
+        st.markdown("<div style='height:12px'></div>", unsafe_allow_html=True)
 
-    st.markdown("---")
+    # Insight callout
+    best = max([r1, r2, r3], key=lambda x: x["roi"])
+    st.markdown(f"""<div class="insight">
+    <p class="headline">💡 At {max(s1t,s2t,s3t)*100:.0f}% transaction adoption, Alexa generates up to ${best['inc_cp_room']*12:,.0f} in annual incremental profit per room</p>
+    <p class="body">Across {int(avg_rooms_per_alexa_property):,} rooms per property, that's ${ann_prop(best):,.0f}K in annual incremental contribution profit per property.</p>
+    </div>""", unsafe_allow_html=True)
 
-    # Summary table with all 3 views per scenario
-    st.markdown(f'<div class="stitle">Side-by-Side Comparison</div>', unsafe_allow_html=True)
+    # Visual: ROI comparison gauge chart
+    st.markdown(f'<div class="stitle">ROI Comparison</div>', unsafe_allow_html=True)
+    fig_gauge = go.Figure()
+    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#0066cc"), ("Scenario 2", r2, "#0a8f6c"), ("Scenario 3", r3, "#FF9900")]):
+        fig_gauge.add_trace(go.Indicator(
+            mode="gauge+number+delta",
+            value=r["roi"],
+            title={"text": sn, "font": {"size": 16, "color": "#232F3E"}},
+            number={"suffix": "%", "font": {"size": 32, "color": "#232F3E"}},
+            gauge={
+                "axis": {"range": [0, max(150, r["roi"] + 30)], "tickcolor": "#d0d5dd"},
+                "bar": {"color": color, "thickness": 0.7},
+                "bgcolor": "#f0f2f5",
+                "borderwidth": 0,
+                "steps": [
+                    {"range": [0, 20], "color": "#fde8e8"},
+                    {"range": [20, 50], "color": "#fef3cd"},
+                    {"range": [50, 150], "color": "#d4edda"},
+                ],
+                "threshold": {"line": {"color": "#232F3E", "width": 2}, "thickness": 0.8, "value": r["roi"]},
+            },
+            domain={"row": 0, "column": i},
+        ))
+    fig_gauge.update_layout(
+        grid={"rows": 1, "columns": 3, "pattern": "independent"},
+        height=280, margin=dict(t=40, b=20, l=30, r=30),
+        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+    )
+    st.plotly_chart(fig_gauge, use_container_width=True)
+
+    # Revenue waterfall — tells the story
+    st.markdown(f'<div class="stitle">Value Creation Waterfall — Scenario 2 (Monthly per Room)</div>', unsafe_allow_html=True)
+    wf_labels = ["Incremental<br>Revenue", "Cost<br>Savings", "Payment<br>to Alexa", "Amenity<br>Costs", "Net Incremental<br>Profit"]
+    wf_vals = [r2["amenity_inc_room"], r2["cost_savings_room"], -r2["total_payment_room"], -r2["amenity_cost_room"], r2["inc_cp_room"]]
+    fig_wf = go.Figure(go.Waterfall(
+        x=wf_labels, y=wf_vals, measure=["absolute", "relative", "relative", "relative", "total"],
+        connector=dict(line=dict(color="#d0d5dd", width=1)),
+        increasing=dict(marker=dict(color="#0a8f6c", line=dict(color="#067d62", width=1))),
+        decreasing=dict(marker=dict(color="#e74c3c", line=dict(color="#c0392b", width=1))),
+        totals=dict(marker=dict(color="#FF9900", line=dict(color="#d4710a", width=1))),
+        text=[f"${v:,.0f}" for v in wf_vals], textposition="outside",
+        textfont=dict(size=14, color="#232F3E", family="Inter"),
+    ))
+    fig_wf.update_layout(height=420, plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
+                         yaxis=dict(gridcolor="#eef0f3", title="$ per Room / Month", title_font=dict(size=12, color="#8896a4")),
+                         margin=dict(t=20, b=40), font=dict(family="Inter"))
+    st.plotly_chart(fig_wf, use_container_width=True)
+
+    # Detailed comparison table
+    st.markdown(f'<div class="stitle">Detailed Comparison</div>', unsafe_allow_html=True)
     def f(v): return f"${v:,.0f}"
     def build_scenario_cols(r, st_pct, si_pct):
         m = r["inc_cp_room"]; a = m * 12; p = a * avg_rooms_per_alexa_property / 1000
@@ -287,7 +395,6 @@ with tab1:
     s1c = build_scenario_cols(r1, s1t, s1i)
     s2c = build_scenario_cols(r2, s2t, s2i)
     s3c = build_scenario_cols(r3, s3t, s3i)
-    header_sub = ["Monthly per Room", "Annual per Room", "Annual per Property (in 000s)"]
     summary_rows = []
     for i, m in enumerate(metrics):
         summary_rows.append({
@@ -298,12 +405,21 @@ with tab1:
         })
     st.dataframe(pd.DataFrame(summary_rows), use_container_width=True, hide_index=True, height=560)
 
-    fig = go.Figure()
-    fig.add_trace(go.Bar(x=["Scenario 1","Scenario 2","Scenario 3"], y=[r1["roi"],r2["roi"],r3["roi"]],
-                         marker_color=["#0073BB","#067D62","#C7511F"],
-                         text=[f"{v:.0f}%" for v in [r1["roi"],r2["roi"],r3["roi"]]], textposition="outside"))
-    fig.update_layout(title="ROI % by Scenario", height=350, plot_bgcolor="#FAFBFC", yaxis=dict(gridcolor="#E8ECEF"))
-    st.plotly_chart(fig, use_container_width=True)
+    # Annual CP bar chart
+    fig_cp = go.Figure()
+    for sn, r, color in [("Scenario 1", r1, "#0066cc"), ("Scenario 2", r2, "#0a8f6c"), ("Scenario 3", r3, "#FF9900")]:
+        fig_cp.add_trace(go.Bar(
+            name=sn, x=["Annual CP / Room", "Annual CP / Property (000s)"],
+            y=[r["inc_cp_room"] * 12, ann_prop(r)],
+            marker_color=color, marker_line=dict(color="#232F3E", width=0.5),
+            text=[f"${r['inc_cp_room']*12:,.0f}", f"${ann_prop(r):,.0f}K"],
+            textposition="outside", textfont=dict(size=13, family="Inter", color="#232F3E"),
+        ))
+    fig_cp.update_layout(barmode="group", height=380, plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
+                         yaxis=dict(gridcolor="#eef0f3"), margin=dict(t=40, b=40),
+                         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5),
+                         font=dict(family="Inter"))
+    st.plotly_chart(fig_cp, use_container_width=True)
 
 # ─── TAB 2: LIVE SCENARIO BUILDER (partner plays with this) ───
 with tab2:
@@ -527,6 +643,6 @@ with tab4:
     st.plotly_chart(fig_pay, use_container_width=True)
 
 # Footer
-st.markdown(f"""<div style="background:#232F3E;border-radius:10px;padding:16px 28px;margin-top:36px;text-align:center">
-<p style="color:#FF9900;font-weight:600;margin:0">Alexa Smart Properties</p>
-<p style="color:#A0AAB4;font-size:11px;margin:4px 0 0">{partner_name} | Confidential | {datetime.now().strftime('%B %d, %Y')}</p></div>""", unsafe_allow_html=True)
+st.markdown(f"""<div class="app-footer">
+<p class="brand">🔶 Alexa Smart Properties</p>
+<p class="sub">{partner_name} &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; {datetime.now().strftime('%B %d, %Y')}</p></div>""", unsafe_allow_html=True)
