@@ -96,38 +96,58 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 [data-testid="stDataFrame"] [role="columnheader"]{background:rgba(30,74,124,.6)!important;color:#7DBFFF!important;font-weight:700!important;text-transform:uppercase;letter-spacing:1px;font-size:10.5px!important}
 
 /* ═══════════════════════════════════════════════════════════════
-   SLIDER STYLING — Clean rewrite
-   Values: #4A90D9 | Filled track: #FFFFFF | Unfilled: #A0A0A0
+   SLIDER STYLING — Final pass
+   Value numbers: #4A90D9 | Tick labels: #4A90D9
+   Filled track: #FFFFFF | Unfilled track: #A0A0A0
+   Thumb: white ring (#FFFFFF) + navy fill (#1A2A3F), 14px circle
    ═══════════════════════════════════════════════════════════════ */
 
-/* 1. Thumb (draggable circle) — white */
-.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;background-color:#FFFFFF!important;border:2px solid #A0A0A0!important;box-shadow:0 0 6px rgba(255,255,255,.3)!important}
+/* 1. Thumb — white outer ring, dark navy inner fill, circle, 14px */
+.stSlider [data-baseweb="slider"] [role="slider"]{
+  background:#1A2A3F!important;background-color:#1A2A3F!important;
+  border:2px solid #FFFFFF!important;
+  border-radius:50%!important;
+  width:14px!important;height:14px!important;
+  box-shadow:0 0 6px rgba(255,255,255,.25)!important}
 
-/* 2. Slider value number above thumb — #4A90D9 steel blue, visible */
-.stSlider [data-testid="stThumbValue"]{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;font-weight:700!important;font-size:14px!important;border:none!important;box-shadow:none!important;visibility:visible!important;opacity:1!important}
+/* 2. Slider value number above thumb — #4A90D9 blue, 14px bold */
+.stSlider [data-testid="stThumbValue"],
 .stSlider [data-testid="stThumbValue"] div,
 .stSlider [data-testid="stThumbValue"] span,
-.stSlider [data-testid="stThumbValue"] p{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;visibility:visible!important;opacity:1!important}
+.stSlider [data-testid="stThumbValue"] p{
+  color:#4A90D9!important;
+  background:transparent!important;background-color:transparent!important;
+  font-weight:700!important;font-size:14px!important;
+  border:none!important;box-shadow:none!important;
+  visibility:visible!important;opacity:1!important;display:block!important}
 
-/* 3. Min/max tick labels below track — #4A90D9 steel blue, visible */
+/* 3. Min/max tick labels below track — #4A90D9 blue, 11px */
 .stSlider [data-testid="stTickBarMin"],
-.stSlider [data-testid="stTickBarMax"]{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;visibility:visible!important;opacity:1!important}
+.stSlider [data-testid="stTickBarMax"],
 .stSlider [data-testid="stTickBarMin"] div,
 .stSlider [data-testid="stTickBarMin"] span,
 .stSlider [data-testid="stTickBarMax"] div,
-.stSlider [data-testid="stTickBarMax"] span{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;visibility:visible!important;opacity:1!important}
+.stSlider [data-testid="stTickBarMax"] span{
+  color:#4A90D9!important;font-size:11px!important;
+  background:transparent!important;background-color:transparent!important;
+  visibility:visible!important;opacity:1!important;display:block!important}
 
-/* 4. Track — filled (left of thumb) = white, unfilled (right) = #A0A0A0 silver
-      BaseWeb structure: slider > div > div > [track-children]
-      Child 1 = filled, Child 2 = thumb, Child 3 = unfilled */
-/* Filled track segment */
-.stSlider [data-baseweb="slider"] > div > div > div:first-child{background:#FFFFFF!important;background-color:#FFFFFF!important}
-.stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important}
-/* Unfilled track segment */
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3){background:#A0A0A0!important;background-color:#A0A0A0!important}
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3) > div{background:#A0A0A0!important;background-color:#A0A0A0!important}
-.stSlider [data-baseweb="slider"] > div > div > div:last-child{background:#A0A0A0!important;background-color:#A0A0A0!important}
-.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:#A0A0A0!important;background-color:#A0A0A0!important}
+/* 4. Track colors
+      Streamlit config.toml primaryColor=#FFFFFF handles the filled track.
+      CSS below reinforces filled=white and sets unfilled=#A0A0A0.
+      BaseWeb slider DOM: slider > div > div > [child1=filled, child2=thumb, child3=unfilled] */
+
+/* Filled track (left of thumb) — white */
+.stSlider [data-baseweb="slider"] > div > div > div:first-child,
+.stSlider [data-baseweb="slider"] > div > div > div:first-child > div{
+  background:#FFFFFF!important;background-color:#FFFFFF!important;height:4px!important}
+
+/* Unfilled track (right of thumb) — #A0A0A0 silver */
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3),
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3) > div,
+.stSlider [data-baseweb="slider"] > div > div > div:last-child,
+.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{
+  background:#A0A0A0!important;background-color:#A0A0A0!important;height:4px!important}
 
 /* 5. Streamlit progress-bar slider variant (v1.30+) */
 .stSlider progress{accent-color:#FFFFFF!important}
