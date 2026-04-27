@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Local assets — keep the folder but don't commit large brand images
+# (uncomment next line if you want to keep logo out of git)
+# assets/*.png
+# assets/*.jpg

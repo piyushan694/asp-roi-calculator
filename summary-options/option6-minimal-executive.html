@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Option 6 — Minimal Executive</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;background:#fff;color:#1a1a2e;padding:60px 80px;max-width:1100px;margin:0 auto}
+.header{margin-bottom:48px;padding-bottom:24px;border-bottom:3px solid #0d1b2a}
+.header .logo{font-size:10px;text-transform:uppercase;letter-spacing:4px;color:#FF9900;font-weight:700;margin-bottom:12px}
+.header h1{font-size:36px;font-weight:800;color:#0d1b2a;letter-spacing:-1px;line-height:1.1}
+.header h2{font-size:18px;font-weight:400;color:#5c6b7a;margin-top:8px}
+.header .conf{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:#a0aab4;margin-top:16px}
+.headline-row{display:flex;gap:40px;margin:40px 0;padding:32px 0;border-top:1px solid #e8ecf1;border-bottom:1px solid #e8ecf1}
+.headline-item{flex:1;text-align:center}
+.headline-item .num{font-size:52px;font-weight:800;color:#0d1b2a;line-height:1}
+.headline-item .pct{font-size:52px;font-weight:800;line-height:1}
+.headline-item.s1 .pct{color:#0052cc}.headline-item.s2 .pct{color:#067d62}.headline-item.s3 .pct{color:#c7511f}
+.headline-item .desc{font-size:11px;color:#8896a4;text-transform:uppercase;letter-spacing:1px;margin-top:8px}
+.headline-item .sub{font-size:14px;color:#5c6b7a;margin-top:4px}
+.label{font-size:10px;text-transform:uppercase;letter-spacing:3px;font-weight:700;color:#5c6b7a;margin:40px 0 16px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:right;padding:8px 16px;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#8896a4;border-bottom:2px solid #0d1b2a;font-weight:600}
+th:first-child{text-align:left}
+td{text-align:right;padding:8px 16px;border-bottom:1px solid #f0f2f5}
+td:first-child{text-align:left;color:#0d1b2a;font-weight:500}
+tr.spacer td{border:none;padding:4px}
+tr.total td{font-weight:800;font-size:15px;border-top:2px solid #0d1b2a;border-bottom:2px solid #0d1b2a;color:#0d1b2a}
+tr.neg td:not(:first-child){color:#c7511f}
+.takeaway{margin:40px 0;padding:24px 0;border-top:1px solid #e8ecf1}
+.takeaway p{font-size:16px;color:#0d1b2a;line-height:1.6}
+.takeaway strong{color:#067d62}
+.footer{margin-top:60px;padding-top:20px;border-top:1px solid #e8ecf1;display:flex;justify-content:space-between;font-size:9px;color:#a0aab4;text-transform:uppercase;letter-spacing:2px}
+</style></head><body>
+<div class="header">
+<p class="logo">Alexa Smart Properties</p>
+<h1>Holland America Line</h1>
+<h2>Return on Investment Analysis</h2>
+<p class="conf">Amazon Confidential · For Discussion Purposes Only</p>
+</div>
+<div class="headline-row">
+<div class="headline-item s1"><p class="pct">54%</p><p class="desc">Scenario 1 ROI</p><p class="sub">$369 annual CP/room</p></div>
+<div class="headline-item s2"><p class="pct">45%</p><p class="desc">Scenario 2 ROI</p><p class="sub">$328 annual CP/room</p></div>
+<div class="headline-item s3"><p class="pct">93%</p><p class="desc">Scenario 3 ROI</p><p class="sub">$1,311 annual CP/room</p></div>
+</div>
+<p class="label">Financial Summary — Monthly per Room</p>
+<table>
+<tr><th></th><th>Scenario 1<br><span style="font-weight:400;font-size:9px">8% Txn / 50% Inc</span></th><th>Scenario 2<br><span style="font-weight:400;font-size:9px">10% Txn / 40% Inc</span></th><th>Scenario 3<br><span style="font-weight:400;font-size:9px">15% Txn / 80% Inc</span></th></tr>
+<tr><td>Total Revenue</td><td>$297</td><td>$391</td><td>$560</td></tr>
+<tr class="spacer"><td></td><td></td><td></td><td></td></tr>
+<tr><td>Alexa Benefits</td><td>$150</td><td>$142</td><td>$378</td></tr>
+<tr><td style="padding-left:24px;color:#5c6b7a">Incremental Amenities Revenue</td><td>$120</td><td>$112</td><td>$348</td></tr>
+<tr><td style="padding-left:24px;color:#5c6b7a">Cost Saving</td><td>$30</td><td>$30</td><td>$30</td></tr>
+<tr class="spacer"><td></td><td></td><td></td><td></td></tr>
+<tr class="neg"><td>Total Payment to Alexa</td><td>($34)</td><td>($39)</td><td>($50)</td></tr>
+<tr class="neg"><td style="padding-left:24px;color:#8896a4">Fixed Subscription Fee</td><td>($15)</td><td>($15)</td><td>($15)</td></tr>
+<tr class="neg"><td style="padding-left:24px;color:#8896a4">Rev-Share Payments</td><td>($19)</td><td>($24)</td><td>($35)</td></tr>
+<tr class="spacer"><td></td><td></td><td></td><td></td></tr>
+<tr class="neg"><td>Incremental Amenities Cost</td><td>($52)</td><td>($51)</td><td>($156)</td></tr>
+<tr class="spacer"><td></td><td></td><td></td><td></td></tr>
+<tr class="total"><td>Incremental CP</td><td>$64</td><td>$52</td><td>$172</td></tr>
+<tr class="total"><td>ROI %</td><td>61%</td><td>42%</td><td>96%</td></tr>
+</table>
+<div class="takeaway"><p>At <strong>15% transaction adoption</strong>, Alexa deployment generates <strong>$1,311 in annual incremental profit per room</strong> — translating to <strong>$656K per property annually</strong> across 500 rooms per property.</p></div>
+<div class="footer"><span>Alexa Smart Properties</span><span>Confidential</span></div>
+</body></html>

@@ -1,0 +1,493 @@
+Country,Region,Classic Alexa/Alexa+,Fleet Type,Enterprise Owned - Resellers,Vertical,Subscription Type,Partner Name,Start Date,End Date,Scenario,Metrics,Value
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,1/1/26,1/1/26,OP2,Install Base,30222
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),41879.06
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,2/1/26,2/1/26,OP2,Install Base,30222
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),41879.06
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,3/1/26,3/1/26,OP2,Install Base,30222
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),41879.06
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,4/1/26,4/1/26,OP2,Install Base,30222
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),41879.06
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,5/1/26,5/1/26,OP2,Install Base,30222
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),41879.06
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,6/1/26,6/1/26,OP2,Install Base,30222
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),41879.06
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,7/1/26,7/1/26,OP2,Install Base,29718.3
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),41879.06
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,8/1/26,8/1/26,OP2,Install Base,29214.6
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),41181.07
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,9/1/26,9/1/26,OP2,Install Base,28710.9
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),40483.09
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,10/1/26,10/1/26,OP2,Install Base,28207.2
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),39785.11
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,11/1/26,11/1/26,OP2,Install Base,27703.5
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),39087.12
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Base Subscription Revenue,WDPR hospitality,12/1/26,12/1/26,OP2,Install Base,27199.8
+US,US,Classic Alexa,Managed,Enterprise Owned,Resorts,Subscription Revenue,WDPR hospitality,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),38389.14
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,1/1/26,1/1/26,OP2,New Deployments,300
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,1/1/26,1/1/26,OP2,Install Base,18059
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),47535.06
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,2/1/26,2/1/26,OP2,New Deployments,300
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,2/1/26,2/1/26,OP2,Install Base,18359
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),48338.06
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,3/1/26,3/1/26,OP2,New Deployments,300
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,3/1/26,3/1/26,OP2,Install Base,18659
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),49141.06
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,4/1/26,4/1/26,OP2,New Deployments,300
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,4/1/26,4/1/26,OP2,Install Base,18959
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),49944.06
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,5/1/26,5/1/26,OP2,New Deployments,300
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,5/1/26,5/1/26,OP2,Install Base,19259
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),50747.07
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,6/1/26,6/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,6/1/26,6/1/26,OP2,Install Base,19259
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),51550.07
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,7/1/26,7/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,7/1/26,7/1/26,OP2,Install Base,19259
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),51550.07
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,8/1/26,8/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,8/1/26,8/1/26,OP2,Install Base,19259
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),51550.07
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,9/1/26,9/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,9/1/26,9/1/26,OP2,Install Base,19259
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),51550.07
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,10/1/26,10/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,10/1/26,10/1/26,OP2,Install Base,19259
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),51550.07
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,11/1/26,11/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,11/1/26,11/1/26,OP2,Install Base,19259
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),51550.07
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,12/1/26,12/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Base Subscription Revenue,Red Cross ES,12/1/26,12/1/26,OP2,Install Base,19259
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Red Cross ES,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),51550.07
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,1/1/26,1/1/26,OP2,Install Base,6539
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),39179.88
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,2/1/26,2/1/26,OP2,Install Base,6539
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),39179.88
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,3/1/26,3/1/26,OP2,Install Base,6539
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),39179.88
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,4/1/26,4/1/26,OP2,Install Base,6539
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),39179.88
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,5/1/26,5/1/26,OP2,Install Base,6539
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),39179.88
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,6/1/26,6/1/26,OP2,Install Base,6539
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),39179.88
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,7/1/26,7/1/26,OP2,Install Base,6430.02
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),39179.88
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,8/1/26,8/1/26,OP2,Install Base,6321.03
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),38526.89
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,9/1/26,9/1/26,OP2,Install Base,6212.05
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),37873.89
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,10/1/26,10/1/26,OP2,Install Base,6103.07
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),37220.89
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,11/1/26,11/1/26,OP2,Install Base,5994.08
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),36567.89
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Base Subscription Revenue,Aiva Wagner Test,12/1/26,12/1/26,OP2,Install Base,5885.1
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Healthcare,Subscription Revenue,Aiva Wagner Test,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),35914.89
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,1/1/26,1/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,1/1/26,1/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,2/1/26,2/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,2/1/26,2/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,3/1/26,3/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,3/1/26,3/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,4/1/26,4/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,4/1/26,4/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,5/1/26,5/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,5/1/26,5/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,6/1/26,6/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,6/1/26,6/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,7/1/26,7/1/26,OP2,New Deployments,1271
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,7/1/26,7/1/26,OP2,Install Base,1271
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,8/1/26,8/1/26,OP2,New Deployments,446
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,8/1/26,8/1/26,OP2,Install Base,1717
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),31775
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,9/1/26,9/1/26,OP2,New Deployments,801
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,9/1/26,9/1/26,OP2,Install Base,2518
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),42925
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,10/1/26,10/1/26,OP2,New Deployments,820
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,10/1/26,10/1/26,OP2,Install Base,3338
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),62950
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,11/1/26,11/1/26,OP2,New Deployments,598
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,11/1/26,11/1/26,OP2,Install Base,3936
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),83450
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,12/1/26,12/1/26,OP2,New Deployments,674
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,12/1/26,12/1/26,OP2,Install Base,4610
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Hard Rock Hotel,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),98400
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,1/1/26,1/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,1/1/26,1/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,2/1/26,2/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,2/1/26,2/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,3/1/26,3/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,3/1/26,3/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,4/1/26,4/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,4/1/26,4/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,5/1/26,5/1/26,OP2,New Deployments,500
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,5/1/26,5/1/26,OP2,Install Base,500
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,6/1/26,6/1/26,OP2,New Deployments,1000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,6/1/26,6/1/26,OP2,Install Base,1500
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),7500
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,7/1/26,7/1/26,OP2,New Deployments,1500
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,7/1/26,7/1/26,OP2,Install Base,3000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),22500
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,8/1/26,8/1/26,OP2,New Deployments,2000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,8/1/26,8/1/26,OP2,Install Base,5000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),45000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,9/1/26,9/1/26,OP2,New Deployments,2000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,9/1/26,9/1/26,OP2,Install Base,7000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),75000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,10/1/26,10/1/26,OP2,New Deployments,2000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,10/1/26,10/1/26,OP2,Install Base,9000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),105000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,11/1/26,11/1/26,OP2,New Deployments,2000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,11/1/26,11/1/26,OP2,Install Base,11000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),135000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,12/1/26,12/1/26,OP2,New Deployments,2000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Base Subscription Revenue,CDW,12/1/26,12/1/26,OP2,Install Base,13000
+US,US,Alexa+,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,CDW,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),165000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,1/1/26,1/1/26,OP2,New Deployments,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,1/1/26,1/1/26,OP2,Install Base,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,2/1/26,2/1/26,OP2,New Deployments,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,2/1/26,2/1/26,OP2,Install Base,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,3/1/26,3/1/26,OP2,New Deployments,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,3/1/26,3/1/26,OP2,Install Base,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,4/1/26,4/1/26,OP2,New Deployments,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,4/1/26,4/1/26,OP2,Install Base,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,5/1/26,5/1/26,OP2,New Deployments,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,5/1/26,5/1/26,OP2,Install Base,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,6/1/26,6/1/26,OP2,New Deployments,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,6/1/26,6/1/26,OP2,Install Base,0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,7/1/26,7/1/26,OP2,New Deployments,500
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,7/1/26,7/1/26,OP2,Install Base,500
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),0
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,8/1/26,8/1/26,OP2,New Deployments,500
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,8/1/26,8/1/26,OP2,Install Base,1000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),25000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,9/1/26,9/1/26,OP2,New Deployments,1000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,9/1/26,9/1/26,OP2,Install Base,2000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),50000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,10/1/26,10/1/26,OP2,New Deployments,1000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,10/1/26,10/1/26,OP2,Install Base,3000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),100000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,11/1/26,11/1/26,OP2,New Deployments,1000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,11/1/26,11/1/26,OP2,Install Base,4000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),150000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,12/1/26,12/1/26,OP2,New Deployments,1000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,12/1/26,12/1/26,OP2,Install Base,5000
+SA,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Saudi Tourism Authority,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),200000
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,1/1/26,1/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,1/1/26,1/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,2/1/26,2/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,2/1/26,2/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,3/1/26,3/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,3/1/26,3/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,4/1/26,4/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,4/1/26,4/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,5/1/26,5/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,5/1/26,5/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,6/1/26,6/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,6/1/26,6/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,7/1/26,7/1/26,OP2,New Deployments,500
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,7/1/26,7/1/26,OP2,Install Base,500
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,8/1/26,8/1/26,OP2,New Deployments,750
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,8/1/26,8/1/26,OP2,Install Base,1250
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),12500
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,9/1/26,9/1/26,OP2,New Deployments,750
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,9/1/26,9/1/26,OP2,Install Base,2000
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),31250
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,10/1/26,10/1/26,OP2,New Deployments,750
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,10/1/26,10/1/26,OP2,Install Base,2750
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),50000
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,11/1/26,11/1/26,OP2,New Deployments,750
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,11/1/26,11/1/26,OP2,Install Base,3500
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),68750
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,12/1/26,12/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,12/1/26,12/1/26,OP2,Install Base,3500
+US,US,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Fairmont,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),87500
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,1/1/26,1/1/26,OP2,New Deployments,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,1/1/26,1/1/26,OP2,Install Base,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,2/1/26,2/1/26,OP2,New Deployments,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,2/1/26,2/1/26,OP2,Install Base,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,3/1/26,3/1/26,OP2,New Deployments,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,3/1/26,3/1/26,OP2,Install Base,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,4/1/26,4/1/26,OP2,New Deployments,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,4/1/26,4/1/26,OP2,Install Base,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,5/1/26,5/1/26,OP2,New Deployments,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,5/1/26,5/1/26,OP2,Install Base,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,6/1/26,6/1/26,OP2,New Deployments,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,6/1/26,6/1/26,OP2,Install Base,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,7/1/26,7/1/26,OP2,New Deployments,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,7/1/26,7/1/26,OP2,Install Base,0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,8/1/26,8/1/26,OP2,New Deployments,250
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,8/1/26,8/1/26,OP2,Install Base,250
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),0
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,9/1/26,9/1/26,OP2,New Deployments,250
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,9/1/26,9/1/26,OP2,Install Base,500
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),6250
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,10/1/26,10/1/26,OP2,New Deployments,250
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,10/1/26,10/1/26,OP2,Install Base,750
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),12500
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,11/1/26,11/1/26,OP2,New Deployments,250
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,11/1/26,11/1/26,OP2,Install Base,1000
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),18750
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,12/1/26,12/1/26,OP2,New Deployments,500
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,12/1/26,12/1/26,OP2,Install Base,1500
+ES,EU,Alexa+,Managed,Enterprise Owned,Hospitality,Subscription Revenue,Minor Hotels,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),25000
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,1/1/26,1/1/26,OP2,Install Base,6683
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),27946.99
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,2/1/26,2/1/26,OP2,Install Base,6683
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),27946.99
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,3/1/26,3/1/26,OP2,Install Base,6683
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),27946.99
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,4/1/26,4/1/26,OP2,Install Base,6683
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),27946.99
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,5/1/26,5/1/26,OP2,Install Base,6683
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),27946.99
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,6/1/26,6/1/26,OP2,Install Base,6683
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),27946.99
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,7/1/26,7/1/26,OP2,Install Base,6571.62
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),27946.99
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,8/1/26,8/1/26,OP2,Install Base,6460.23
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),27481.21
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,9/1/26,9/1/26,OP2,Install Base,6348.85
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),27015.43
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,10/1/26,10/1/26,OP2,Install Base,6237.47
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),26549.65
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,11/1/26,11/1/26,OP2,Install Base,6126.08
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),26083.86
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,12/1/26,12/1/26,OP2,Install Base,6014.7
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Senior Living,Subscription Revenue,Speak2 Software,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),25618.08
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,1/1/26,1/1/26,OP2,New Deployments,200
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,1/1/26,1/1/26,OP2,Install Base,1880
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),7752.19
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,2/1/26,2/1/26,OP2,New Deployments,200
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,2/1/26,2/1/26,OP2,Install Base,2080
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),8675.07
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,3/1/26,3/1/26,OP2,New Deployments,200
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,3/1/26,3/1/26,OP2,Install Base,2280
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),9597.95
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,4/1/26,4/1/26,OP2,New Deployments,200
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,4/1/26,4/1/26,OP2,Install Base,2480
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),10520.83
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,5/1/26,5/1/26,OP2,New Deployments,200
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,5/1/26,5/1/26,OP2,Install Base,2680
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),11443.71
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,6/1/26,6/1/26,OP2,New Deployments,100
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,6/1/26,6/1/26,OP2,Install Base,2780
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),12366.59
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,7/1/26,7/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,7/1/26,7/1/26,OP2,Install Base,2780
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),12828.03
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,8/1/26,8/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,8/1/26,8/1/26,OP2,Install Base,2780
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),12828.03
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,9/1/26,9/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,9/1/26,9/1/26,OP2,Install Base,2780
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),12828.03
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,10/1/26,10/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,10/1/26,10/1/26,OP2,Install Base,2780
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),12828.03
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,11/1/26,11/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,11/1/26,11/1/26,OP2,Install Base,2780
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),12828.03
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,12/1/26,12/1/26,OP2,New Deployments,0
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,12/1/26,12/1/26,OP2,Install Base,2780
+ES,EU,Classic Alexa,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Sanitas ES,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),12828.03
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,1/1/26,1/1/26,OP2,New Deployments,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,1/1/26,1/1/26,OP2,Install Base,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,2/1/26,2/1/26,OP2,New Deployments,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,2/1/26,2/1/26,OP2,Install Base,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,3/1/26,3/1/26,OP2,New Deployments,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,3/1/26,3/1/26,OP2,Install Base,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,4/1/26,4/1/26,OP2,New Deployments,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,4/1/26,4/1/26,OP2,Install Base,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,5/1/26,5/1/26,OP2,New Deployments,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,5/1/26,5/1/26,OP2,Install Base,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,6/1/26,6/1/26,OP2,New Deployments,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,6/1/26,6/1/26,OP2,Install Base,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,7/1/26,7/1/26,OP2,New Deployments,200
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,7/1/26,7/1/26,OP2,Install Base,200
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,8/1/26,8/1/26,OP2,New Deployments,200
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,8/1/26,8/1/26,OP2,Install Base,400
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),10000
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,9/1/26,9/1/26,OP2,New Deployments,200
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,9/1/26,9/1/26,OP2,Install Base,600
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),20000
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,10/1/26,10/1/26,OP2,New Deployments,200
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,10/1/26,10/1/26,OP2,Install Base,800
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),30000
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,11/1/26,11/1/26,OP2,New Deployments,200
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,11/1/26,11/1/26,OP2,Install Base,1000
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),40000
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,12/1/26,12/1/26,OP2,New Deployments,0
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,12/1/26,12/1/26,OP2,Install Base,1000
+UAE,MENA,Alexa+,Managed,Enterprise Owned,Cruise Line & Premium Hospitality,Subscription Revenue,Purehealth,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),50000
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,1/1/26,1/1/26,OP2,Install Base,3823
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),19110.01
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,2/1/26,2/1/26,OP2,Install Base,3823
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),19110.01
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,3/1/26,3/1/26,OP2,Install Base,3823
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),19110.01
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,4/1/26,4/1/26,OP2,Install Base,3823
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),19110.01
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,5/1/26,5/1/26,OP2,Install Base,3823
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),19110.01
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,6/1/26,6/1/26,OP2,Install Base,3823
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),19110.01
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,7/1/26,7/1/26,OP2,Install Base,3759.28
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),19110.01
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,8/1/26,8/1/26,OP2,Install Base,3695.57
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),18791.51
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,9/1/26,9/1/26,OP2,Install Base,3631.85
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),18473.01
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,10/1/26,10/1/26,OP2,Install Base,3568.13
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),18154.51
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,11/1/26,11/1/26,OP2,Install Base,3504.42
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),17836.01
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,12/1/26,12/1/26,OP2,Install Base,3440.7
+US,US,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,VolaraTest,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),17517.51
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,1/1/26,1/1/26,OP2,New Deployments,100
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,1/1/26,1/1/26,OP2,Install Base,1314
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),6648.73
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,2/1/26,2/1/26,OP2,New Deployments,100
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,2/1/26,2/1/26,OP2,Install Base,1414
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),7196.4
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,3/1/26,3/1/26,OP2,New Deployments,100
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,3/1/26,3/1/26,OP2,Install Base,1514
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),7744.08
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,4/1/26,4/1/26,OP2,New Deployments,100
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,4/1/26,4/1/26,OP2,Install Base,1614
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),8291.75
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,5/1/26,5/1/26,OP2,New Deployments,100
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,5/1/26,5/1/26,OP2,Install Base,1714
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),8839.42
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,6/1/26,6/1/26,OP2,New Deployments,0
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,6/1/26,6/1/26,OP2,Install Base,1714
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),9387.09
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,7/1/26,7/1/26,OP2,New Deployments,0
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,7/1/26,7/1/26,OP2,Install Base,1714
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),9387.09
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,8/1/26,8/1/26,OP2,New Deployments,0
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,8/1/26,8/1/26,OP2,Install Base,1714
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),9387.09
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,9/1/26,9/1/26,OP2,New Deployments,0
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,9/1/26,9/1/26,OP2,Install Base,1714
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),9387.09
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,10/1/26,10/1/26,OP2,New Deployments,0
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,10/1/26,10/1/26,OP2,Install Base,1714
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),9387.09
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,11/1/26,11/1/26,OP2,New Deployments,0
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,11/1/26,11/1/26,OP2,Install Base,1714
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),9387.09
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,12/1/26,12/1/26,OP2,New Deployments,0
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,12/1/26,12/1/26,OP2,Install Base,1714
+DE,EU,Classic Alexa,Managed,Enterprise Owned - Resellers,Hospitality,Subscription Revenue,Speed U Up DE,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),9387.09
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,1/1/26,1/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,1/1/26,1/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,2/1/26,2/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,2/1/26,2/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,3/1/26,3/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,3/1/26,3/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,4/1/26,4/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,4/1/26,4/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,5/1/26,5/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,5/1/26,5/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,6/1/26,6/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,6/1/26,6/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,7/1/26,7/1/26,OP2,New Deployments,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,7/1/26,7/1/26,OP2,Install Base,0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,8/1/26,8/1/26,OP2,New Deployments,250
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,8/1/26,8/1/26,OP2,Install Base,250
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),0
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,9/1/26,9/1/26,OP2,New Deployments,250
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,9/1/26,9/1/26,OP2,Install Base,500
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),6250
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,10/1/26,10/1/26,OP2,New Deployments,500
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,10/1/26,10/1/26,OP2,Install Base,1000
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),12500
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,11/1/26,11/1/26,OP2,New Deployments,500
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,11/1/26,11/1/26,OP2,Install Base,1500
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),25000
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,12/1/26,12/1/26,OP2,New Deployments,500
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,12/1/26,12/1/26,OP2,Install Base,2000
+US,US,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Arrow Senior Living,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),37500
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,1/1/26,1/1/26,OP2,New Deployments,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,1/1/26,1/1/26,OP2,Install Base,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,1/1/26,1/1/26,OP2,Revenue (Subscription + Rev-Share),0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,2/1/26,2/1/26,OP2,New Deployments,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,2/1/26,2/1/26,OP2,Install Base,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,2/1/26,2/1/26,OP2,Revenue (Subscription + Rev-Share),0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,3/1/26,3/1/26,OP2,New Deployments,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,3/1/26,3/1/26,OP2,Install Base,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,3/1/26,3/1/26,OP2,Revenue (Subscription + Rev-Share),0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,4/1/26,4/1/26,OP2,New Deployments,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,4/1/26,4/1/26,OP2,Install Base,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,4/1/26,4/1/26,OP2,Revenue (Subscription + Rev-Share),0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,5/1/26,5/1/26,OP2,New Deployments,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,5/1/26,5/1/26,OP2,Install Base,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,5/1/26,5/1/26,OP2,Revenue (Subscription + Rev-Share),0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,6/1/26,6/1/26,OP2,New Deployments,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,6/1/26,6/1/26,OP2,Install Base,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,6/1/26,6/1/26,OP2,Revenue (Subscription + Rev-Share),0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,7/1/26,7/1/26,OP2,New Deployments,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,7/1/26,7/1/26,OP2,Install Base,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,7/1/26,7/1/26,OP2,Revenue (Subscription + Rev-Share),0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,8/1/26,8/1/26,OP2,New Deployments,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,8/1/26,8/1/26,OP2,Install Base,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,8/1/26,8/1/26,OP2,Revenue (Subscription + Rev-Share),0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,9/1/26,9/1/26,OP2,New Deployments,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,9/1/26,9/1/26,OP2,Install Base,0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,9/1/26,9/1/26,OP2,Revenue (Subscription + Rev-Share),0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,10/1/26,10/1/26,OP2,New Deployments,300
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,10/1/26,10/1/26,OP2,Install Base,300
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,10/1/26,10/1/26,OP2,Revenue (Subscription + Rev-Share),0
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,11/1/26,11/1/26,OP2,New Deployments,300
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,11/1/26,11/1/26,OP2,Install Base,600
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,11/1/26,11/1/26,OP2,Revenue (Subscription + Rev-Share),6750
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,12/1/26,12/1/26,OP2,New Deployments,400
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,12/1/26,12/1/26,OP2,Install Base,1000
+FR,EU,Alexa+,Managed,Enterprise Owned,Senior Living,Subscription Revenue,Clariane,12/1/26,12/1/26,OP2,Revenue (Subscription + Rev-Share),13500

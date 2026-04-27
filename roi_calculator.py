@@ -3,84 +3,173 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 from datetime import datetime
+from pathlib import Path
+import base64
 
 st.set_page_config(page_title="ASP Partner ROI Calculator", layout="wide", page_icon="🔶", initial_sidebar_state="expanded")
 
-# ── Alexa Pitch Deck Theme — Dark BG + High Contrast Interactive ──
+# ══════════════════════════════════════════════════════════════════════
+# Alexa+ Pitch Deck Theme — Institutional Finance (Goldman / McKinsey)
+# Palette: Deep navy → Electric Alexa blue → Subtle glow
+#   Background:   #05070C (near-black) → #0A1628 (deep navy)
+#   Hero glow:    #1E90FF → #4AA8FF → #7DBFFF (Alexa brand blue spectrum)
+#   Accent:       #00A8E8 (Alexa cyan-blue) + #4AA8FF (electric blue)
+#   Text:         #FFFFFF / #B8C5D6 / #6B7A8F
+# ══════════════════════════════════════════════════════════════════════
 st.markdown("""<style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 #MainMenu,footer{visibility:hidden}
-html,body,[class*="css"]{font-family:'Inter','Amazon Ember',sans-serif}
+/* Hide ONLY the Deploy button — keep stToolbar so sidebar collapse arrow stays visible */
+.stDeployButton,[data-testid="stDeployButton"]{display:none!important}
+[data-testid="stToolbarActions"]{display:none!important}
+html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 
-/* Dark background matching Alexa deck */
-.stApp{background:#0b1120}
+/* ── Page background: Alexa deck vertical gradient ── */
+.stApp{background:radial-gradient(ellipse at top right,#0F2847 0%,#071020 40%,#05070C 100%);background-attachment:fixed}
+.block-container{padding-top:1.5rem;padding-bottom:3rem;max-width:1400px}
 
-/* Hero - Alexa deck gradient with blue glow */
-.hero{background:linear-gradient(135deg,#080c18 0%,#0a1128 40%,#0d2847 80%,#1a5276 100%);border-radius:16px;padding:40px 48px;margin-bottom:32px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;bottom:-40%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(126,184,218,.12) 0%,transparent 70%);border-radius:50%}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#4ECDC4,#7EB8DA,#4ECDC4)}
-.hero h1{color:#FFF;font-size:30px;margin:0 0 6px;font-weight:800;letter-spacing:-.5px;position:relative}
-.hero .sub{color:#4ECDC4;font-size:16px;margin:0;font-weight:600;position:relative}
-.hero .meta{color:rgba(255,255,255,.35);font-size:10px;margin-top:12px;position:relative;letter-spacing:1.5px;text-transform:uppercase}
+/* ── HERO: The Alexa+ title slide aesthetic ── */
+.hero{background:linear-gradient(125deg,#05070C 0%,#0A1628 35%,#0F2847 65%,#1E4A7C 100%);border-radius:18px;padding:48px 56px;margin-bottom:36px;position:relative;overflow:hidden;box-shadow:0 8px 48px rgba(0,0,0,.4),0 0 0 1px rgba(74,168,255,.08) inset}
+.hero::before{content:'';position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(74,168,255,.22) 0%,rgba(30,144,255,.10) 40%,transparent 70%);border-radius:50%;filter:blur(20px)}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#4AA8FF 30%,#7DBFFF 50%,#4AA8FF 70%,transparent)}
+.hero h1{color:#FFFFFF;font-size:34px;margin:0 0 8px;font-weight:800;letter-spacing:-0.8px;position:relative;line-height:1.15}
+.hero .sub{color:#7DBFFF;font-size:17px;margin:0;font-weight:500;position:relative;letter-spacing:0.2px}
+.hero .meta{color:rgba(255,255,255,.4);font-size:10px;margin-top:14px;position:relative;letter-spacing:2px;text-transform:uppercase;font-weight:600}
+.hero .meta-divider{color:rgba(125,191,255,.5);margin:0 10px}
 
-/* KPI Cards - elevated dark cards with glow borders */
-.kpi-big{background:linear-gradient(145deg,#111d33,#162544);border-radius:14px;padding:26px 20px;text-align:center;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 24px rgba(0,0,0,.3);transition:all .3s cubic-bezier(.4,0,.2,1)}
-.kpi-big:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(78,205,196,.08);border-color:rgba(78,205,196,.15)}
-.kpi-big .value{font-size:36px;font-weight:800;margin:0;line-height:1.1;letter-spacing:-.5px;color:#fff}
-.kpi-big .label{color:#8a9bb0;font-size:11px;margin:8px 0 0;text-transform:uppercase;letter-spacing:.8px;font-weight:600;white-space:nowrap}
+/* ── KPI Cards: Premium elevated dark cards ── */
+.kpi-big{background:linear-gradient(160deg,rgba(15,40,71,.6) 0%,rgba(10,22,40,.8) 100%);border-radius:14px;padding:28px 22px;text-align:center;border:1px solid rgba(125,191,255,.10);backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(0,0,0,.35);transition:all .35s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.kpi-big::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(125,191,255,.3),transparent)}
+.kpi-big:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(30,144,255,.15);border-color:rgba(125,191,255,.25)}
+.kpi-big .value{font-size:38px;font-weight:800;margin:0;line-height:1.05;letter-spacing:-0.8px;color:#FFFFFF;font-variant-numeric:tabular-nums}
+.kpi-big .label{color:#8FA3BC;font-size:10.5px;margin:10px 0 0;text-transform:uppercase;letter-spacing:1.4px;font-weight:700;white-space:nowrap}
 .kpi-big .delta{font-size:13px;margin-top:6px;font-weight:600}
-.kpi-big.green .value{color:#4ECDC4}.kpi-big.green{border-bottom:3px solid #4ECDC4}
-.kpi-big.blue .value{color:#4ECDC4}.kpi-big.blue{border-bottom:3px solid #4ECDC4}
-.kpi-big.orange .value{color:#FFB84D}.kpi-big.orange{border-bottom:3px solid #4ECDC4}
-.kpi-big.hero-card{background:linear-gradient(135deg,#4ECDC4,#3db8b0);border:none;box-shadow:0 8px 32px rgba(78,205,196,.2)}
-.kpi-big.hero-card .value{color:#fff;font-size:42px;text-shadow:0 2px 12px rgba(0,0,0,.3)}.kpi-big.hero-card .label{color:rgba(255,255,255,.85)}
+.kpi-big.green .value{color:#FFFFFF}.kpi-big.green{border-bottom:2px solid #FFFFFF;box-shadow:0 4px 24px rgba(255,255,255,.05)}
+.kpi-big.blue .value{color:#B8B8B8}.kpi-big.blue{border-bottom:2px solid #B8B8B8;box-shadow:0 4px 24px rgba(184,184,184,.06)}
+.kpi-big.orange .value{color:#C9C9C9}.kpi-big.orange{border-bottom:2px solid #C9C9C9;box-shadow:0 4px 24px rgba(201,201,201,.06)}
+.kpi-big.hero-card{background:linear-gradient(135deg,#1E90FF 0%,#0062CC 100%);border:none;box-shadow:0 8px 40px rgba(30,144,255,.35),0 0 0 1px rgba(255,255,255,.1) inset}
+.kpi-big.hero-card .value{color:#FFFFFF;font-size:44px;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.kpi-big.hero-card .label{color:rgba(255,255,255,.9);font-weight:700}
 
-/* Scenario Cards */
-.scenario-card{background:rgba(17,29,51,.6);border-radius:14px;padding:20px 24px;border:1px solid rgba(255,255,255,.06)}
-.scenario-card .tag{display:inline-block;padding:5px 16px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
-.tag-s1{background:rgba(126,184,218,.12);color:#4ECDC4;border:1px solid rgba(126,184,218,.25)}
-.tag-s2{background:rgba(0,230,118,.12);color:#4ECDC4;border:1px solid rgba(0,230,118,.25)}
-.tag-s3{background:rgba(212,175,55,.12);color:#D4AF37;border:1px solid rgba(212,175,55,.25)}
+/* ── Scenario Cards: Clean glass panels ── */
+.scenario-card{background:linear-gradient(160deg,rgba(15,40,71,.4) 0%,rgba(10,22,40,.6) 100%);border-radius:14px;padding:22px 26px;border:1px solid rgba(125,191,255,.08);backdrop-filter:blur(8px)}
+.scenario-card .tag{display:inline-block;padding:6px 18px;border-radius:6px;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+.tag-s1{background:rgba(255,255,255,.12);color:#FFFFFF;border:1px solid rgba(255,255,255,.3)}
+.tag-s2{background:rgba(184,184,184,.15);color:#B8B8B8;border:1px solid rgba(184,184,184,.35)}
+.tag-s3{background:rgba(201,201,201,.12);color:#C9C9C9;border:1px solid rgba(201,201,201,.3)}
 
-/* Section Headers - cyan accent */
-.stitle{font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:800;color:#7EB8DA;border-left:4px solid #7EB8DA;padding-left:14px;margin:36px 0 10px}
-.stitle-sub{font-size:14px;color:#8a9bb0;margin:0 0 20px 18px;font-weight:400}
+/* ── Section Headers: Institutional finance style ── */
+.stitle{font-size:11.5px;text-transform:uppercase;letter-spacing:2.5px;font-weight:800;color:#7DBFFF;padding:0 0 8px 0;margin:40px 0 6px;border-bottom:1px solid rgba(125,191,255,.15);display:flex;align-items:center;gap:10px}
+.stitle::before{content:'';width:3px;height:14px;background:linear-gradient(180deg,#4AA8FF,#1E90FF);border-radius:2px}
+.stitle-sub{font-size:14px;color:#8FA3BC;margin:0 0 24px 0;font-weight:400;line-height:1.5}
 
-/* Insight Box - slightly elevated dark */
-.insight{background:linear-gradient(135deg,#111d33,#162544);border-radius:14px;padding:28px 32px;margin:24px 0;position:relative;border:1px solid rgba(126,184,218,.12);box-shadow:0 4px 20px rgba(0,0,0,.2)}
-.insight::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#4ECDC4,#7EB8DA);border-radius:4px 0 0 4px}
-.insight .headline{font-size:18px;font-weight:700;color:#fff;margin:0 0 6px;line-height:1.4}
-.insight .body{font-size:13px;color:#8a9bb0;margin:0}
+/* ── Insight Box: Premium callout ── */
+.insight{background:linear-gradient(135deg,rgba(15,40,71,.7) 0%,rgba(30,74,124,.4) 100%);border-radius:16px;padding:32px 36px;margin:28px 0;position:relative;border:1px solid rgba(125,191,255,.15);backdrop-filter:blur(10px);box-shadow:0 6px 30px rgba(0,0,0,.25)}
+.insight::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:3px;background:linear-gradient(180deg,#4AA8FF,#1E90FF);border-radius:0 3px 3px 0}
+.insight .eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:2.5px;color:#4AA8FF;font-weight:800;margin:0 0 10px}
+.insight .headline{font-size:19px;font-weight:700;color:#FFFFFF;margin:0 0 8px;line-height:1.45;letter-spacing:-0.2px}
+.insight .body{font-size:13px;color:#8FA3BC;margin:0;line-height:1.5}
 
-/* Sidebar */
-[data-testid="stSidebar"]{background:linear-gradient(180deg,#060a14,#0a1128)}
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span{color:#8a9bb0!important}
-[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3{color:#4ECDC4!important}
-[data-testid="stSidebar"] label{color:#8a9bb0!important}
+/* ── Sidebar: Dark navy command panel ── */
+[data-testid="stSidebar"]{background:linear-gradient(180deg,#05070C 0%,#0A1628 100%);border-right:1px solid rgba(125,191,255,.08)}
+[data-testid="stSidebar"] .stMarkdown h2{color:#FFFFFF!important;font-size:16px;font-weight:800;letter-spacing:-0.3px;padding-bottom:10px;border-bottom:1px solid rgba(125,191,255,.12);margin-bottom:16px}
+[data-testid="stSidebar"] .stMarkdown h3{color:#7DBFFF!important;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.8px;margin-top:20px}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span{color:#8FA3BC!important}
+[data-testid="stSidebar"] label{color:#B8C5D6!important;font-size:12.5px;font-weight:500}
+[data-testid="stSidebar"] .stNumberInput input,[data-testid="stSidebar"] .stTextInput input{background:rgba(15,40,71,.4);color:#FFFFFF;border:1px solid rgba(125,191,255,.15);border-radius:6px}
+[data-testid="stSidebar"] .stNumberInput input:focus,[data-testid="stSidebar"] .stTextInput input:focus{border-color:#4AA8FF;box-shadow:0 0 0 1px #4AA8FF}
+[data-testid="stSidebar"] .stExpander{background:rgba(15,40,71,.3);border:1px solid rgba(125,191,255,.08);border-radius:8px}
+[data-testid="stSidebar"] details summary{color:#B8C5D6!important;font-size:12.5px;font-weight:500}
 
-/* Tabs - dark with cyan active */
-.stTabs [data-baseweb="tab-list"]{gap:0;border-bottom:2px solid rgba(255,255,255,.08);background:transparent}
-.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:14px 28px;color:#6a7d90;border-bottom:3px solid transparent;margin-bottom:-2px;background:transparent}
-.stTabs [aria-selected="true"]{color:#7EB8DA!important;border-bottom:3px solid #7EB8DA!important;background:transparent!important}
+/* ── Tabs: Clean institutional ── */
+.stTabs [data-baseweb="tab-list"]{gap:4px;border-bottom:1px solid rgba(125,191,255,.12);background:transparent;padding-bottom:0}
+.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:14px 24px;color:#6B7A8F;border-bottom:2px solid transparent;margin-bottom:-1px;background:transparent;transition:all .2s ease}
+.stTabs [data-baseweb="tab"]:hover{color:#B8C5D6}
+.stTabs [aria-selected="true"]{color:#FFFFFF!important;border-bottom:2px solid #C9C9C9!important;background:transparent!important;font-weight:700}
+/* Tab highlight/underline bar (BaseWeb injects its own) — force silver */
+.stTabs [data-baseweb="tab-highlight"],.stTabs [data-baseweb="tab-border"]{background:#C9C9C9!important;background-color:#C9C9C9!important}
 
-/* Tables */
-[data-testid="stDataFrame"]{border-radius:10px;overflow:hidden}
+/* ── Tables & DataFrames ── */
+[data-testid="stDataFrame"]{border-radius:10px;overflow:hidden;border:1px solid rgba(125,191,255,.08)}
+[data-testid="stDataFrame"] [role="gridcell"]{background:rgba(15,40,71,.3)!important;color:#E0E8F2!important}
+[data-testid="stDataFrame"] [role="columnheader"]{background:rgba(30,74,124,.6)!important;color:#7DBFFF!important;font-weight:700!important;text-transform:uppercase;letter-spacing:1px;font-size:10.5px!important}
 
-/* Sliders */
-.stSlider>div>div>div>div{background:#4ECDC4!important}
+/* ── Form controls — Sliders (ALL silver/white, catch ALL Streamlit injected colors) ── */
+/* Thumb (draggable circle) */
+.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;border:2px solid #C9C9C9!important;box-shadow:0 0 10px rgba(201,201,201,.5)!important}
+/* Value bubble (number label above thumb) — WHITE on every child layer */
+.stSlider [data-testid="stThumbValue"],
+.stSlider [data-testid="stThumbValue"] *,
+.stSlider [data-testid="stThumbValue"] div,
+.stSlider [data-testid="stThumbValue"] span{color:#FFFFFF!important;background:transparent!important;font-weight:700!important;fill:#FFFFFF!important}
+/* FILLED track (left of thumb, SELECTED range) — WHITE */
+.stSlider [data-baseweb="slider"] > div > div > div:first-child,
+.stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
+/* UNFILLED track (right of thumb, REMAINING range) — dim silver (unchanged) */
+.stSlider [data-baseweb="slider"] > div > div > div:last-child,
+.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:rgba(201,201,201,.35)!important;background-color:rgba(201,201,201,.35)!important}
+/* Streamlit's newer progress-bar-style slider (v1.30+) */
+.stSlider progress{accent-color:#FFFFFF!important}
+.stSlider progress::-webkit-progress-value{background:#FFFFFF!important}
+.stSlider progress::-webkit-progress-bar{background:rgba(201,201,201,.35)!important}
+.stSlider progress::-moz-progress-bar{background:#FFFFFF!important}
+/* Tick labels */
+.stSlider [data-testid="stTickBarMin"],.stSlider [data-testid="stTickBarMax"]{color:#8FA3BC!important}
+/* Kill every known Streamlit accent color (green/teal/red/blue) on slider children */
+div[data-baseweb="slider"] div[style*="rgb(0, 204"],
+div[data-baseweb="slider"] div[style*="rgb(0, 191"],
+div[data-baseweb="slider"] div[style*="rgb(0, 171"],
+div[data-baseweb="slider"] div[style*="rgb(255, 75"],
+div[data-baseweb="slider"] div[style*="rgb(255, 43"],
+div[data-baseweb="slider"] div[style*="rgb(0, 104"],
+div[data-baseweb="slider"] div[style*="rgb(246, 51"],
+div[data-baseweb="slider"] div[style*="rgb(14, 17"]{background:#FFFFFF!important;background-color:#FFFFFF!important}
+/* Every text node in/near slider → white */
+.stSlider span,.stSlider div[role="slider"] + div,.stSlider label + div span{color:#FFFFFF!important}
+.stRadio label,.stCheckbox label{color:#B8C5D6!important}
 
-/* Text colors for dark bg */
-[data-testid="stMetricValue"]{color:#fff!important}
-[data-testid="stMetricLabel"]{color:#8a9bb0!important}
-.stMarkdown p,.stMarkdown li{color:#c8d6e0}
-.stMarkdown strong{color:#fff}
-.stMarkdown h1,.stMarkdown h2,.stMarkdown h3,.stMarkdown h4{color:#fff}
+/* ── Text colors ── */
+[data-testid="stMetricValue"]{color:#FFFFFF!important;font-weight:800;letter-spacing:-0.5px}
+[data-testid="stMetricLabel"]{color:#8FA3BC!important;text-transform:uppercase;letter-spacing:1px;font-size:11px!important;font-weight:600!important}
+.stMarkdown p,.stMarkdown li{color:#B8C5D6}
+.stMarkdown strong{color:#FFFFFF;font-weight:700}
+.stMarkdown h1,.stMarkdown h2,.stMarkdown h3,.stMarkdown h4{color:#FFFFFF;letter-spacing:-0.3px}
+.stCaption,[data-testid="stCaptionContainer"]{color:#6B7A8F!important;font-size:11.5px!important}
+hr{border-color:rgba(125,191,255,.08)!important}
 
-/* Footer */
-.app-footer{background:linear-gradient(135deg,#060a14,#0a1128);border-radius:14px;padding:24px 36px;margin-top:48px;text-align:center;border-top:1px solid rgba(78,205,196,.1)}
-.app-footer .brand{color:#7EB8DA;font-size:13px;font-weight:700;margin:0;letter-spacing:2px;text-transform:uppercase}
-.app-footer .sub{color:rgba(255,255,255,.3);font-size:11px;margin:6px 0 0}
+/* ── Footer: Pitch deck style ── */
+.app-footer{background:linear-gradient(135deg,#05070C 0%,#0A1628 100%);border-radius:14px;padding:28px 40px;margin-top:56px;text-align:center;border-top:1px solid rgba(74,168,255,.15);position:relative;overflow:hidden}
+.app-footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,#4AA8FF,transparent)}
+.app-footer .brand{color:#7DBFFF;font-size:11px;font-weight:800;margin:0;letter-spacing:3px;text-transform:uppercase}
+.app-footer .sub{color:rgba(255,255,255,.35);font-size:10px;margin:8px 0 0;letter-spacing:1.5px;text-transform:uppercase}
+
+/* ── Streamlit plotly container ── */
+.stPlotlyChart{background:transparent!important;border-radius:12px;overflow:hidden}
 </style>""", unsafe_allow_html=True)
+
+# ── Unified chart theme for all Plotly figures ──
+PLOT_BG = "rgba(0,0,0,0)"
+PAPER_BG = "rgba(0,0,0,0)"
+GRID_COLOR = "rgba(125,191,255,.08)"
+AXIS_COLOR = "#8FA3BC"
+TEXT_COLOR = "#E0E8F2"
+ALEXA_BLUE = "#4AA8FF"
+ALEXA_CYAN = "#FFFFFF"       # Scenario 1 - White (per reference)
+ALEXA_PURPLE = "#C9C9C9"     # Scenario 3 - Light gray (per reference)
+ALEXA_DEEP = "#1E90FF"
+ALEXA_NEG = "#B8B8B8"        # bumped from #909090 for readability on navy
+ALEXA_GRAY = "#B8B8B8"       # Scenario 2 - brightened gray (ref #909090 too dark)
+
+def apply_plot_theme(fig, height=400):
+    fig.update_layout(
+        plot_bgcolor=PLOT_BG, paper_bgcolor=PAPER_BG,
+        font=dict(family="Inter, sans-serif", color=TEXT_COLOR, size=12),
+        height=height, margin=dict(t=40, b=40, l=40, r=40),
+        xaxis=dict(gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR, tickfont=dict(color=AXIS_COLOR), title_font=dict(color=AXIS_COLOR, size=12)),
+        yaxis=dict(gridcolor=GRID_COLOR, zerolinecolor=GRID_COLOR, tickfont=dict(color=AXIS_COLOR), title_font=dict(color=AXIS_COLOR, size=12)),
+        legend=dict(font=dict(color=TEXT_COLOR), bgcolor="rgba(0,0,0,0)"),
+    )
+    return fig
 
 def kpi(v, l, c="", delta=""):
     d = f'<p class="delta" style="color:{("#0a8f6c" if "+" in str(delta) or delta=="" else "#5C7A99")}">{delta}</p>' if delta else ""
@@ -90,7 +179,7 @@ def kpi(v, l, c="", delta=""):
 # SIDEBAR — ALL INPUTS
 # ═══════════════════════════════════════════════════════════════
 with st.sidebar:
-    st.markdown("## ⚙️ Deal Inputs")
+    st.markdown("## ⚙️ Deal Assumptions")
     partner_name = st.text_input("Partner Name", "Holland America Line")
 
     st.markdown("### 🏨 Property Metrics")
@@ -140,11 +229,14 @@ with st.sidebar:
     amenities = []
     for i in range(NUM_AMENITIES):
         dn, dp, dm = default_amenities[i] if i < len(default_amenities) else (f"Amenity {i+1}", 0, 50)
-        with st.expander(f"Amenity {i+1}: {dn}"):
-            name = st.text_input("Name", dn, key=f"an{i}")
+        # Sync expander header with current name (or placeholder if empty)
+        current_name = st.session_state.get(f"an{i}", dn)
+        display_name = current_name.strip() if current_name and current_name.strip() else f"— empty slot {i+1} —"
+        with st.expander(f"Amenity {i+1}: {display_name}"):
+            name = st.text_input("Name", dn, key=f"an{i}", placeholder=f"e.g. {dn}")
             rev_pct = st.slider("% of Revenue", 0, 50, dp, key=f"ap{i}") / 100
             margin = st.slider("Avg Margin %", 0, 100, dm, key=f"am{i}") / 100
-            amenities.append({"name": name, "pct": rev_pct, "margin": margin})
+            amenities.append({"name": name.strip() if name else dn, "pct": rev_pct, "margin": margin})
 
     # ── Fixed Fee Revenue Streams (3 slots) ──
     st.markdown("### 🎫 Fixed Fee Revenue Streams")
@@ -158,13 +250,15 @@ with st.sidebar:
     fixed_fees = []
     for i in range(NUM_FIXED):
         df = default_fixed[i] if i < len(default_fixed) else (f"Fixed Fee {i+1}", 0, 0, 0, 0)
-        with st.expander(f"Fixed Fee {i+1}: {df[0]}"):
-            fn = st.text_input("Name", df[0], key=f"fn{i}")
+        current_fn = st.session_state.get(f"fn{i}", df[0])
+        display_fn = current_fn.strip() if current_fn and current_fn.strip() else f"— empty slot {i+1} —"
+        with st.expander(f"Fixed Fee {i+1}: {display_fn}"):
+            fn = st.text_input("Name", df[0], key=f"fn{i}", placeholder=f"e.g. {df[0]}")
             fee = st.number_input("Fee per Transaction ($)", value=df[1], step=1.0, key=f"ff{i}")
             guest_pct = st.slider("% Guests Using via Alexa", 0.0, 50.0, float(df[2]), step=0.1, key=f"fg{i}") / 100
             visit_pct = st.slider("% Guests Visiting/Eligible", 0, 100, df[3], key=f"fv{i}") / 100
             commission_pct = st.slider("Commission % (if applicable)", 0, 100, df[4], key=f"fc{i}") / 100
-            fixed_fees.append({"name": fn, "fee": fee, "guest_pct": guest_pct, "visit_pct": visit_pct, "commission_pct": commission_pct})
+            fixed_fees.append({"name": fn.strip() if fn else df[0], "fee": fee, "guest_pct": guest_pct, "visit_pct": visit_pct, "commission_pct": commission_pct})
 
     # ── Cost Savings ──
     st.markdown("### 📉 Cost Savings")
@@ -281,15 +375,31 @@ def calc_roi(txn_pct, inc_pct):
 # ═══════════════════════════════════════════════════════════════
 # HERO & TABS
 # ═══════════════════════════════════════════════════════════════
+
+def _load_logo_html():
+    """Load alexa+ logo from dashboard/assets/ if present; return empty if no file."""
+    assets = Path(__file__).parent / "assets"
+    for name in ("alexa-plus-logo.png", "alexa-plus-logo.jpg", "alexa-plus-logo.svg", "alexa+.png"):
+        p = assets / name
+        if p.exists():
+            mime = "image/svg+xml" if p.suffix == ".svg" else f"image/{p.suffix.lstrip('.')}"
+            b64 = base64.b64encode(p.read_bytes()).decode()
+            return f'<img src="data:{mime};base64,{b64}" style="height:110px;max-width:280px;object-fit:contain;filter:drop-shadow(0 4px 20px rgba(74,168,255,.35))" alt="Alexa+">'
+    # No logo file — render nothing (keep hero clean)
+    return ""
+
 st.markdown(f"""<div class="hero">
-<div style="display:flex;align-items:center;gap:24px">
+<div style="display:flex;align-items:center;gap:32px">
 <div style="flex:1">
-<h1>🔶 Alexa Smart Properties</h1>
-<p class="sub">{partner_name} — Return on Investment Analysis</p>
-<p class="meta">CONFIDENTIAL — For Partner Discussion Only &nbsp;·&nbsp; {datetime.now().strftime('%B %d, %Y')}</p>
+<div style="display:inline-block;padding:5px 14px;background:rgba(74,168,255,.15);border:1px solid rgba(74,168,255,.3);border-radius:4px;margin-bottom:14px">
+<span style="color:#7DBFFF;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase">Alexa+ for Hospitality</span>
 </div>
-<div style="flex:0 0 auto">
-<img src="https://m.media-amazon.com/images/I/61fBMR-yURL._AC_SL1000_.jpg" style="height:120px;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.3)" alt="Echo Show 15">
+<h1>Alexa+ ROI Analysis</h1>
+<p class="sub">{partner_name}</p>
+<p class="meta">Confidential<span class="meta-divider">|</span>For Partner Discussion Only</p>
+</div>
+<div style="flex:0 0 auto;text-align:center">
+{_load_logo_html()}
 </div>
 </div>
 </div>""", unsafe_allow_html=True)
@@ -297,8 +407,8 @@ st.markdown(f"""<div class="hero">
 # Sidebar toggle is in the Streamlit header (top-left)
 
 tab1, tab2, tab3, tab4 = st.tabs([
-    "  📋 Executive Summary  ", "  🎮 Live Scenario Builder  ",
-    "  🔢 Calculation Walkthrough  ", "  📊 Sensitivity Analysis  "
+    "  Executive Summary  ", "  Live Scenario Builder  ",
+    "  Calculation Walkthrough  ", "  Sensitivity Analysis  "
 ])
 
 # ─── TAB 1: EXECUTIVE SUMMARY ───
@@ -342,38 +452,39 @@ with tab1:
     # Insight callout
     best = max([r1, r2, r3], key=lambda x: x["roi"])
     st.markdown(f"""<div class="insight">
-    <p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#7EB8DA;font-weight:700;margin:0 0 8px">💡 Key Takeaway</p>
-    <p class="headline">Alexa deployment generates up to ${best['inc_cp_room']*12:,.0f} in annual incremental profit per room — translating to ${ann_prop(best):,.0f}K per property annually.</p>
+    <p class="eyebrow">Key Takeaway</p>
+    <p class="headline">Alexa+ deployment generates up to ${best['inc_cp_room']*12:,.0f} in annual incremental profit per room — translating to ${ann_prop(best):,.0f}K per property annually.</p>
     <p class="body">Based on {int(avg_rooms_per_alexa_property):,} rooms per property across {alexa_properties} properties with Alexa</p>
     </div>""", unsafe_allow_html=True)
 
     # Visual: ROI comparison gauge chart
     st.markdown(f'<div class="stitle">ROI Comparison</div>', unsafe_allow_html=True)
     fig_gauge = go.Figure()
-    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#4ECDC4"), ("Scenario 3", r3, "#D4AF37")]):
+    for i, (sn, r, color) in enumerate([("Scenario 1", r1, "#FFFFFF"), ("Scenario 2", r2, "#B8B8B8"), ("Scenario 3", r3, "#C9C9C9")]):
         fig_gauge.add_trace(go.Indicator(
-            mode="gauge+number+delta",
+            mode="gauge+number",
             value=r["roi"],
-            title={"text": sn, "font": {"size": 16, "color": "#232F3E"}},
-            number={"suffix": "%", "font": {"size": 32, "color": "#232F3E"}},
+            title={"text": sn, "font": {"size": 14, "color": "#C9C9C9", "family": "Inter"}},
+            number={"suffix": "%", "font": {"size": 36, "color": "#FFFFFF", "family": "Inter"}},
             gauge={
-                "axis": {"range": [0, max(150, r["roi"] + 30)], "tickcolor": "rgba(255,255,255,.2)"},
-                "bar": {"color": color, "thickness": 0.7},
-                "bgcolor": "#111d33",
+                "axis": {"range": [0, max(150, r["roi"] + 30)], "tickcolor": "rgba(201,201,201,.3)", "tickfont": {"color": "#B8B8B8", "size": 10}},
+                "bar": {"color": color, "thickness": 0.75},
+                "bgcolor": "rgba(15,40,71,.4)",
                 "borderwidth": 0,
                 "steps": [
-                    {"range": [0, 20], "color": "#1a2233"},
-                    {"range": [20, 50], "color": "#1a2a33"},
-                    {"range": [50, 150], "color": "#1a3333"},
+                    {"range": [0, 20], "color": "rgba(74,168,255,.06)"},
+                    {"range": [20, 50], "color": "rgba(74,168,255,.10)"},
+                    {"range": [50, 150], "color": "rgba(74,168,255,.16)"},
                 ],
-                "threshold": {"line": {"color": "#232F3E", "width": 2}, "thickness": 0.8, "value": r["roi"]},
+                "threshold": {"line": {"color": "#4AA8FF", "width": 2}, "thickness": 0.8, "value": r["roi"]},
             },
             domain={"row": 0, "column": i},
         ))
     fig_gauge.update_layout(
         grid={"rows": 1, "columns": 3, "pattern": "independent"},
-        height=320, margin=dict(t=60, b=20, l=40, r=40),
+        height=340, margin=dict(t=60, b=30, l=40, r=40),
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Inter"),
     )
     st.plotly_chart(fig_gauge, use_container_width=True)
 
@@ -383,16 +494,15 @@ with tab1:
     wf_vals = [r2["amenity_inc_room"], r2["cost_savings_room"], -r2["total_payment_room"], -r2["amenity_cost_room"], r2["inc_cp_room"]]
     fig_wf = go.Figure(go.Waterfall(
         x=wf_labels, y=wf_vals, measure=["absolute", "relative", "relative", "relative", "total"],
-        connector=dict(line=dict(color="rgba(255,255,255,.15)", width=1, dash="dot")),
-        increasing=dict(marker=dict(color="#4ECDC4")),
-        decreasing=dict(marker=dict(color="#5C7A99")),
-        totals=dict(marker=dict(color="#7EB8DA")),
+        connector=dict(line=dict(color="rgba(201,201,201,.2)", width=1, dash="dot")),
+        increasing=dict(marker=dict(color="#4AA8FF", line=dict(color="#4AA8FF", width=0))),
+        decreasing=dict(marker=dict(color="#B8B8B8", line=dict(color="#B8B8B8", width=0))),
+        totals=dict(marker=dict(color="#1E90FF", line=dict(color="#1E90FF", width=0))),
         text=[f"${v:,.0f}" for v in wf_vals], textposition="outside",
-        textfont=dict(size=14, color="#e0e6ed", family="Inter"),
+        textfont=dict(size=13, color="#FFFFFF", family="Inter"),
     ))
-    fig_wf.update_layout(height=420, plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
-                         yaxis=dict(gridcolor="#eef0f3", title="$ per Room / Month", title_font=dict(size=12, color="#8896a4")),
-                         margin=dict(t=20, b=40), font=dict(family="Inter"))
+    apply_plot_theme(fig_wf, height=440)
+    fig_wf.update_layout(yaxis=dict(title="$ per Room / Month", gridcolor=GRID_COLOR, title_font=dict(color=AXIS_COLOR, size=11)))
     st.plotly_chart(fig_wf, use_container_width=True)
 
     # Detailed Comparison — 3 cards: Monthly/Room, Annual/Room, Annual/Property
@@ -419,38 +529,49 @@ with tab1:
     ]
     roi_row = ("ROI %", [f"{r1['roi']:.0f}%", f"{r2['roi']:.0f}%", f"{r3['roi']:.0f}%"])
 
+    def fmt_money(v, div=1):
+        """Accounting format: negatives as ($455), positives as $455."""
+        amount = v / div
+        if amount < 0:
+            return f"(${abs(amount):,.0f})"
+        return f"${amount:,.0f}"
+
     def build_card_table(title, multiplier, is_thousands=False):
         """Build an HTML table card for a given time period."""
         div = 1000 if is_thousands else 1
         rows_html = ""
-        # Assumption rows
+        # Assumption rows (%)
         for label, s1v, s2v, s3v, *_ in detail_metrics:
-            rows_html += f'<tr><td style="text-align:left;font-weight:500;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.65)">{label}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:#fff">{s1v}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:#fff">{s2v}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:#fff">{s3v}</td></tr>'
-        # Spacer
-        rows_html += '<tr><td colspan="4" style="padding:4px"></td></tr>'
+            rows_html += f'<tr><td style="text-align:left;font-weight:500;padding:10px 14px;border-bottom:1px solid rgba(125,191,255,.06);color:#8FA3BC;font-size:12.5px;line-height:1.35">{label}</td><td style="text-align:right;padding:10px 14px;border-bottom:1px solid rgba(125,191,255,.06);color:#FFFFFF;font-weight:600;font-variant-numeric:tabular-nums">{s1v}</td><td style="text-align:right;padding:10px 14px;border-bottom:1px solid rgba(125,191,255,.06);color:#D8D8D8;font-weight:600;font-variant-numeric:tabular-nums">{s2v}</td><td style="text-align:right;padding:10px 14px;border-bottom:1px solid rgba(125,191,255,.06);color:#C9C9C9;font-weight:600;font-variant-numeric:tabular-nums">{s3v}</td></tr>'
+        # Spacer row
+        rows_html += '<tr><td colspan="4" style="padding:6px 0;border-bottom:1px solid rgba(74,168,255,.15)"></td></tr>'
         # Financial rows
         for label, vals in fin_metrics:
-            s1 = f"${vals[0]*multiplier/div:,.0f}"
-            s2 = f"${vals[1]*multiplier/div:,.0f}"
-            s3 = f"${vals[2]*multiplier/div:,.0f}"
-            indent = "padding-left:24px;color:#9aacbc" if label.startswith("  ") else "font-weight:500;color:rgba(255,255,255,.65)"
-            val_color = "rgba(255,255,255,.7)" if any(v < 0 for v in vals) else "#fff"
-            rows_html += f'<tr><td style="text-align:left;{indent};padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06)">{label}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:{val_color}">{s1}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:{val_color}">{s2}</td><td style="text-align:right;padding:6px 12px;border-bottom:1px solid rgba(255,255,255,.06);color:{val_color}">{s3}</td></tr>'
+            s1 = fmt_money(vals[0]*multiplier, div)
+            s2 = fmt_money(vals[1]*multiplier, div)
+            s3 = fmt_money(vals[2]*multiplier, div)
+            indent = "padding-left:28px;color:#6B7A8F;font-size:12px" if label.startswith("  ") else "font-weight:600;color:#C9C9C9;font-size:12.5px"
+            val_muted = any(v < 0 for v in vals)
+            v1_color = "#B8C5D6" if val_muted else "#FFFFFF"
+            v2_color = "#98A5B8" if val_muted else "#D8D8D8"
+            v3_color = "#98A5B8" if val_muted else "#C9C9C9"
+            rows_html += f'<tr><td style="text-align:left;{indent};padding:10px 14px;border-bottom:1px solid rgba(125,191,255,.06);line-height:1.35">{label}</td><td style="text-align:right;padding:10px 14px;border-bottom:1px solid rgba(125,191,255,.06);color:{v1_color};font-weight:600;font-variant-numeric:tabular-nums">{s1}</td><td style="text-align:right;padding:10px 14px;border-bottom:1px solid rgba(125,191,255,.06);color:{v2_color};font-weight:600;font-variant-numeric:tabular-nums">{s2}</td><td style="text-align:right;padding:10px 14px;border-bottom:1px solid rgba(125,191,255,.06);color:{v3_color};font-weight:600;font-variant-numeric:tabular-nums">{s3}</td></tr>'
         # Spacer
-        rows_html += '<tr><td colspan="4" style="padding:4px"></td></tr>'
-        # CP row (bold)
+        rows_html += '<tr><td colspan="4" style="padding:6px 0"></td></tr>'
+        # Incremental CP row (bold, emphasized)
         for label, vals in bottom_metrics:
-            s1 = f"${vals[0]*multiplier/div:,.0f}"
-            s2 = f"${vals[1]*multiplier/div:,.0f}"
-            s3 = f"${vals[2]*multiplier/div:,.0f}"
-            rows_html += f'<tr style="border-top:2px solid #4ECDC4"><td style="text-align:left;font-weight:800;padding:8px 12px;color:#fff">{label}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#4ECDC4">{s1}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#4ECDC4">{s2}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#4ECDC4">{s3}</td></tr>'
+            s1 = fmt_money(vals[0]*multiplier, div)
+            s2 = fmt_money(vals[1]*multiplier, div)
+            s3 = fmt_money(vals[2]*multiplier, div)
+            rows_html += f'<tr style="border-top:2px solid #4AA8FF;background:rgba(74,168,255,.05)"><td style="text-align:left;font-weight:800;padding:12px 14px;color:#FFFFFF;font-size:13px">{label}</td><td style="text-align:right;font-weight:800;padding:12px 14px;color:#4AA8FF;font-size:14px;font-variant-numeric:tabular-nums">{s1}</td><td style="text-align:right;font-weight:800;padding:12px 14px;color:#4AA8FF;font-size:14px;font-variant-numeric:tabular-nums">{s2}</td><td style="text-align:right;font-weight:800;padding:12px 14px;color:#4AA8FF;font-size:14px;font-variant-numeric:tabular-nums">{s3}</td></tr>'
         # ROI row
-        rows_html += f'<tr><td style="text-align:left;font-weight:800;padding:8px 12px;color:#fff">{roi_row[0]}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#4ECDC4">{roi_row[1][0]}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#4ECDC4">{roi_row[1][1]}</td><td style="text-align:right;font-weight:800;padding:8px 12px;color:#4ECDC4">{roi_row[1][2]}</td></tr>'
+        rows_html += f'<tr style="background:rgba(74,168,255,.03)"><td style="text-align:left;font-weight:800;padding:10px 14px;color:#FFFFFF;font-size:13px">{roi_row[0]}</td><td style="text-align:right;font-weight:800;padding:10px 14px;color:#4AA8FF;font-size:13px">{roi_row[1][0]}</td><td style="text-align:right;font-weight:800;padding:10px 14px;color:#4AA8FF;font-size:13px">{roi_row[1][1]}</td><td style="text-align:right;font-weight:800;padding:10px 14px;color:#4AA8FF;font-size:13px">{roi_row[1][2]}</td></tr>'
 
-        return f"""<div style="background:linear-gradient(145deg,#111d33,#162544);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.2)">
-        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#4ECDC4;margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #4ECDC4">{title}</p>
-        <table style="width:100%;border-collapse:collapse;font-size:13px">
-        <tr><th style="text-align:left;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8a9bb0;border-bottom:1px solid rgba(255,255,255,.1)">Metric</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8a9bb0;border-bottom:1px solid rgba(255,255,255,.1)">S1</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8a9bb0;border-bottom:1px solid rgba(255,255,255,.1)">S2</th><th style="text-align:right;padding:6px 12px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8a9bb0;border-bottom:1px solid rgba(255,255,255,.1)">S3</th></tr>
+        return f"""<div style="background:linear-gradient(160deg,rgba(15,40,71,.5) 0%,rgba(10,22,40,.7) 100%);border-radius:14px;padding:22px;border:1px solid rgba(125,191,255,.12);backdrop-filter:blur(10px);box-shadow:0 4px 24px rgba(0,0,0,.25)">
+        <p style="font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#4AA8FF;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(74,168,255,.25)">{title}</p>
+        <table style="width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed">
+        <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
+        <tr><th style="text-align:left;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#6B7A8F;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">Metric</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#FFFFFF;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">Low</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#D8D8D8;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">Base</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#C9C9C9;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">High</th></tr>
         {rows_html}
         </table></div>"""
 
@@ -461,19 +582,152 @@ with tab1:
 
     # Annual CP bar chart
     fig_cp = go.Figure()
-    for sn, r, color in [("Scenario 1", r1, "#7EB8DA"), ("Scenario 2", r2, "#4ECDC4"), ("Scenario 3", r3, "#D4AF37")]:
+    for sn, r, color in [("Scenario 1", r1, "#FFFFFF"), ("Scenario 2", r2, "#B8B8B8"), ("Scenario 3", r3, "#C9C9C9")]:
         fig_cp.add_trace(go.Bar(
             name=sn, x=["Annual CP / Room", "Annual CP / Property (000s)"],
             y=[r["inc_cp_room"] * 12, ann_prop(r)],
-            marker_color=color, marker_line=dict(color="#e0e6ed", width=0.5),
+            marker=dict(color=color, line=dict(color="#3C4B5E", width=1)),
             text=[f"${r['inc_cp_room']*12:,.0f}", f"${ann_prop(r):,.0f}K"],
-            textposition="outside", textfont=dict(size=13, family="Inter", color="#e0e6ed"),
+            textposition="outside", textfont=dict(size=13, family="Inter", color="#FFFFFF"),
         ))
-    fig_cp.update_layout(barmode="group", height=380, plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
-                         yaxis=dict(gridcolor="#eef0f3"), margin=dict(t=40, b=40),
-                         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5),
-                         font=dict(family="Inter"))
+    apply_plot_theme(fig_cp, height=400)
+    fig_cp.update_layout(barmode="group",
+                         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5, font=dict(color=TEXT_COLOR)))
     st.plotly_chart(fig_cp, use_container_width=True)
+
+    # ─── APPENDIX: ASSUMPTIONS ───
+    st.markdown('<div class="stitle">Appendix: Assumptions</div>', unsafe_allow_html=True)
+    st.markdown('<p class="stitle-sub">Full input parameters driving this analysis · <span style="color:#7DBFFF">All values are configurable in the sidebar</span></p>', unsafe_allow_html=True)
+
+    # Executive narrative callout — McKinsey-style plain-English summary
+    active_amenities = [a for a in amenities if a["pct"] > 0]
+    active_fixed = [ff for ff in fixed_fees if ff["fee"] > 0 or ff["commission_pct"] > 0]
+    total_mix_pct = sum(a["pct"] for a in active_amenities) * 100
+    avg_margin = sum(a["margin"] for a in active_amenities) / len(active_amenities) * 100 if active_amenities else 0
+
+    st.markdown(f"""<div style="background:linear-gradient(135deg,rgba(15,40,71,.5) 0%,rgba(30,74,124,.3) 100%);border-radius:12px;padding:20px 26px;margin:0 0 20px;border-left:3px solid #4AA8FF">
+    <p style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:#4AA8FF;font-weight:700;margin:0 0 8px">How to read this</p>
+    <p style="font-size:14px;color:#E0E8F2;margin:0;line-height:1.6">
+    We modeled <strong style="color:#FFFFFF">{len(active_amenities)} revenue categories</strong> representing <strong style="color:#4AA8FF">{total_mix_pct:.0f}% of ancillary spend per room</strong>, at an average margin of <strong style="color:#4AA8FF">{avg_margin:.0f}%</strong>.
+    Partner pays a <strong style="color:#FFFFFF">${monthly_sub:.0f}/room monthly subscription</strong> plus <strong style="color:#FFFFFF">{rev_share_pct*100:.0f}% revenue share</strong> on Alexa-attributed sales.
+    One-time device cost is <strong style="color:#FFFFFF">${device_price:.0f}/unit</strong> (amortized over {device_life} months).
+    </p></div>""", unsafe_allow_html=True)
+
+    ac1, ac2 = st.columns([1.1, 1])
+
+    # Table 1: Amenity Mix & Margins — shows ALL 12 slots, dims empty ones, ends with Total row
+    with ac1:
+        st.markdown('<p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:#4AA8FF;margin:8px 0 12px;padding-bottom:6px;border-bottom:1px solid rgba(74,168,255,.2)">Revenue Mix & Margins</p>', unsafe_allow_html=True)
+        max_pct = max((a["pct"] for a in amenities if a["pct"] > 0), default=1)
+        total_pct = sum(a["pct"] for a in amenities if a["pct"] > 0)
+        # Weighted avg margin across active amenities (weighted by revenue mix %)
+        weighted_margin = (sum(a["margin"] * a["pct"] for a in amenities if a["pct"] > 0) / total_pct) if total_pct > 0 else 0
+        rows = ""
+        for idx, a in enumerate(amenities):
+            is_active = a["pct"] > 0
+            if is_active:
+                # Active row — full color, show name
+                display_name = (a["name"] or "").strip() or f"Amenity {idx+1}"
+                bar_width = (a["pct"] / max_pct * 100) if max_pct > 0 else 0
+                name_color = "#FFFFFF"
+                pct_color = "#C9C9C9"
+                margin_color = "#C9C9C9"
+                pct_display = f"{a['pct']*100:.0f}%"
+                margin_display = f"{a['margin']*100:.0f}%"
+                bar_html = f'<div style="flex:1;background:rgba(201,201,201,.1);border-radius:3px;height:6px;overflow:hidden"><div style="width:{bar_width}%;height:100%;background:linear-gradient(90deg,#8A96A8,#C9C9C9);border-radius:3px"></div></div>'
+                row_bg = ""
+            else:
+                # Empty/disabled row — blank cells, near-invisible dim, clean presentation
+                display_name = "&nbsp;"
+                name_color = "#1A2330"
+                pct_color = "#1A2330"
+                margin_color = "#1A2330"
+                pct_display = "&nbsp;"
+                margin_display = "&nbsp;"
+                bar_html = '<div style="flex:1;background:rgba(26,35,48,.6);border-radius:3px;height:4px"></div>'
+                row_bg = "background:rgba(8,14,24,.6);"
+            rows += f"""<tr style="{row_bg}">
+                <td style="padding:10px 14px;color:{name_color};font-weight:500;border-bottom:1px solid rgba(125,191,255,.06);width:38%">{display_name}</td>
+                <td style="padding:10px 14px;border-bottom:1px solid rgba(125,191,255,.06);width:42%">
+                  <div style="display:flex;align-items:center;gap:10px">
+                    {bar_html}
+                    <span style="color:{pct_color};font-weight:700;min-width:38px;text-align:right;font-size:12.5px">{pct_display}</span>
+                  </div>
+                </td>
+                <td style="padding:10px 14px;text-align:right;color:{margin_color};font-weight:600;border-bottom:1px solid rgba(125,191,255,.06);width:20%">{margin_display}</td>
+                </tr>"""
+        # TOTAL row at the end — all white for clean presentation
+        total_bar_html = f'<div style="flex:1;background:rgba(201,201,201,.15);border-radius:3px;height:8px;overflow:hidden"><div style="width:100%;height:100%;background:linear-gradient(90deg,#8A96A8,#FFFFFF);border-radius:3px"></div></div>'
+        rows += f"""<tr style="border-top:2px solid #FFFFFF;background:rgba(255,255,255,.05)">
+            <td style="padding:12px 14px;color:#FFFFFF;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:0.5px">Total</td>
+            <td style="padding:12px 14px">
+              <div style="display:flex;align-items:center;gap:10px">
+                {total_bar_html}
+                <span style="color:#FFFFFF;font-weight:800;min-width:38px;text-align:right;font-size:13.5px">{total_pct*100:.0f}%</span>
+              </div>
+            </td>
+            <td style="padding:12px 14px;text-align:right;color:#FFFFFF;font-weight:800;font-size:13.5px">{weighted_margin*100:.0f}%</td>
+            </tr>"""
+        st.markdown(f"""<div style="background:linear-gradient(160deg,rgba(15,40,71,.4) 0%,rgba(10,22,40,.6) 100%);border-radius:12px;padding:8px;border:1px solid rgba(125,191,255,.1)">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed">
+        <colgroup><col style="width:38%"><col style="width:42%"><col style="width:20%"></colgroup>
+        <thead><tr>
+        <th style="text-align:left;padding:10px 14px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#6B7A8F;font-weight:700;border-bottom:1px solid rgba(125,191,255,.15)">Amenity</th>
+        <th style="text-align:left;padding:10px 14px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#6B7A8F;font-weight:700;border-bottom:1px solid rgba(125,191,255,.15)">% of Revenue Mix</th>
+        <th style="text-align:right;padding:10px 14px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#6B7A8F;font-weight:700;border-bottom:1px solid rgba(125,191,255,.15)">Margin</th>
+        </tr></thead>
+        <tbody>{rows}</tbody></table></div>""", unsafe_allow_html=True)
+
+    # Table 2: Deal Terms — grouped into Recurring / One-time / Fixed Fees
+    with ac2:
+        st.markdown('<p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:#4AA8FF;margin:8px 0 12px;padding-bottom:6px;border-bottom:1px solid rgba(74,168,255,.2)">Deal Terms & Charges</p>', unsafe_allow_html=True)
+
+        def section(title, items, accent_color="#7DBFFF"):
+            """Build a grouped charges section with fixed column widths."""
+            rows = ""
+            for label, value in items:
+                rows += f"""<tr>
+                <td style="padding:9px 14px;color:#C9C9C9;font-size:13px;border-bottom:1px solid rgba(125,191,255,.06);width:65%">{label}</td>
+                <td style="padding:9px 14px;text-align:right;color:#FFFFFF;font-weight:600;font-size:13px;border-bottom:1px solid rgba(125,191,255,.06);width:35%;font-variant-numeric:tabular-nums">{value}</td>
+                </tr>"""
+            return f"""<div style="margin-bottom:16px">
+            <p style="font-size:10px;text-transform:uppercase;letter-spacing:1.8px;color:{accent_color};font-weight:700;margin:0 0 6px;padding-left:10px;border-left:2px solid {accent_color}">{title}</p>
+            <table style="width:100%;border-collapse:collapse;table-layout:fixed">
+            <colgroup><col style="width:65%"><col style="width:35%"></colgroup>
+            {rows}</table>
+            </div>"""
+
+        # Group 1: Recurring (monthly)
+        recurring = [
+            ("Revenue Share %", f"{rev_share_pct*100:.0f}%"),
+            ("Monthly Subscription", f"${monthly_sub:.2f} / room"),
+            ("Monthly Device Amortization", f"${monthly_device_amort:.2f} / room"),
+        ]
+
+        # Group 2: One-time device costs
+        one_time = [
+            ("Device MSRP", f"${device_msrp:,.2f}"),
+            ("Device Discount", f"{device_discount*100:.0f}%"),
+            ("Device Net Price", f"${device_price:,.2f}"),
+            ("Setup Fee", f"${device_setup:,.2f} / unit"),
+            ("Device Life", f"{device_life} months"),
+        ]
+
+        # Group 3: Fixed Fees (dynamic — only active)
+        fixed_rows = []
+        for ff in fixed_fees:
+            if ff["fee"] > 0:
+                fixed_rows.append((f"{ff['name']} — fee/txn", f"${ff['fee']:.2f}"))
+            if ff["commission_pct"] > 0:
+                fixed_rows.append((f"{ff['name']} — commission", f"{ff['commission_pct']*100:.0f}%"))
+
+        html = f"""<div style="background:linear-gradient(160deg,rgba(15,40,71,.4) 0%,rgba(10,22,40,.6) 100%);border-radius:12px;padding:16px 18px;border:1px solid rgba(125,191,255,.1)">
+        {section("Recurring / Monthly", recurring, "#4AA8FF")}
+        {section("One-Time Device Cost", one_time, "#7DBFFF")}"""
+        if fixed_rows:
+            html += section("Fixed Fee Amenities", fixed_rows, "#C9C9C9")
+        html += "</div>"
+        st.markdown(html, unsafe_allow_html=True)
 
 # ─── TAB 2: LIVE SCENARIO BUILDER (partner plays with this) ───
 with tab2:
@@ -540,10 +794,13 @@ with tab2:
         wf_l = ["Benefits", "- Payment", "- Amenity Cost", "= CP"]
         wf_v = [live_r["total_inc_room"], -live_r["total_payment_room"], -live_r["amenity_cost_room"], live_r["inc_cp_room"]]
         fig_wf = go.Figure(go.Waterfall(x=wf_l, y=wf_v, measure=["absolute","relative","relative","total"],
-            connector=dict(line=dict(color="#D5D9DD")), increasing=dict(marker=dict(color="#067D62")),
-            decreasing=dict(marker=dict(color="#C7511F")), totals=dict(marker=dict(color="#7EB8DA")),
-            text=[f"${v:,.0f}" for v in wf_v], textposition="outside"))
-        fig_wf.update_layout(height=380, plot_bgcolor="#FAFBFC", yaxis=dict(gridcolor="rgba(255,255,255,.08)"), margin=dict(t=30))
+            connector=dict(line=dict(color="rgba(201,201,201,.2)", dash="dot")),
+            increasing=dict(marker=dict(color="#4AA8FF")),
+            decreasing=dict(marker=dict(color="#B8B8B8")),
+            totals=dict(marker=dict(color="#1E90FF")),
+            text=[f"${v:,.0f}" for v in wf_v], textposition="outside",
+            textfont=dict(color="#FFFFFF", family="Inter", size=12)))
+        apply_plot_theme(fig_wf, height=400)
         st.plotly_chart(fig_wf, use_container_width=True)
 
 # ─── TAB 3: CALCULATION WALKTHROUGH ───
@@ -647,25 +904,25 @@ with tab4:
 
     fig_cp = go.Figure(data=go.Heatmap(
         z=cp_heat, x=[f"{t*100:.0f}%" for t in txn_ax], y=[f"{i*100:.1f}%" for i in inc_ax],
-        colorscale=[[0,"#C7511F"],[0.3,"#FDEBD0"],[0.5,"#F5F5F5"],[0.7,"#D5F5E3"],[1,"#067D62"]],
+        colorscale=[[0,"#3C4B5E"],[0.3,"#5A6B82"],[0.5,"#909090"],[0.7,"#7DBFFF"],[1,"#4AA8FF"]],
         text=[[f"${v:,.0f}" for v in row] for row in cp_heat], texttemplate="%{text}",
-        textfont=dict(size=10), colorbar=dict(title="CP/Room"), zmid=0,
+        textfont=dict(size=10, color="#FFFFFF"), colorbar=dict(title=dict(text="CP/Room", font=dict(color=AXIS_COLOR)), tickfont=dict(color=AXIS_COLOR)), zmid=0,
     ))
-    fig_cp.update_layout(title=f"{partner_name} CP per Room", height=520,
-        xaxis_title="Ancillary Transaction % through Alexa", yaxis_title="Revenue Growth % due to Alexa",
-        plot_bgcolor="#FAFBFC")
+    apply_plot_theme(fig_cp, height=540)
+    fig_cp.update_layout(title=dict(text=f"{partner_name} — CP per Room", font=dict(color="#FFFFFF", size=14)),
+        xaxis_title="Ancillary Transaction % through Alexa", yaxis_title="Revenue Growth % due to Alexa")
     st.plotly_chart(fig_cp, use_container_width=True)
 
     st.markdown(f'<div class="stitle">ROI % — Txn % × Revenue Growth</div>', unsafe_allow_html=True)
     fig_roi = go.Figure(data=go.Heatmap(
         z=roi_heat, x=[f"{t*100:.0f}%" for t in txn_ax], y=[f"{i*100:.1f}%" for i in inc_ax],
-        colorscale=[[0,"#C7511F"],[0.3,"#FDEBD0"],[0.5,"#F5F5F5"],[0.7,"#D5F5E3"],[1,"#067D62"]],
+        colorscale=[[0,"#3C4B5E"],[0.3,"#5A6B82"],[0.5,"#909090"],[0.7,"#7DBFFF"],[1,"#4AA8FF"]],
         text=[[f"{v}%" for v in row] for row in roi_heat], texttemplate="%{text}",
-        textfont=dict(size=10), colorbar=dict(title="ROI %"), zmid=0,
+        textfont=dict(size=10, color="#FFFFFF"), colorbar=dict(title=dict(text="ROI %", font=dict(color=AXIS_COLOR)), tickfont=dict(color=AXIS_COLOR)), zmid=0,
     ))
-    fig_roi.update_layout(title=f"{partner_name} ROI %", height=520,
-        xaxis_title="Ancillary Transaction % through Alexa", yaxis_title="Revenue Growth % due to Alexa",
-        plot_bgcolor="#FAFBFC")
+    apply_plot_theme(fig_roi, height=540)
+    fig_roi.update_layout(title=dict(text=f"{partner_name} — ROI %", font=dict(color="#FFFFFF", size=14)),
+        xaxis_title="Ancillary Transaction % through Alexa", yaxis_title="Revenue Growth % due to Alexa")
     st.plotly_chart(fig_roi, use_container_width=True)
 
     # Payment sensitivity
@@ -688,15 +945,16 @@ with tab4:
 
     fig_pay = go.Figure(data=go.Heatmap(
         z=pay_heat, x=[f"{t*100:.0f}%" for t in txn_ax], y=[f"{r*100:.0f}%" for r in rs_ax],
-        colorscale=[[0,"#111d33"],[0.5,"#1a2a33"],[1,"#5C7A99"]], text=[[f"${v:,.0f}" for v in row] for row in pay_heat],
-        texttemplate="%{text}", textfont=dict(size=10), colorbar=dict(title="$/Room"),
+        colorscale=[[0,"#0A1628"],[0.5,"#1E4A7C"],[1,"#4AA8FF"]], text=[[f"${v:,.0f}" for v in row] for row in pay_heat],
+        texttemplate="%{text}", textfont=dict(size=10, color="#FFFFFF"),
+        colorbar=dict(title=dict(text="$/Room", font=dict(color=AXIS_COLOR)), tickfont=dict(color=AXIS_COLOR)),
     ))
-    fig_pay.update_layout(title="Monthly Payment per Room (Sub + Rev Share + Fees)",
-        height=450, xaxis_title="Ancillary Transaction %", yaxis_title="ASP Rev Share %",
-        plot_bgcolor="#FAFBFC")
+    apply_plot_theme(fig_pay, height=460)
+    fig_pay.update_layout(title=dict(text="Monthly Payment per Room (Sub + Rev Share + Fees)", font=dict(color="#FFFFFF", size=14)),
+        xaxis_title="Ancillary Transaction %", yaxis_title="ASP Rev Share %")
     st.plotly_chart(fig_pay, use_container_width=True)
 
 # Footer
 st.markdown(f"""<div class="app-footer">
-<p class="brand">Alexa Smart Properties</p>
-<p class="sub">Confidential</p></div>""", unsafe_allow_html=True)
+<p class="brand">Alexa+ for Hospitality</p>
+<p class="sub">Amazon Confidential · ©{datetime.now().year} Amazon.com or its affiliates</p></div>""", unsafe_allow_html=True)
