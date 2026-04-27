@@ -105,13 +105,13 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 /* FILLED track (left of thumb, SELECTED range) — WHITE */
 .stSlider [data-baseweb="slider"] > div > div > div:first-child,
 .stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
-/* UNFILLED track (right of thumb, REMAINING range) — dim silver (unchanged) */
+/* UNFILLED track (right of thumb, REMAINING range) — Alexa blue */
 .stSlider [data-baseweb="slider"] > div > div > div:last-child,
-.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:rgba(201,201,201,.35)!important;background-color:rgba(201,201,201,.35)!important}
+.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:#4AA8FF!important;background-color:#4AA8FF!important}
 /* Streamlit's newer progress-bar-style slider (v1.30+) */
 .stSlider progress{accent-color:#FFFFFF!important}
 .stSlider progress::-webkit-progress-value{background:#FFFFFF!important}
-.stSlider progress::-webkit-progress-bar{background:rgba(201,201,201,.35)!important}
+.stSlider progress::-webkit-progress-bar{background:#4AA8FF!important}
 .stSlider progress::-moz-progress-bar{background:#FFFFFF!important}
 /* Tick labels */
 .stSlider [data-testid="stTickBarMin"],.stSlider [data-testid="stTickBarMax"]{color:#8FA3BC!important}
