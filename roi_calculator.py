@@ -571,7 +571,7 @@ with tab1:
         <p style="font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#4AA8FF;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(74,168,255,.25)">{title}</p>
         <table style="width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed">
         <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
-        <tr><th style="text-align:left;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#6B7A8F;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">Metric</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#FFFFFF;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">Low</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#D8D8D8;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">Base</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#C9C9C9;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">High</th></tr>
+        <tr><th style="text-align:left;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#6B7A8F;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">Metric</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#FFFFFF;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">S1</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#D8D8D8;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">S2</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#C9C9C9;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">S3</th></tr>
         {rows_html}
         </table></div>"""
 
@@ -579,6 +579,8 @@ with tab1:
     with tc1: st.markdown(build_card_table("Monthly per Room", 1), unsafe_allow_html=True)
     with tc2: st.markdown(build_card_table("Annual per Room", 12), unsafe_allow_html=True)
     with tc3: st.markdown(build_card_table("Annual per Property (in 000s)", 12, is_thousands=True), unsafe_allow_html=True)
+
+    st.markdown('<p style="font-size:10px;color:#6B7A8F;margin:12px 0 0;letter-spacing:0.5px">S1: Scenario 1 &nbsp;&nbsp;|&nbsp;&nbsp; S2: Scenario 2 &nbsp;&nbsp;|&nbsp;&nbsp; S3: Scenario 3</p>', unsafe_allow_html=True)
 
     # Annual CP bar chart
     fig_cp = go.Figure()
