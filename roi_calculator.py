@@ -418,17 +418,17 @@ with tab1:
 
     c1, c2, c3 = st.columns(3)
     with c1:
-        st.markdown('<div class="scenario-card"><span class="tag tag-s1">SCENARIO 1</span>', unsafe_allow_html=True)
+        st.markdown('<div class="scenario-card"><p style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#7DBFFF;margin:0 0 12px">SCENARIO 1</p>', unsafe_allow_html=True)
         s1t = st.slider("Transactions via Alexa %", 1, 50, 8, key="e1t") / 100
         s1i = st.slider("Incrementality via Alexa %", 1, 100, 50, key="e1i") / 100
         st.markdown('</div>', unsafe_allow_html=True)
     with c2:
-        st.markdown('<div class="scenario-card"><span class="tag tag-s2">SCENARIO 2</span>', unsafe_allow_html=True)
+        st.markdown('<div class="scenario-card"><p style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#7DBFFF;margin:0 0 12px">SCENARIO 2</p>', unsafe_allow_html=True)
         s2t = st.slider("Transactions via Alexa %", 1, 50, 10, key="e2t") / 100
         s2i = st.slider("Incrementality via Alexa %", 1, 100, 40, key="e2i") / 100
         st.markdown('</div>', unsafe_allow_html=True)
     with c3:
-        st.markdown('<div class="scenario-card"><span class="tag tag-s3">SCENARIO 3</span>', unsafe_allow_html=True)
+        st.markdown('<div class="scenario-card"><p style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#7DBFFF;margin:0 0 12px">SCENARIO 3</p>', unsafe_allow_html=True)
         s3t = st.slider("Transactions via Alexa %", 1, 50, 15, key="e3t") / 100
         s3i = st.slider("Incrementality via Alexa %", 1, 100, 80, key="e3i") / 100
         st.markdown('</div>', unsafe_allow_html=True)
