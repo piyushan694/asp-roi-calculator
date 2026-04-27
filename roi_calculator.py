@@ -97,9 +97,17 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 /* ── Form controls — Sliders (WHITE selected / SILVER unselected) ── */
 /* Thumb (draggable circle) */
 .stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;border:2px solid #C0C0C0!important;box-shadow:0 0 8px rgba(255,255,255,.35)!important}
-/* Value bubble above thumb — clean white text, no background */
+/* Value bubble above thumb — clean white text, no background box, everywhere (sidebar + main) */
 .stSlider [data-testid="stThumbValue"],
-.stSlider [data-testid="stThumbValue"] *{color:#FFFFFF!important;background:transparent!important;font-weight:700!important}
+.stSlider [data-testid="stThumbValue"] *,
+[data-testid="stSidebar"] .stSlider [data-testid="stThumbValue"],
+[data-testid="stSidebar"] .stSlider [data-testid="stThumbValue"] *{color:#FFFFFF!important;background:transparent!important;background-color:transparent!important;font-weight:700!important;font-size:14px!important;border:none!important;box-shadow:none!important}
+/* Slider current-value number (BaseWeb renders it in various containers) */
+.stSlider [data-baseweb="slider"] [data-testid="stThumbValue"],
+.stSlider [data-baseweb="slider"] div[role="slider"] ~ div,
+.stSlider [data-baseweb="slider"] div[role="slider"] + div{color:#FFFFFF!important;background:transparent!important;background-color:transparent!important;border:none!important;box-shadow:none!important}
+.stSlider [data-baseweb="slider"] div[role="slider"] ~ div *,
+.stSlider [data-baseweb="slider"] div[role="slider"] + div *{color:#FFFFFF!important;background:transparent!important;background-color:transparent!important}
 
 /* ── TRACK OVERRIDE — nuclear approach to kill ALL inline accent colors ── */
 /* BaseWeb injects inline rgb() styles on track segments. We override every div
