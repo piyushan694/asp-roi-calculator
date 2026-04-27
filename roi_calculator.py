@@ -102,24 +102,8 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 .stSlider [data-testid="stThumbValue"] *,
 .stSlider [data-testid="stThumbValue"] div,
 .stSlider [data-testid="stThumbValue"] span{color:#FFFFFF!important;background:transparent!important;font-weight:700!important;fill:#FFFFFF!important}
-/* FILLED track (left of thumb, SELECTED range) — WHITE */
-.stSlider [data-baseweb="slider"] > div > div > div:first-child,
-.stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
-/* UNFILLED track (right of thumb) — dark navy blue matching gauge
-   Multiple selector strategies to catch different Streamlit versions */
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3),
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3) > div,
-.stSlider [data-baseweb="slider"] > div > div > div:last-child,
-.stSlider [data-baseweb="slider"] > div > div > div:last-child > div,
-.stSlider [data-baseweb="slider"] [data-testid="stSliderTrack"],
-.stSlider [data-baseweb="slider"] [data-testid="stSliderTrackUnfilled"],
-div[data-baseweb="slider"] > div:first-child > div:first-child > div:nth-child(3),
-div[data-baseweb="slider"] > div:first-child > div:first-child > div:last-child{background:#1E4A7C!important;background-color:#1E4A7C!important}
-/* Streamlit's newer progress-bar-style slider (v1.30+) */
-.stSlider progress{accent-color:#FFFFFF!important}
-.stSlider progress::-webkit-progress-value{background:#FFFFFF!important}
-.stSlider progress::-webkit-progress-bar{background:#1E4A7C!important}
-.stSlider progress::-moz-progress-bar{background:#FFFFFF!important}
+/* FILLED track — handled by config.toml primaryColor=#4AA8FF */
+/* UNFILLED track — uses secondaryBackgroundColor from theme */
 /* Tick labels */
 .stSlider [data-testid="stTickBarMin"],.stSlider [data-testid="stTickBarMax"]{color:#8FA3BC!important}
 /* Kill every known Streamlit accent color (green/teal/red/blue) on slider children */
@@ -153,39 +137,6 @@ hr{border-color:rgba(125,191,255,.08)!important}
 /* ── Streamlit plotly container ── */
 .stPlotlyChart{background:transparent!important;border-radius:12px;overflow:hidden}
 </style>""", unsafe_allow_html=True)
-
-# ── JavaScript injection via components.html (Streamlit strips <script> from st.markdown) ──
-import streamlit.components.v1 as components
-components.html("""
-<script>
-(function(){
-  const FILLED='#FFFFFF', UNFILLED='#1E4A7C';
-  function fix(){
-    var doc = window.parent.document;
-    doc.querySelectorAll('[data-baseweb="slider"]').forEach(function(s){
-      var thumb = s.querySelector('[role="slider"]');
-      if(!thumb) return;
-      var p = thumb.parentElement;
-      if(!p) return;
-      var found = false;
-      for(var i=0;i<p.children.length;i++){
-        var c = p.children[i];
-        if(c.getAttribute('role')==='slider'){found=true;continue;}
-        var col = found ? UNFILLED : FILLED;
-        c.style.setProperty('background',col,'important');
-        c.style.setProperty('background-color',col,'important');
-        if(c.firstElementChild){
-          c.firstElementChild.style.setProperty('background',col,'important');
-          c.firstElementChild.style.setProperty('background-color',col,'important');
-        }
-      }
-    });
-  }
-  fix();
-  setInterval(fix, 300);
-})();
-</script>
-""", height=0)
 
 # ── Unified chart theme for all Plotly figures ──
 PLOT_BG = "rgba(0,0,0,0)"
