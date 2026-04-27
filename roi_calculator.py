@@ -154,6 +154,55 @@ hr{border-color:rgba(125,191,255,.08)!important}
 .stPlotlyChart{background:transparent!important;border-radius:12px;overflow:hidden}
 </style>""", unsafe_allow_html=True)
 
+# ── JavaScript injection: Force slider track colors (bypasses inline style overrides) ──
+st.markdown("""<script>
+(function(){
+  const FILLED_COLOR = '#FFFFFF';
+  const UNFILLED_COLOR = '#1E4A7C';
+  function fixSliders(){
+    document.querySelectorAll('[data-baseweb="slider"]').forEach(function(slider){
+      var track = slider.querySelector('[role="slider"]');
+      if(!track) return;
+      var parent = track.parentElement;
+      if(!parent) return;
+      var children = parent.children;
+      for(var i=0;i<children.length;i++){
+        var child = children[i];
+        if(child.getAttribute('role')==='slider') continue;
+        // Children before the thumb = filled, after = unfilled
+        var isBeforeThumb = true;
+        for(var j=0;j<children.length;j++){
+          if(children[j].getAttribute('role')==='slider'){
+            if(j<=i) isBeforeThumb = false;
+            break;
+          }
+        }
+        if(isBeforeThumb){
+          child.style.setProperty('background', FILLED_COLOR, 'important');
+          child.style.setProperty('background-color', FILLED_COLOR, 'important');
+          if(child.firstElementChild){
+            child.firstElementChild.style.setProperty('background', FILLED_COLOR, 'important');
+            child.firstElementChild.style.setProperty('background-color', FILLED_COLOR, 'important');
+          }
+        } else {
+          child.style.setProperty('background', UNFILLED_COLOR, 'important');
+          child.style.setProperty('background-color', UNFILLED_COLOR, 'important');
+          if(child.firstElementChild){
+            child.firstElementChild.style.setProperty('background', UNFILLED_COLOR, 'important');
+            child.firstElementChild.style.setProperty('background-color', UNFILLED_COLOR, 'important');
+          }
+        }
+      }
+    });
+  }
+  // Run on load and watch for DOM changes (Streamlit re-renders on interaction)
+  fixSliders();
+  setInterval(fixSliders, 500);
+  var obs = new MutationObserver(fixSliders);
+  obs.observe(document.body, {childList:true, subtree:true, attributes:true});
+})();
+</script>""", unsafe_allow_html=True)
+
 # ── Unified chart theme for all Plotly figures ──
 PLOT_BG = "rgba(0,0,0,0)"
 PAPER_BG = "rgba(0,0,0,0)"
