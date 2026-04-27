@@ -100,16 +100,23 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 /* Value bubble above thumb — clean white text, no background */
 .stSlider [data-testid="stThumbValue"],
 .stSlider [data-testid="stThumbValue"] *{color:#FFFFFF!important;background:transparent!important;font-weight:700!important}
-/* ── TRACK: BaseWeb uses a Track div with InnerTrack children ── */
-/* The track container itself gets a role="slider" parent; the colored segments are children of the inner track div */
-/* InnerTrack: first-child = filled (left), last-child = unfilled (right) */
-/* FILLED track (left of thumb = SELECTED) — WHITE */
-.stSlider [data-baseweb="slider"] div[data-testid="stSliderTrack"] > div:first-child,
-.stSlider [data-baseweb="slider"] > div > div > div:first-child{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
-/* UNFILLED track (right of thumb = UNSELECTED) — SILVER */
-.stSlider [data-baseweb="slider"] div[data-testid="stSliderTrack"] > div:last-child,
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3),
-.stSlider [data-baseweb="slider"] > div > div > div:last-child{background:#C0C0C0!important;background-color:#C0C0C0!important;background-image:none!important}
+
+/* ── TRACK OVERRIDE — nuclear approach to kill ALL inline accent colors ── */
+/* BaseWeb injects inline rgb() styles on track segments. We override every div
+   inside the slider that carries a background, then re-paint filled = white. */
+
+/* 1) Paint ALL track-level divs silver first (catches unfilled segment regardless of child position) */
+.stSlider [data-baseweb="slider"] div[style]{background-color:#C0C0C0!important;background:#C0C0C0!important}
+/* 2) Re-paint the FILLED segment (left of thumb) white — it's always the first track child */
+.stSlider [data-baseweb="slider"] > div > div > div:first-child,
+.stSlider [data-baseweb="slider"] > div > div > div:first-child > div,
+.stSlider [data-baseweb="slider"] > div > div > div:first-child div[style]{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
+/* 3) The thumb itself — keep white (re-assert after the nuclear rule) */
+.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;background-color:#FFFFFF!important}
+/* 4) Thumb value tooltip container — transparent */
+.stSlider [data-baseweb="slider"] [role="slider"] > div,
+.stSlider [data-baseweb="slider"] [role="slider"] > div > div{background:transparent!important;background-color:transparent!important}
+
 /* Streamlit's newer progress-bar-style slider (v1.30+) */
 .stSlider progress{accent-color:#FFFFFF!important}
 .stSlider progress::-webkit-progress-value{background:#FFFFFF!important}
@@ -117,7 +124,7 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 .stSlider progress::-moz-progress-bar{background:#FFFFFF!important}
 /* Tick labels (min/max numbers like "1" and "50") — clean text, NO background bleed */
 .stSlider [data-testid="stTickBarMin"],
-.stSlider [data-testid="stTickBarMax"]{color:#8FA3BC!important;background:transparent!important;background-color:transparent!important}
+.stSlider [data-testid="stTickBarMax"],
 .stSlider [data-testid="stTickBarMin"] *,
 .stSlider [data-testid="stTickBarMax"] *{color:#8FA3BC!important;background:transparent!important;background-color:transparent!important}
 /* Slider label text — white */
