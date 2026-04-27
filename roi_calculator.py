@@ -391,9 +391,6 @@ def _load_logo_html():
 st.markdown(f"""<div class="hero">
 <div style="display:flex;align-items:center;gap:32px">
 <div style="flex:1">
-<div style="display:inline-block;padding:5px 14px;background:rgba(74,168,255,.15);border:1px solid rgba(74,168,255,.3);border-radius:4px;margin-bottom:14px">
-<span style="color:#7DBFFF;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase">Alexa+ for Hospitality</span>
-</div>
 <h1>Alexa+ ROI Analysis</h1>
 <p class="sub">{partner_name}</p>
 <p class="meta">Confidential<span class="meta-divider">|</span>For Partner Discussion Only</p>
