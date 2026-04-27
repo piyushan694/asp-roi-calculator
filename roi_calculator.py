@@ -106,8 +106,6 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 .stSlider [data-baseweb="slider"] > div > div > div:first-child,
 .stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
 /* UNFILLED track (right of thumb, REMAINING range) — Alexa blue */
-/* Target the track container as blue base, then filled overrides to white above */
-.stSlider [data-baseweb="slider"] > div > div{background:#4AA8FF!important;background-color:#4AA8FF!important}
 .stSlider [data-baseweb="slider"] > div > div > div:nth-child(3),
 .stSlider [data-baseweb="slider"] > div > div > div:nth-child(3) > div,
 .stSlider [data-baseweb="slider"] > div > div > div:last-child,
