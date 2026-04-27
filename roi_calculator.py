@@ -96,49 +96,32 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 
 /* ── Form controls — Sliders (WHITE selected / SILVER unselected) ── */
 /* Thumb (draggable circle) */
-.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;border:2px solid #C0C0C0!important;box-shadow:0 0 10px rgba(255,255,255,.45)!important;width:16px!important;height:16px!important}
-/* Value bubble (number label above thumb) — WHITE on every child layer */
+.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;border:2px solid #C0C0C0!important;box-shadow:0 0 8px rgba(255,255,255,.35)!important}
+/* Value bubble above thumb — clean white text, no background */
 .stSlider [data-testid="stThumbValue"],
-.stSlider [data-testid="stThumbValue"] *,
-.stSlider [data-testid="stThumbValue"] div,
-.stSlider [data-testid="stThumbValue"] span{color:#FFFFFF!important;background:transparent!important;font-weight:700!important;fill:#FFFFFF!important}
-/* ── TRACK: BaseWeb slider inner track divs ── */
+.stSlider [data-testid="stThumbValue"] *{color:#FFFFFF!important;background:transparent!important;font-weight:700!important}
+/* ── TRACK: BaseWeb uses a Track div with InnerTrack children ── */
+/* The track container itself gets a role="slider" parent; the colored segments are children of the inner track div */
+/* InnerTrack: first-child = filled (left), last-child = unfilled (right) */
 /* FILLED track (left of thumb = SELECTED) — WHITE */
-.stSlider [data-baseweb="slider"] > div > div > div:first-child,
-.stSlider [data-baseweb="slider"] > div > div > div:first-child > div,
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(1){background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
+.stSlider [data-baseweb="slider"] div[data-testid="stSliderTrack"] > div:first-child,
+.stSlider [data-baseweb="slider"] > div > div > div:first-child{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
 /* UNFILLED track (right of thumb = UNSELECTED) — SILVER */
-.stSlider [data-baseweb="slider"] > div > div > div:last-child,
-.stSlider [data-baseweb="slider"] > div > div > div:last-child > div,
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3){background:#C0C0C0!important;background-color:#C0C0C0!important;background-image:none!important}
-/* Track container (the rail itself) — ensure silver base */
-.stSlider [data-baseweb="slider"] > div > div{background:#C0C0C0!important}
-/* Override Streamlit's inline style injection on track segments */
-.stSlider [data-baseweb="slider"] div[role="slider"] ~ div{background:#C0C0C0!important}
+.stSlider [data-baseweb="slider"] div[data-testid="stSliderTrack"] > div:last-child,
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3),
+.stSlider [data-baseweb="slider"] > div > div > div:last-child{background:#C0C0C0!important;background-color:#C0C0C0!important;background-image:none!important}
 /* Streamlit's newer progress-bar-style slider (v1.30+) */
 .stSlider progress{accent-color:#FFFFFF!important}
 .stSlider progress::-webkit-progress-value{background:#FFFFFF!important}
 .stSlider progress::-webkit-progress-bar{background:#C0C0C0!important}
 .stSlider progress::-moz-progress-bar{background:#FFFFFF!important}
-/* Tick labels */
-.stSlider [data-testid="stTickBarMin"],.stSlider [data-testid="stTickBarMax"]{color:#8FA3BC!important}
-/* Kill every known Streamlit accent color (green/teal/red/blue) on slider children */
-div[data-baseweb="slider"] div[style*="rgb(0, 204"],
-div[data-baseweb="slider"] div[style*="rgb(0, 191"],
-div[data-baseweb="slider"] div[style*="rgb(0, 171"],
-div[data-baseweb="slider"] div[style*="rgb(255, 75"],
-div[data-baseweb="slider"] div[style*="rgb(255, 43"],
-div[data-baseweb="slider"] div[style*="rgb(0, 104"],
-div[data-baseweb="slider"] div[style*="rgb(246, 51"],
-div[data-baseweb="slider"] div[style*="rgb(14, 17"]{background:#FFFFFF!important;background-color:#FFFFFF!important}
-/* Sidebar sliders — same treatment */
-[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] > div > div > div:first-child,
-[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important}
-[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] > div > div > div:last-child,
-[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:#C0C0C0!important;background-color:#C0C0C0!important}
-[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] > div > div{background:#C0C0C0!important}
-/* Every text node in/near slider → white */
-.stSlider span,.stSlider div[role="slider"] + div,.stSlider label + div span{color:#FFFFFF!important}
+/* Tick labels (min/max numbers like "1" and "50") — clean text, NO background bleed */
+.stSlider [data-testid="stTickBarMin"],
+.stSlider [data-testid="stTickBarMax"]{color:#8FA3BC!important;background:transparent!important;background-color:transparent!important}
+.stSlider [data-testid="stTickBarMin"] *,
+.stSlider [data-testid="stTickBarMax"] *{color:#8FA3BC!important;background:transparent!important;background-color:transparent!important}
+/* Slider label text — white */
+.stSlider label,.stSlider label span{color:#FFFFFF!important}
 .stRadio label,.stCheckbox label{color:#B8C5D6!important}
 
 /* ── Text colors ── */
