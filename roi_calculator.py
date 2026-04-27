@@ -114,21 +114,40 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 .stSlider [data-testid="stTickBarMin"] *,
 .stSlider [data-testid="stTickBarMax"] *{color:#7DBFFF!important;background:transparent!important;background-color:transparent!important}
 
-/* ── TRACK OVERRIDE — nuclear approach to kill ALL inline accent colors ── */
-/* BaseWeb injects inline rgb() styles on track segments. We override every div
-   inside the slider that carries a background, then re-paint filled = white. */
+/* ── TRACK OVERRIDE ── */
+/* Streamlit uses BaseWeb slider. The track is rendered as nested divs with inline styles.
+   We use attribute selectors and specificity to override. */
 
-/* 1) Paint ALL track-level divs silver first (catches unfilled segment regardless of child position) */
-.stSlider [data-baseweb="slider"] div[style]{background-color:#C0C0C0!important;background:#C0C0C0!important}
-/* 2) Re-paint the FILLED segment (left of thumb) white — it's always the first track child */
+/* Base rail (the full-width background track) — silver */
+.stSlider [data-baseweb="slider"] [data-testid="stSliderTrackBackground"],
+.stSlider div[data-baseweb="slider"] > div:first-child,
+.stSlider div[data-baseweb="slider"] > div > div{background:#C0C0C0!important;background-color:#C0C0C0!important}
+
+/* ALL divs with inline style inside slider — default to silver (catches unfilled) */
+.stSlider div[data-baseweb="slider"] div[style*="background"]{background-color:#C0C0C0!important;background:#C0C0C0!important}
+
+/* Filled track (selected/left of thumb) — Streamlit sets this via primaryColor.
+   It's the div with an inline background matching the theme color. Override to white. */
 .stSlider [data-baseweb="slider"] > div > div > div:first-child,
 .stSlider [data-baseweb="slider"] > div > div > div:first-child > div,
-.stSlider [data-baseweb="slider"] > div > div > div:first-child div[style]{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
-/* 3) The thumb itself — keep white (re-assert after the nuclear rule) */
+.stSlider [data-baseweb="slider"] > div > div > div:first-child div,
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(1),
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(1) > div,
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(1) div{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
+
+/* Unfilled track (right of thumb) — silver */
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3),
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3) > div,
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3) div,
+.stSlider [data-baseweb="slider"] > div > div > div:last-child,
+.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:#C0C0C0!important;background-color:#C0C0C0!important}
+
+/* Thumb — re-assert white after nuclear rules */
 .stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;background-color:#FFFFFF!important}
-/* 4) Thumb value tooltip container — transparent */
+/* Thumb value tooltip container — transparent */
 .stSlider [data-baseweb="slider"] [role="slider"] > div,
-.stSlider [data-baseweb="slider"] [role="slider"] > div > div{background:transparent!important;background-color:transparent!important}
+.stSlider [data-baseweb="slider"] [role="slider"] > div > div,
+.stSlider [data-baseweb="slider"] [role="slider"] div{background:transparent!important;background-color:transparent!important}
 
 /* Streamlit's newer progress-bar-style slider (v1.30+) */
 .stSlider progress{accent-color:#FFFFFF!important}
