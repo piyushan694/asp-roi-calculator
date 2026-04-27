@@ -186,7 +186,7 @@ with st.sidebar:
     total_properties = st.number_input("Total Properties / Ships", value=11, min_value=1)
     total_rooms = st.number_input("Total Rooms / Staterooms", value=11394, min_value=1)
     avg_rooms_property = int(total_rooms / total_properties) if total_properties > 0 else 1036
-    st.caption(f"Avg Rooms per Property/Ship: **{avg_rooms_property:,}**")
+    st.markdown(f"Avg Rooms per Property/Ship: **{avg_rooms_property:,}**")
     occupancy_pct = st.slider("Occupancy %", 50, 100, 96) / 100
     avg_stay_nights = st.number_input("Avg Guest Stay (nights)", value=7, min_value=1)
     cycles_per_month = st.number_input("Cruises per Month", value=4, min_value=1)
@@ -197,7 +197,7 @@ with st.sidebar:
     rooms_with_alexa = st.number_input("Total Rooms with Alexa", value=2500, min_value=1)
     avg_rooms_per_alexa_property = int(rooms_with_alexa / alexa_properties) if alexa_properties > 0 else rooms_with_alexa
     rooms_per_cycle = avg_rooms_per_alexa_property
-    st.caption(f"Avg Rooms per Property/Ship with Alexa: **{avg_rooms_per_alexa_property:,}**")
+    st.markdown(f"Avg Rooms per Property/Ship with Alexa: **{avg_rooms_per_alexa_property:,}**")
 
     st.markdown("### 💵 Revenue Inputs")
     rev_method = st.radio("Revenue Input Method", ["Total Annual Revenue", "Average Revenue per Room"], index=0)
