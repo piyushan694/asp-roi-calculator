@@ -185,18 +185,19 @@ with st.sidebar:
     st.markdown("### 🏨 Property Metrics")
     total_properties = st.number_input("Total Properties / Ships", value=11, min_value=1)
     total_rooms = st.number_input("Total Rooms / Staterooms", value=11394, min_value=1)
-    avg_rooms_property = st.number_input("Avg Rooms per Property", value=int(total_rooms / total_properties) if total_properties > 0 else 1036, min_value=1)
+    avg_rooms_property = int(total_rooms / total_properties) if total_properties > 0 else 1036
+    st.caption(f"Avg Rooms per Property/Ship: **{avg_rooms_property:,}**")
     occupancy_pct = st.slider("Occupancy %", 50, 100, 96) / 100
     avg_stay_nights = st.number_input("Avg Guest Stay (nights)", value=7, min_value=1)
-    cycles_per_month = st.number_input("Cruises / Cycles per Month", value=4, min_value=1)
+    cycles_per_month = st.number_input("Cruises per Month", value=4, min_value=1)
     guests_per_room = st.number_input("Guests per Room", value=2.0, step=0.1)
 
     st.markdown("### 📺 Projected Alexa Deployment")
     alexa_properties = st.number_input("Properties / Ships with Alexa", value=5, min_value=1)
     rooms_with_alexa = st.number_input("Total Rooms with Alexa", value=2500, min_value=1)
-    rooms_per_cycle = st.number_input("Rooms per Cruise / Cycle", value=500, min_value=1)
-    avg_rooms_per_alexa_property = rooms_with_alexa / alexa_properties if alexa_properties > 0 else rooms_with_alexa
-    st.caption(f"Avg rooms per Alexa property: **{avg_rooms_per_alexa_property:,.0f}**")
+    avg_rooms_per_alexa_property = int(rooms_with_alexa / alexa_properties) if alexa_properties > 0 else rooms_with_alexa
+    rooms_per_cycle = avg_rooms_per_alexa_property
+    st.caption(f"Avg Rooms per Property/Ship with Alexa: **{avg_rooms_per_alexa_property:,}**")
 
     st.markdown("### 💵 Revenue Inputs")
     rev_method = st.radio("Revenue Input Method", ["Total Annual Revenue", "Average Revenue per Room"], index=0)
@@ -212,7 +213,7 @@ with st.sidebar:
         monthly_rev_per_room = st.number_input("Avg Monthly Revenue per Room ($)", value=10000, min_value=1)
         st.caption(f"Monthly revenue/room: **${monthly_rev_per_room:,.0f}**")
 
-    pre_boarding_pct = st.slider("Pre-boarding / Pre-arrival Revenue %", 0, 100, 60) / 100
+    pre_boarding_pct = st.slider("Pre-boarding Revenue %", 0, 100, 60) / 100
     addressable_rev = monthly_rev_per_room * (1 - pre_boarding_pct)
     st.caption(f"Addressable monthly revenue/room: **${addressable_rev:,.0f}**")
 
