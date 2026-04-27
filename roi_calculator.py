@@ -83,80 +83,49 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 
 /* ── Tabs: Clean institutional ── */
 .stTabs [data-baseweb="tab-list"]{gap:4px;border-bottom:1px solid rgba(125,191,255,.12);background:transparent;padding-bottom:0}
-/* ── Tabs: Active = white underline, inactive = no underline ── */
-.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:14px 24px;color:#6B7A8F;border-bottom:3px solid transparent;margin-bottom:-1px;background:transparent;transition:all .2s ease}
+.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:14px 24px;color:#6B7A8F;border-bottom:2px solid transparent;margin-bottom:-1px;background:transparent;transition:all .2s ease}
 .stTabs [data-baseweb="tab"]:hover{color:#B8C5D6}
-.stTabs [aria-selected="true"]{color:#FFFFFF!important;border-bottom:3px solid #FFFFFF!important;background:transparent!important;font-weight:700}
-.stTabs [data-baseweb="tab-highlight"]{background:#FFFFFF!important;background-color:#FFFFFF!important;height:3px!important}
-.stTabs [data-baseweb="tab-border"]{background:transparent!important;background-color:transparent!important}
+.stTabs [aria-selected="true"]{color:#FFFFFF!important;border-bottom:2px solid #C9C9C9!important;background:transparent!important;font-weight:700}
+/* Tab highlight/underline bar (BaseWeb injects its own) — force silver */
+.stTabs [data-baseweb="tab-highlight"],.stTabs [data-baseweb="tab-border"]{background:#C9C9C9!important;background-color:#C9C9C9!important}
 
 /* ── Tables & DataFrames ── */
 [data-testid="stDataFrame"]{border-radius:10px;overflow:hidden;border:1px solid rgba(125,191,255,.08)}
 [data-testid="stDataFrame"] [role="gridcell"]{background:rgba(15,40,71,.3)!important;color:#E0E8F2!important}
 [data-testid="stDataFrame"] [role="columnheader"]{background:rgba(30,74,124,.6)!important;color:#7DBFFF!important;font-weight:700!important;text-transform:uppercase;letter-spacing:1px;font-size:10.5px!important}
 
-/* ═══════════════════════════════════════════════════════════════
-   SLIDER STYLING — Final pass
-   Value numbers: #4A90D9 | Tick labels: #4A90D9
-   Filled track: #FFFFFF | Unfilled track: #A0A0A0
-   Thumb: white ring (#FFFFFF) + navy fill (#1A2A3F), 14px circle
-   ═══════════════════════════════════════════════════════════════ */
-
-/* 1. Thumb — white outer ring, dark navy inner fill, circle, 14px */
-.stSlider [data-baseweb="slider"] [role="slider"]{
-  background:#1A2A3F!important;background-color:#1A2A3F!important;
-  border:2px solid #FFFFFF!important;
-  border-radius:50%!important;
-  width:14px!important;height:14px!important;
-  box-shadow:0 0 6px rgba(255,255,255,.25)!important}
-
-/* 2. Slider value number above thumb — #4A90D9 blue, 14px bold */
+/* ── Form controls — Sliders (ALL silver/white, catch ALL Streamlit injected colors) ── */
+/* Thumb (draggable circle) */
+.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;border:2px solid #C9C9C9!important;box-shadow:0 0 10px rgba(201,201,201,.5)!important}
+/* Value bubble (number label above thumb) — WHITE on every child layer */
 .stSlider [data-testid="stThumbValue"],
+.stSlider [data-testid="stThumbValue"] *,
 .stSlider [data-testid="stThumbValue"] div,
-.stSlider [data-testid="stThumbValue"] span,
-.stSlider [data-testid="stThumbValue"] p{
-  color:#4A90D9!important;
-  background:transparent!important;background-color:transparent!important;
-  font-weight:700!important;font-size:14px!important;
-  border:none!important;box-shadow:none!important;
-  visibility:visible!important;opacity:1!important;display:block!important}
-
-/* 3. Min/max tick labels below track — #4A90D9 blue, 11px */
-.stSlider [data-testid="stTickBarMin"],
-.stSlider [data-testid="stTickBarMax"],
-.stSlider [data-testid="stTickBarMin"] div,
-.stSlider [data-testid="stTickBarMin"] span,
-.stSlider [data-testid="stTickBarMax"] div,
-.stSlider [data-testid="stTickBarMax"] span{
-  color:#4A90D9!important;font-size:11px!important;
-  background:transparent!important;background-color:transparent!important;
-  visibility:visible!important;opacity:1!important;display:block!important}
-
-/* 4. Track colors
-      Streamlit config.toml primaryColor=#FFFFFF handles the filled track.
-      CSS below reinforces filled=white and sets unfilled=#A0A0A0.
-      BaseWeb slider DOM: slider > div > div > [child1=filled, child2=thumb, child3=unfilled] */
-
-/* Filled track (left of thumb) — white */
+.stSlider [data-testid="stThumbValue"] span{color:#FFFFFF!important;background:transparent!important;font-weight:700!important;fill:#FFFFFF!important}
+/* FILLED track (left of thumb, SELECTED range) — WHITE */
 .stSlider [data-baseweb="slider"] > div > div > div:first-child,
-.stSlider [data-baseweb="slider"] > div > div > div:first-child > div{
-  background:#FFFFFF!important;background-color:#FFFFFF!important;height:4px!important}
-
-/* Unfilled track (right of thumb) — #A0A0A0 silver */
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3),
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3) > div,
+.stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
+/* UNFILLED track (right of thumb, REMAINING range) — dim silver (unchanged) */
 .stSlider [data-baseweb="slider"] > div > div > div:last-child,
-.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{
-  background:#A0A0A0!important;background-color:#A0A0A0!important;height:4px!important}
-
-/* 5. Streamlit progress-bar slider variant (v1.30+) */
+.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:rgba(201,201,201,.35)!important;background-color:rgba(201,201,201,.35)!important}
+/* Streamlit's newer progress-bar-style slider (v1.30+) */
 .stSlider progress{accent-color:#FFFFFF!important}
 .stSlider progress::-webkit-progress-value{background:#FFFFFF!important}
-.stSlider progress::-webkit-progress-bar{background:#A0A0A0!important}
+.stSlider progress::-webkit-progress-bar{background:rgba(201,201,201,.35)!important}
 .stSlider progress::-moz-progress-bar{background:#FFFFFF!important}
-
-/* 6. Slider label text — keep white */
-.stSlider label,.stSlider label span{color:#FFFFFF!important}
+/* Tick labels */
+.stSlider [data-testid="stTickBarMin"],.stSlider [data-testid="stTickBarMax"]{color:#8FA3BC!important}
+/* Kill every known Streamlit accent color (green/teal/red/blue) on slider children */
+div[data-baseweb="slider"] div[style*="rgb(0, 204"],
+div[data-baseweb="slider"] div[style*="rgb(0, 191"],
+div[data-baseweb="slider"] div[style*="rgb(0, 171"],
+div[data-baseweb="slider"] div[style*="rgb(255, 75"],
+div[data-baseweb="slider"] div[style*="rgb(255, 43"],
+div[data-baseweb="slider"] div[style*="rgb(0, 104"],
+div[data-baseweb="slider"] div[style*="rgb(246, 51"],
+div[data-baseweb="slider"] div[style*="rgb(14, 17"]{background:#FFFFFF!important;background-color:#FFFFFF!important}
+/* Every text node in/near slider → white */
+.stSlider span,.stSlider div[role="slider"] + div,.stSlider label + div span{color:#FFFFFF!important}
 .stRadio label,.stCheckbox label{color:#B8C5D6!important}
 
 /* ── Text colors ── */
