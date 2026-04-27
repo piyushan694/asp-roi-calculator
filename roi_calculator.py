@@ -154,54 +154,38 @@ hr{border-color:rgba(125,191,255,.08)!important}
 .stPlotlyChart{background:transparent!important;border-radius:12px;overflow:hidden}
 </style>""", unsafe_allow_html=True)
 
-# ── JavaScript injection: Force slider track colors (bypasses inline style overrides) ──
-st.markdown("""<script>
+# ── JavaScript injection via components.html (Streamlit strips <script> from st.markdown) ──
+import streamlit.components.v1 as components
+components.html("""
+<script>
 (function(){
-  const FILLED_COLOR = '#FFFFFF';
-  const UNFILLED_COLOR = '#1E4A7C';
-  function fixSliders(){
-    document.querySelectorAll('[data-baseweb="slider"]').forEach(function(slider){
-      var track = slider.querySelector('[role="slider"]');
-      if(!track) return;
-      var parent = track.parentElement;
-      if(!parent) return;
-      var children = parent.children;
-      for(var i=0;i<children.length;i++){
-        var child = children[i];
-        if(child.getAttribute('role')==='slider') continue;
-        // Children before the thumb = filled, after = unfilled
-        var isBeforeThumb = true;
-        for(var j=0;j<children.length;j++){
-          if(children[j].getAttribute('role')==='slider'){
-            if(j<=i) isBeforeThumb = false;
-            break;
-          }
-        }
-        if(isBeforeThumb){
-          child.style.setProperty('background', FILLED_COLOR, 'important');
-          child.style.setProperty('background-color', FILLED_COLOR, 'important');
-          if(child.firstElementChild){
-            child.firstElementChild.style.setProperty('background', FILLED_COLOR, 'important');
-            child.firstElementChild.style.setProperty('background-color', FILLED_COLOR, 'important');
-          }
-        } else {
-          child.style.setProperty('background', UNFILLED_COLOR, 'important');
-          child.style.setProperty('background-color', UNFILLED_COLOR, 'important');
-          if(child.firstElementChild){
-            child.firstElementChild.style.setProperty('background', UNFILLED_COLOR, 'important');
-            child.firstElementChild.style.setProperty('background-color', UNFILLED_COLOR, 'important');
-          }
+  const FILLED='#FFFFFF', UNFILLED='#1E4A7C';
+  function fix(){
+    var doc = window.parent.document;
+    doc.querySelectorAll('[data-baseweb="slider"]').forEach(function(s){
+      var thumb = s.querySelector('[role="slider"]');
+      if(!thumb) return;
+      var p = thumb.parentElement;
+      if(!p) return;
+      var found = false;
+      for(var i=0;i<p.children.length;i++){
+        var c = p.children[i];
+        if(c.getAttribute('role')==='slider'){found=true;continue;}
+        var col = found ? UNFILLED : FILLED;
+        c.style.setProperty('background',col,'important');
+        c.style.setProperty('background-color',col,'important');
+        if(c.firstElementChild){
+          c.firstElementChild.style.setProperty('background',col,'important');
+          c.firstElementChild.style.setProperty('background-color',col,'important');
         }
       }
     });
   }
-  // Run on load and watch for DOM changes (Streamlit re-renders on interaction)
-  fixSliders();
-  setInterval(fixSliders, 500);
-  var obs = new MutationObserver(fixSliders);
-  obs.observe(document.body, {childList:true, subtree:true, attributes:true});
+  fix();
+  setInterval(fix, 300);
 })();
-</script>""", unsafe_allow_html=True)
+</script>
+""", height=0)
 
 # ── Unified chart theme for all Plotly figures ──
 PLOT_BG = "rgba(0,0,0,0)"
