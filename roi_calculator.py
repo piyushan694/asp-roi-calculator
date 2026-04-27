@@ -97,17 +97,22 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 /* ── Form controls — Sliders (WHITE selected / SILVER unselected) ── */
 /* Thumb (draggable circle) */
 .stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;border:2px solid #C0C0C0!important;box-shadow:0 0 8px rgba(255,255,255,.35)!important}
-/* Value bubble above thumb — consistent muted color matching sidebar input style */
+/* Value bubble above thumb — blue font matching sidebar input slider style */
 .stSlider [data-testid="stThumbValue"],
 .stSlider [data-testid="stThumbValue"] *,
 [data-testid="stSidebar"] .stSlider [data-testid="stThumbValue"],
-[data-testid="stSidebar"] .stSlider [data-testid="stThumbValue"] *{color:#B8C5D6!important;background:transparent!important;background-color:transparent!important;font-weight:700!important;font-size:14px!important;border:none!important;box-shadow:none!important}
+[data-testid="stSidebar"] .stSlider [data-testid="stThumbValue"] *{color:#7DBFFF!important;background:transparent!important;background-color:transparent!important;font-weight:700!important;font-size:14px!important;border:none!important;box-shadow:none!important}
 /* Slider current-value number (BaseWeb renders it in various containers) */
 .stSlider [data-baseweb="slider"] [data-testid="stThumbValue"],
 .stSlider [data-baseweb="slider"] div[role="slider"] ~ div,
-.stSlider [data-baseweb="slider"] div[role="slider"] + div{color:#B8C5D6!important;background:transparent!important;background-color:transparent!important;border:none!important;box-shadow:none!important}
+.stSlider [data-baseweb="slider"] div[role="slider"] + div{color:#7DBFFF!important;background:transparent!important;background-color:transparent!important;border:none!important;box-shadow:none!important}
 .stSlider [data-baseweb="slider"] div[role="slider"] ~ div *,
-.stSlider [data-baseweb="slider"] div[role="slider"] + div *{color:#B8C5D6!important;background:transparent!important;background-color:transparent!important}
+.stSlider [data-baseweb="slider"] div[role="slider"] + div *{color:#7DBFFF!important;background:transparent!important;background-color:transparent!important}
+/* Min/max tick labels also blue to match */
+.stSlider [data-testid="stTickBarMin"],
+.stSlider [data-testid="stTickBarMax"],
+.stSlider [data-testid="stTickBarMin"] *,
+.stSlider [data-testid="stTickBarMax"] *{color:#7DBFFF!important;background:transparent!important;background-color:transparent!important}
 
 /* ── TRACK OVERRIDE — nuclear approach to kill ALL inline accent colors ── */
 /* BaseWeb injects inline rgb() styles on track segments. We override every div
@@ -130,11 +135,6 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 .stSlider progress::-webkit-progress-value{background:#FFFFFF!important}
 .stSlider progress::-webkit-progress-bar{background:#C0C0C0!important}
 .stSlider progress::-moz-progress-bar{background:#FFFFFF!important}
-/* Tick labels (min/max numbers like "1" and "50") — clean text, NO background bleed */
-.stSlider [data-testid="stTickBarMin"],
-.stSlider [data-testid="stTickBarMax"],
-.stSlider [data-testid="stTickBarMin"] *,
-.stSlider [data-testid="stTickBarMax"] *{color:#8FA3BC!important;background:transparent!important;background-color:transparent!important}
 /* Slider label text — white */
 .stSlider label,.stSlider label span{color:#FFFFFF!important}
 .stRadio label,.stCheckbox label{color:#B8C5D6!important}
