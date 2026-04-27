@@ -570,7 +570,7 @@ with tab1:
         return f"""<div style="background:linear-gradient(160deg,rgba(15,40,71,.5) 0%,rgba(10,22,40,.7) 100%);border-radius:14px;padding:22px;border:1px solid rgba(125,191,255,.12);backdrop-filter:blur(10px);box-shadow:0 4px 24px rgba(0,0,0,.25)">
         <p style="font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#4AA8FF;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(74,168,255,.25)">{title}</p>
         <table style="width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed">
-        <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
+        <colgroup><col style="width:37%"><col style="width:21%"><col style="width:21%"><col style="width:21%"></colgroup>
         <tr><th style="text-align:left;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#6B7A8F;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">Metric</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#FFFFFF;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">S1</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#D8D8D8;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">S2</th><th style="text-align:right;padding:8px 14px;font-size:9.5px;text-transform:uppercase;letter-spacing:1.2px;color:#C9C9C9;border-bottom:1px solid rgba(125,191,255,.15);font-weight:700">S3</th></tr>
         {rows_html}
         </table></div>"""
