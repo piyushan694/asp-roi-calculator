@@ -105,15 +105,18 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 /* FILLED track (left of thumb, SELECTED range) — WHITE */
 .stSlider [data-baseweb="slider"] > div > div > div:first-child,
 .stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
-/* UNFILLED track (right of thumb, REMAINING range) — Alexa blue */
+/* UNFILLED track (right of thumb, REMAINING range) — dark navy blue matching gauge */
 .stSlider [data-baseweb="slider"] > div > div > div:nth-child(3),
 .stSlider [data-baseweb="slider"] > div > div > div:nth-child(3) > div,
 .stSlider [data-baseweb="slider"] > div > div > div:last-child,
-.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:#4AA8FF!important;background-color:#4AA8FF!important}
+.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:#1E4A7C!important;background-color:#1E4A7C!important}
+/* Also target BaseWeb Track and InnerTrack components for unfilled */
+.stSlider [data-baseweb="slider"] [data-testid="stSliderTrack"],
+.stSlider [data-baseweb="slider"] [data-testid="stSliderTrackUnfilled"]{background:#1E4A7C!important;background-color:#1E4A7C!important}
 /* Streamlit's newer progress-bar-style slider (v1.30+) */
 .stSlider progress{accent-color:#FFFFFF!important}
 .stSlider progress::-webkit-progress-value{background:#FFFFFF!important}
-.stSlider progress::-webkit-progress-bar{background:#4AA8FF!important}
+.stSlider progress::-webkit-progress-bar{background:#1E4A7C!important}
 .stSlider progress::-moz-progress-bar{background:#FFFFFF!important}
 /* Tick labels */
 .stSlider [data-testid="stTickBarMin"],.stSlider [data-testid="stTickBarMax"]{color:#8FA3BC!important}
