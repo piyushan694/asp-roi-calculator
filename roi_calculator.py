@@ -94,24 +94,31 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 [data-testid="stDataFrame"] [role="gridcell"]{background:rgba(15,40,71,.3)!important;color:#E0E8F2!important}
 [data-testid="stDataFrame"] [role="columnheader"]{background:rgba(30,74,124,.6)!important;color:#7DBFFF!important;font-weight:700!important;text-transform:uppercase;letter-spacing:1px;font-size:10.5px!important}
 
-/* ── Form controls — Sliders (ALL silver/white, catch ALL Streamlit injected colors) ── */
+/* ── Form controls — Sliders (WHITE selected / SILVER unselected) ── */
 /* Thumb (draggable circle) */
-.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;border:2px solid #C9C9C9!important;box-shadow:0 0 10px rgba(201,201,201,.5)!important}
+.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;border:2px solid #C0C0C0!important;box-shadow:0 0 10px rgba(255,255,255,.45)!important;width:16px!important;height:16px!important}
 /* Value bubble (number label above thumb) — WHITE on every child layer */
 .stSlider [data-testid="stThumbValue"],
 .stSlider [data-testid="stThumbValue"] *,
 .stSlider [data-testid="stThumbValue"] div,
 .stSlider [data-testid="stThumbValue"] span{color:#FFFFFF!important;background:transparent!important;font-weight:700!important;fill:#FFFFFF!important}
-/* FILLED track (left of thumb, SELECTED range) — WHITE */
+/* ── TRACK: BaseWeb slider inner track divs ── */
+/* FILLED track (left of thumb = SELECTED) — WHITE */
 .stSlider [data-baseweb="slider"] > div > div > div:first-child,
-.stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
-/* UNFILLED track (right of thumb, REMAINING range) — dim silver (unchanged) */
+.stSlider [data-baseweb="slider"] > div > div > div:first-child > div,
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(1){background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
+/* UNFILLED track (right of thumb = UNSELECTED) — SILVER */
 .stSlider [data-baseweb="slider"] > div > div > div:last-child,
-.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:rgba(201,201,201,.35)!important;background-color:rgba(201,201,201,.35)!important}
+.stSlider [data-baseweb="slider"] > div > div > div:last-child > div,
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3){background:#C0C0C0!important;background-color:#C0C0C0!important;background-image:none!important}
+/* Track container (the rail itself) — ensure silver base */
+.stSlider [data-baseweb="slider"] > div > div{background:#C0C0C0!important}
+/* Override Streamlit's inline style injection on track segments */
+.stSlider [data-baseweb="slider"] div[role="slider"] ~ div{background:#C0C0C0!important}
 /* Streamlit's newer progress-bar-style slider (v1.30+) */
 .stSlider progress{accent-color:#FFFFFF!important}
 .stSlider progress::-webkit-progress-value{background:#FFFFFF!important}
-.stSlider progress::-webkit-progress-bar{background:rgba(201,201,201,.35)!important}
+.stSlider progress::-webkit-progress-bar{background:#C0C0C0!important}
 .stSlider progress::-moz-progress-bar{background:#FFFFFF!important}
 /* Tick labels */
 .stSlider [data-testid="stTickBarMin"],.stSlider [data-testid="stTickBarMax"]{color:#8FA3BC!important}
@@ -124,6 +131,12 @@ div[data-baseweb="slider"] div[style*="rgb(255, 43"],
 div[data-baseweb="slider"] div[style*="rgb(0, 104"],
 div[data-baseweb="slider"] div[style*="rgb(246, 51"],
 div[data-baseweb="slider"] div[style*="rgb(14, 17"]{background:#FFFFFF!important;background-color:#FFFFFF!important}
+/* Sidebar sliders — same treatment */
+[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] > div > div > div:first-child,
+[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important}
+[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] > div > div > div:last-child,
+[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:#C0C0C0!important;background-color:#C0C0C0!important}
+[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] > div > div{background:#C0C0C0!important}
 /* Every text node in/near slider → white */
 .stSlider span,.stSlider div[role="slider"] + div,.stSlider label + div span{color:#FFFFFF!important}
 .stRadio label,.stCheckbox label{color:#B8C5D6!important}
