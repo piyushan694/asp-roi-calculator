@@ -441,7 +441,7 @@ with tab1:
     st.markdown(f'<div class="stitle">Incremental Contribution Profit</div>', unsafe_allow_html=True)
 
     for sn, r, tag, color in [("Scenario 1", r1, "tag-s1", "blue"), ("Scenario 2", r2, "tag-s2", "green"), ("Scenario 3", r3, "tag-s3", "orange")]:
-        st.markdown(f'<span class="tag {tag}" style="margin-bottom:8px;display:inline-block">{sn}</span>', unsafe_allow_html=True)
+        st.markdown(f'<div style="margin-bottom:8px"><span class="tag {tag}">{sn.upper()}</span></div>', unsafe_allow_html=True)
         k1, k2, k3, k4 = st.columns(4)
         with k1: st.markdown(kpi(f"{r['roi']:.0f}%", "Return on Investment", "hero-card" if r['roi'] > 30 else f"{color}"), unsafe_allow_html=True)
         with k2: st.markdown(kpi(f"${r['inc_cp_room']:,.0f}", "Monthly per Room", color), unsafe_allow_html=True)
