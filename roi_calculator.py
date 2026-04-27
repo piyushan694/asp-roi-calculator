@@ -83,74 +83,59 @@ html,body,[class*="css"]{font-family:'Inter','Amazon Ember',-apple-system,sans-s
 
 /* ── Tabs: Clean institutional ── */
 .stTabs [data-baseweb="tab-list"]{gap:4px;border-bottom:1px solid rgba(125,191,255,.12);background:transparent;padding-bottom:0}
-.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:14px 24px;color:#6B7A8F;border-bottom:2px solid transparent;margin-bottom:-1px;background:transparent;transition:all .2s ease}
+/* ── Tabs: Active = white underline, inactive = no underline ── */
+.stTabs [data-baseweb="tab"]{font-weight:600;font-size:13px;padding:14px 24px;color:#6B7A8F;border-bottom:3px solid transparent;margin-bottom:-1px;background:transparent;transition:all .2s ease}
 .stTabs [data-baseweb="tab"]:hover{color:#B8C5D6}
-.stTabs [aria-selected="true"]{color:#FFFFFF!important;border-bottom:2px solid #FFFFFF!important;background:transparent!important;font-weight:700}
-/* Tab highlight/underline bar (BaseWeb injects its own) — force white */
-.stTabs [data-baseweb="tab-highlight"],.stTabs [data-baseweb="tab-border"]{background:#FFFFFF!important;background-color:#FFFFFF!important}
+.stTabs [aria-selected="true"]{color:#FFFFFF!important;border-bottom:3px solid #FFFFFF!important;background:transparent!important;font-weight:700}
+.stTabs [data-baseweb="tab-highlight"]{background:#FFFFFF!important;background-color:#FFFFFF!important;height:3px!important}
+.stTabs [data-baseweb="tab-border"]{background:transparent!important;background-color:transparent!important}
 
 /* ── Tables & DataFrames ── */
 [data-testid="stDataFrame"]{border-radius:10px;overflow:hidden;border:1px solid rgba(125,191,255,.08)}
 [data-testid="stDataFrame"] [role="gridcell"]{background:rgba(15,40,71,.3)!important;color:#E0E8F2!important}
 [data-testid="stDataFrame"] [role="columnheader"]{background:rgba(30,74,124,.6)!important;color:#7DBFFF!important;font-weight:700!important;text-transform:uppercase;letter-spacing:1px;font-size:10.5px!important}
 
-/* ── Form controls — Sliders (WHITE selected / SILVER unselected) ── */
-/* Thumb (draggable circle) */
-.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;border:2px solid #C0C0C0!important;box-shadow:0 0 8px rgba(255,255,255,.35)!important}
-/* Value bubble above thumb — steel blue font matching sidebar input slider style */
-.stSlider [data-testid="stThumbValue"],
-.stSlider [data-testid="stThumbValue"] *,
-[data-testid="stSidebar"] .stSlider [data-testid="stThumbValue"],
-[data-testid="stSidebar"] .stSlider [data-testid="stThumbValue"] *{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;font-weight:700!important;font-size:14px!important;border:none!important;box-shadow:none!important}
-/* Slider current-value number (BaseWeb renders it in various containers) */
-.stSlider [data-baseweb="slider"] [data-testid="stThumbValue"],
-.stSlider [data-baseweb="slider"] div[role="slider"] ~ div,
-.stSlider [data-baseweb="slider"] div[role="slider"] + div{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;border:none!important;box-shadow:none!important}
-.stSlider [data-baseweb="slider"] div[role="slider"] ~ div *,
-.stSlider [data-baseweb="slider"] div[role="slider"] + div *{color:#4A90D9!important;background:transparent!important;background-color:transparent!important}
-/* Min/max tick labels also steel blue to match */
+/* ═══════════════════════════════════════════════════════════════
+   SLIDER STYLING — Clean rewrite
+   Values: #4A90D9 | Filled track: #FFFFFF | Unfilled: #A0A0A0
+   ═══════════════════════════════════════════════════════════════ */
+
+/* 1. Thumb (draggable circle) — white */
+.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;background-color:#FFFFFF!important;border:2px solid #A0A0A0!important;box-shadow:0 0 6px rgba(255,255,255,.3)!important}
+
+/* 2. Slider value number above thumb — #4A90D9 steel blue, visible */
+.stSlider [data-testid="stThumbValue"]{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;font-weight:700!important;font-size:14px!important;border:none!important;box-shadow:none!important;visibility:visible!important;opacity:1!important}
+.stSlider [data-testid="stThumbValue"] div,
+.stSlider [data-testid="stThumbValue"] span,
+.stSlider [data-testid="stThumbValue"] p{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;visibility:visible!important;opacity:1!important}
+
+/* 3. Min/max tick labels below track — #4A90D9 steel blue, visible */
 .stSlider [data-testid="stTickBarMin"],
-.stSlider [data-testid="stTickBarMax"],
-.stSlider [data-testid="stTickBarMin"] *,
-.stSlider [data-testid="stTickBarMax"] *{color:#4A90D9!important;background:transparent!important;background-color:transparent!important}
+.stSlider [data-testid="stTickBarMax"]{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;visibility:visible!important;opacity:1!important}
+.stSlider [data-testid="stTickBarMin"] div,
+.stSlider [data-testid="stTickBarMin"] span,
+.stSlider [data-testid="stTickBarMax"] div,
+.stSlider [data-testid="stTickBarMax"] span{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;visibility:visible!important;opacity:1!important}
 
-/* ── TRACK OVERRIDE ── */
-/* Strategy: Streamlit's BaseWeb slider renders track segments as nested divs
-   with inline styles. We use two layers:
-   (a) config.toml primaryColor=#FFFFFF handles the filled track at framework level
-   (b) CSS overrides catch anything the framework misses */
+/* 4. Track — filled (left of thumb) = white, unfilled (right) = #A0A0A0 silver
+      BaseWeb structure: slider > div > div > [track-children]
+      Child 1 = filled, Child 2 = thumb, Child 3 = unfilled */
+/* Filled track segment */
+.stSlider [data-baseweb="slider"] > div > div > div:first-child{background:#FFFFFF!important;background-color:#FFFFFF!important}
+.stSlider [data-baseweb="slider"] > div > div > div:first-child > div{background:#FFFFFF!important;background-color:#FFFFFF!important}
+/* Unfilled track segment */
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3){background:#A0A0A0!important;background-color:#A0A0A0!important}
+.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3) > div{background:#A0A0A0!important;background-color:#A0A0A0!important}
+.stSlider [data-baseweb="slider"] > div > div > div:last-child{background:#A0A0A0!important;background-color:#A0A0A0!important}
+.stSlider [data-baseweb="slider"] > div > div > div:last-child > div{background:#A0A0A0!important;background-color:#A0A0A0!important}
 
-/* The entire slider track rail — silver base */
-.stSlider [data-baseweb="slider"] > div,
-.stSlider [data-baseweb="slider"] > div > div{background:#C0C0C0!important;background-color:#C0C0C0!important}
-/* ALL divs with inline style inside slider — default silver */
-.stSlider [data-baseweb="slider"] div[style*="background"]{background-color:#C0C0C0!important;background:#C0C0C0!important}
-/* FILLED track (left of thumb) — white. Target first-child at every nesting depth */
-.stSlider [data-baseweb="slider"] > div > div > div:first-child,
-.stSlider [data-baseweb="slider"] > div > div > div:first-child *,
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(1),
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(1) *{background:#FFFFFF!important;background-color:#FFFFFF!important;background-image:none!important}
-/* UNFILLED track (right of thumb) — silver */
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3),
-.stSlider [data-baseweb="slider"] > div > div > div:nth-child(3) *,
-.stSlider [data-baseweb="slider"] > div > div > div:last-child,
-.stSlider [data-baseweb="slider"] > div > div > div:last-child *{background:#C0C0C0!important;background-color:#C0C0C0!important}
-/* Thumb — re-assert white */
-.stSlider [data-baseweb="slider"] [role="slider"]{background:#FFFFFF!important;background-color:#FFFFFF!important}
-/* Thumb value tooltip + all children — transparent (don't let track rules bleed) */
-.stSlider [data-baseweb="slider"] [role="slider"] > div,
-.stSlider [data-baseweb="slider"] [role="slider"] > div *,
-.stSlider [data-baseweb="slider"] [role="slider"] div[style]{background:transparent!important;background-color:transparent!important}
-/* Thumb value text containers — ensure blue text, transparent bg */
-.stSlider [data-testid="stThumbValue"],
-.stSlider [data-testid="stThumbValue"] *{color:#4A90D9!important;background:transparent!important;background-color:transparent!important;font-weight:700!important;border:none!important;box-shadow:none!important}
-
-/* Streamlit's newer progress-bar-style slider (v1.30+) */
+/* 5. Streamlit progress-bar slider variant (v1.30+) */
 .stSlider progress{accent-color:#FFFFFF!important}
 .stSlider progress::-webkit-progress-value{background:#FFFFFF!important}
-.stSlider progress::-webkit-progress-bar{background:#C0C0C0!important}
+.stSlider progress::-webkit-progress-bar{background:#A0A0A0!important}
 .stSlider progress::-moz-progress-bar{background:#FFFFFF!important}
-/* Slider label text — white */
+
+/* 6. Slider label text — keep white */
 .stSlider label,.stSlider label span{color:#FFFFFF!important}
 .stRadio label,.stCheckbox label{color:#B8C5D6!important}
 
